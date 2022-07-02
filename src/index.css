@@ -22,13 +22,42 @@ code {
   font-family: 'MagistralC';
   font-weight: normal;
   font-size: 18px;
-  color: aliceblue;
+  color: black;
 }
 
 .font-fix {
   letter-spacing: 0.15em;
   color: #FFFFFF !important;
   font-size: 12px;
+}
+
+.black {
+  color: #444444;
+}
+
+.breadcrumb a,
+strong {
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.19em;
+  color: #848484;
+  text-decoration: none;
+}
+
+.breadcrumb mark {
+  background-color: transparent;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.19em;
+  color: #444444;
+}
+
+p,
+h1,
+h3,
+h4,
+h5 {
+  color: #F1F1F1;
 }
 
 b {
@@ -42,8 +71,15 @@ b {
   background-repeat: no-repeat;
   text-indent: 20px;
   background-color: #C5C5C533;
-  ;
+}
 
+#searchbrand {
+  background-image: url('../src/assets/search.png');
+  background-position: 1%;
+  background-repeat: no-repeat;
+  text-align: center;
+  background-color: #FF820E;
+  border: none;
 }
 
 .form-control {
@@ -63,7 +99,6 @@ b {
 }
 
 .menu {
-
   width: 25% !important;
   float: left !important;
   background: #F5F5F5;
@@ -71,10 +106,48 @@ b {
   border-radius: 9px;
 }
 
+.menu-open {
+  margin-top: 1rem;
+  margin-left: 0.8rem !important;
+  width: 60.5% !important;
+  background-color: #444444;
+  box-shadow: -6px 6px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 9px;
+  position: absolute;
+  z-index: 3;
+}
+
+.menu-open h1 {
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: 0.145em;
+  color: #FF820E;
+}
+
+.menu-open p {
+  font-weight: 400 !important;
+  font-size: 13px !important;
+  margin-bottom: 0;
+  color: #FFFFFF;
+}
+
+.menu-open h3 {
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.145em;
+  color: #FFFFFF !important;
+}
+
 .nav-fix {
-  color: #4F4F4F !important;
+  color: #282828 !important;
   font-size: 14px;
   font-weight: 700;
+
+}
+
+.nav-fix span {
+  color: #F1F1F1 !important;
+  font-size: 14px;
 }
 
 .main-img {
@@ -122,6 +195,17 @@ b {
 .prod-cont {
   width: 80% !important;
   float: left;
+}
+
+.menu:hover {
+  transition: 0.7s;
+  background-color: #444444;
+  color: #EBEBEB !important;
+}
+
+.menu-item:hover {
+  transition: 0.7s;
+  color: #EBEBEB !important;
 }
 
 .sales-prod {
@@ -224,12 +308,266 @@ h1 {
 .card {
   background: #F9F9F9;
   box-shadow: -4px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 20px;
+  border-radius: 36px;
   width: 18% !important;
-  padding: 30px 0 0 20px !important;
+  padding: 20px 10px 0 20px !important;
 }
 
-.card h1{
+.card h1 {
   font-size: 22px;
   font-weight: 700;
+}
+
+.track {
+  background-color: #ebebeb;
+}
+
+.footer {
+  background-color: #282828;
+}
+
+.head {
+  top: 50px;
+}
+
+.footer h4 {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.footer h5 {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.footer p {
+  font-size: 13px;
+  margin-top: 14px;
+  margin-bottom: -5px;
+  font-weight: 400;
+}
+
+#e-mail {
+
+  background-image: url('../src/assets/enter.png');
+  background-position: 97%;
+  background-repeat: no-repeat;
+  border-radius: 46px;
+}
+
+input::placeholder {
+  color: #979797;
+  padding-left: 5px;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.lineup {
+  border-top: 1px solid #F1F1F1;
+}
+
+.input-fix {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-right: 50px !important;
+  padding-left: 5px !important;
+  border: none;
+}
+
+.icons-fix {
+  padding-right: 20px !important;
+}
+
+.footer strong {
+  font-size: 12px !important;
+  color: white;
+}
+
+.footer-nav {
+  padding-top: 89px;
+}
+
+.linedown {
+  border-bottom: 1px solid #F1F1F1;
+}
+
+.fix-right {
+  padding-top: 1px;
+}
+
+.footer-nav p {
+  font-size: 10px;
+  font-weight: 400;
+}
+
+.stick-2.affix-top {
+  position: static;
+}
+
+.stick-2.affix {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  transition: all .6s ease-in-out;
+  -webkit-transition: all .6s ease-in-out;
+}
+
+.head {
+  background-color: white;
+}
+
+.about-img {
+  float: right;
+}
+
+.about-text {
+  margin-top: 80px;
+}
+
+.about-text h1 {
+  color: #FF820E;
+  font-size: 22px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.19em;
+}
+
+.about-text h3 {
+  color: #444444;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 38px;
+  letter-spacing: 0.19em;
+}
+
+.about-text p {
+  color: #444444;
+  font-weight: 400;
+  font-size: 18px;
+  letter-spacing: 0.19em;
+}
+
+.video-el {
+  position: relative;
+  margin-top: 50px;
+  background-image: url('./assets/video.png');
+  width: 100%;
+  height: 800px;
+}
+
+.play-upper {
+  position: absolute;
+  top: 0;
+  left: 39.5%;
+  background: #FF820E;
+  border-radius: 0px 0px 30px 30px;
+  border: none;
+  padding: 10px 80px 10px 80px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.play-button {
+  position: absolute;
+  top: 46%;
+  left: 46%;
+}
+
+.tabs {
+  padding: 0px 100px 0px 100px;
+  background: #F9F9F9;
+  border-radius: 0px 25px 25px 25px;
+  box-shadow: -6px 6px 4px rgba(0, 0, 0, 0.25);
+}
+
+.story-text {
+  font-weight: 700;
+  font-size: 46px;
+  letter-spacing: 0.19em;
+  color: #444444;
+}
+
+.tabs-cont {
+  background-color: #ebebeb;
+  text-align: center;
+}
+
+.tabs-cont p {
+  color: #444;
+}
+
+.tabs-cont h1 {
+  font-weight: 700;
+  font-size: 46px;
+  letter-spacing: 0.19em;
+  color: #444444;
+}
+
+.content-cont {
+  background: #F1F1F1;
+  box-shadow: -4px 4px 4px rgba(0, 0, 0, 0.25);
+  padding-left: 0px !important;
+  border-radius: 15px;
+}
+
+.align-items-start h3 {
+  font-size: 20px;
+  letter-spacing: 0.195em;
+  color: #444444;
+  font-weight: 700;
+}
+
+.content-cont h1 {
+  float: left;
+}
+
+.content-cont p {
+  font-weight: 400;
+  font-size: 18px;
+
+  letter-spacing: 0.195em;
+
+  color: #444444;
+}
+
+.linevert {
+  border-right: 0.5px solid #BEBEBE;
+}
+
+.content-cont strong {
+  color: #444444;
+}
+
+.map-cont {
+  height: 450px;
+  border: 1px dotted black;
+}
+
+.cart-cont {
+  background: #F9F9F9;
+  border-radius: 25px;
+}
+
+.main-nav {
+  padding: 0 !important;
+}
+
+center {
+  font-weight: 700;
+  font-size: 30px;
+  letter-spacing: 0.19em;
+  color: #000000;
+}
+
+.alpha {
+  text-align: center;
+  letter-spacing: 1em;
+  font-weight: 700;
+  font-size: 30px;
+}
+
+.bgalpha {
+
+  background-color: #DBDBDB;
 }

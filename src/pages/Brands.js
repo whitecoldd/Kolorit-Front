@@ -1,11 +1,80 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
+import { Container, Form, Breadcrumb } from 'react-bootstrap'
+import BrandsItemDisplay from '../comps/BrandsItemDisplay';
+import { BrandsItem } from '../comps/BrandsItem';
 
-export default class Brands extends Component {
-  render() {
-    return (
-      <>
-      <div>Brands</div>
-      </>
-    )
-  }
+function Brands({ placeholder, data }) {
+  const alpha = Array.from(Array(26)).map((e, i) => i + 65);
+  const alphabet = alpha.map((x) => String.fromCharCode(x));
+
+  const [filteredData, setFilteredData] = useState([]);
+  const [wordEntered, setWordEntered] = useState("");
+
+  const handleFilter = (event) => {
+    const searchWord = event.target.value;
+    setWordEntered(searchWord);
+    const newFilter = data.filter((value) => {
+      return value.title.toLowerCase().includes(searchWord.toLowerCase());
+    });
+
+    if (searchWord === "") {
+      setFilteredData([]);
+    } else {
+      setFilteredData(newFilter);
+    }
+  };
+
+  const clearInput = () => {
+    setFilteredData([]);
+    setWordEntered("");
+  };
+  return (
+    <>
+      <Container className='mt-3'>
+        <Breadcrumb>
+          <Breadcrumb.Item href="/"><strong>Г</strong>лавная</Breadcrumb.Item>
+          <Breadcrumb.Item active><mark>Бренды</mark></Breadcrumb.Item>
+        </Breadcrumb>
+      </Container>
+      <Container className='mt-5 mb-5'>
+        <center>Бренды A-Z</center>
+      </Container>
+      <Container fluid className='bgalpha d-flex justify-content-center mt-3 pt-4 pb-2'> {alphabet.map((alpha, i) => (<h1 type='button' className='text-uppercase alpha' href='#{alphabet[i]}' >  {alpha}</h1>))}</Container>
+      <Container className='mt-5 mb-5'>
+        <Form.Control
+          type='text'
+          placeholder={placeholder}
+          id='searchbrand'
+          aria-label="Search"
+          value={wordEntered}
+          onChange={handleFilter}
+          data={alphabet} />
+      </Container>
+      <Container>
+        {alphabet.map((alpha, i) => (
+          <Container className='d-flex align-items-center mb-5'>
+            <h1 id={alphabet[i]}>{alpha}</h1>
+            <Container className='d-flex flex-column align-items-center'>
+              {BrandsItem.map((item) => (
+                <BrandsItemDisplay item={item} key={item.id} ></BrandsItemDisplay>
+              ))}
+            </Container>
+            <Container className='d-flex flex-column align-items-center'>
+              {BrandsItem.map((item) => (
+                <BrandsItemDisplay item={item} key={item.id} ></BrandsItemDisplay>
+              ))}
+            </Container>
+            <Container className='d-flex flex-column align-items-center'>
+              {BrandsItem.map((item) => (
+                <BrandsItemDisplay item={item} key={item.id} ></BrandsItemDisplay>
+              ))}
+            </Container>
+          </Container>
+        )
+        )}
+      </Container>
+    </>
+  )
 }
+
+export default Brands
