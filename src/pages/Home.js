@@ -5,7 +5,6 @@ import MenuItemsDisplay from '../comps/MenuItemsDisplay'
 import slider from '../assets/slider.png'
 import sale from '../assets/salesprod.png'
 import buy from '../assets/tocart.png'
-import promo from '../assets/promo.png'
 import tick1 from '../assets/tick1.png'
 import tick2 from '../assets/tick2.png'
 import tick3 from '../assets/tick3.png'
@@ -13,7 +12,7 @@ import tick4 from '../assets/tick4.png'
 import { Products } from '../comps/Products'
 import ItemModelOnSale from '../comps/ItemModelOnSale'
 import ItemModelPopular from '../comps/ItemModelPopular'
-import {Items} from '../comps/Items'
+import Cart from '../pages/Cart'
 import ItemModelNew from '../comps/ItemModelNew'
 import ProductDisplay from '../comps/ProductDisplay'
 import Marquee from "react-fast-marquee";
@@ -21,18 +20,20 @@ import CardsItem from '../comps/CardsItem'
 import { useState } from 'react'
 import MenuOpenItemDisplay from '../comps/MenuOpenItemDisplay'
 import Countdown from 'react-countdown'
+import PromosDisplay from '../comps/PromosDisplay'
 
 export default function Home(props) {
-  const { ItemNew, ItemPopular, ItemOnSale } = Items;
-  const [cartItems, setCartItems] = useState([]); 
-  const onAdd = (item) => {
-    setCartItems((prev)=> [...prev, item]);
+  const {onAdd, onRemove, ItemNew, ItemOnSale, ItemPopular, cartItems, decreaseQty} = props
+  // const { ItemNew, ItemPopular, ItemOnSale } = Items;
+  // const [cartItems, setCartItems] = useState([]); 
+  // const onAdd = (item) => {
+  //   setCartItems((prev)=> [...prev, item]);
 
-  };
-  const onRemove = (id) => {
-    setCartItems((prev)=>prev.filter(item => item.id !== id));
-  };
-  console.log(cartItems)
+  // };
+  // const onRemove = (id) => {
+  //   setCartItems((prev)=>prev.filter(item => item.id !== id));
+  // };
+  // console.log(cartItems)
   return (
     <>
       <Container className="d-flex">
@@ -70,7 +71,7 @@ export default function Home(props) {
           <Image width='100%' height='95%' src={slider}></Image>
           <h2 className='pic-text position-absolute'>Строй Материалы</h2>
           <p className='pic-text-lower position-absolute'>Наш магазин предлагает строительный материал, который Вы собираетесь покупать, не только предложит своему потенциальному покупателю большой выбор всевозможных стройматерилов, но и предоставит бесплатную консультацию по каждому из них.</p>
-          <Button type='submit' className="bttn position-absolute btn-warning" aria-pressed="false">Перейти к каталогу</Button>
+          <Button type='submit' href='/catalog' className="bttn position-absolute btn-warning" aria-pressed="false">Перейти к каталогу</Button>
         </Container>
       </Container>
       <Container className='mt-5'>
@@ -90,15 +91,15 @@ export default function Home(props) {
             </Container>
             <Button variant='warning'><Image src={buy}></Image></Button>
           </Container>
-          <Countdown date={Date.now() + 1000000000} />
+          <Countdown date={Date.now() + 86399000} />
         </Container>
       </Container>
       <Container fluid className='d-flex flex-nowrap flex-column sales-prod-carousel'>
         <Container className='d-flex flex-wrap justify-content-start'>
           <b className='pt-4 pb-4'><h1><strong>Т</strong>овары со скидкой</h1></b>
           <Container className='d-flex mt-2 '>
-            {ItemOnSale.map((item) => (
-              <ItemModelOnSale item={item} key={item.id} onClickAdd={onAdd} ></ItemModelOnSale>
+            {ItemOnSale.map((ItemOnSale) => (
+              <ItemModelOnSale ItemOnSale={ItemOnSale} key={ItemOnSale.id} onAdd={()=>onAdd(ItemOnSale)}  onRemove={()=>onRemove(ItemOnSale.id)} ></ItemModelOnSale>
             ))}
           </Container>
         </Container>
@@ -109,36 +110,7 @@ export default function Home(props) {
       <Container>
         <h1 className='pt-4 pb-4'>Акции и предложения</h1>
         <Container>
-          <Row>
-            <Col sm={3} className="promos d-flex flex-wrap align-content-start me-3">
-              <Image fluid src={promo}></Image>
-              <Container>
-                <h1 className='pt-1'>Весенние скидки на любой вид древесины до 80%</h1>
-                <p>Наш стротельный магазин объявляет о начале акции в честь весенних праздников, акция действует в перид  01.02.2000 - 02,03,2000 </p>
-              </Container>
-            </Col>
-            <Col sm={3} className="promos d-flex flex-wrap align-content-start me-3">
-              <Image fluid src={promo}></Image>
-              <Container>
-                <h1 className='pt-1'>Весенние скидки на любой вид древесины до 80%</h1>
-                <p>Наш стротельный магазин объявляет о начале акции в честь весенних праздников, акция действует в перид  01.02.2000 - 02,03,2000 </p>
-              </Container>
-            </Col>
-            <Col sm={3} className="promos d-flex flex-wrap align-content-start me-3">
-              <Image fluid src={promo}></Image>
-              <Container>
-                <h1 className='pt-1'>Весенние скидки на любой вид древесины до 80%</h1>
-                <p>Наш стротельный магазин объявляет о начале акции в честь весенних праздников, акция действует в перид  01.02.2000 - 02,03,2000 </p>
-              </Container>
-            </Col>
-            <Col sm={3} className="promos d-flex flex-wrap align-content-start me-3">
-              <Image fluid src={promo}></Image>
-              <Container>
-                <h1 className='pt-1'>Весенние скидки на любой вид древесины до 80%</h1>
-                <p>Наш стротельный магазин объявляет о начале акции в честь весенних праздников, акция действует в перид  01.02.2000 - 02,03,2000 </p>
-              </Container>
-            </Col>
-          </Row>
+          <PromosDisplay></PromosDisplay>
           <Container className='d-flex flex-wrap justify-content-center mt-5 mb-3'>
             <Button variant='outline-warning' className='bttn-low'>Все Акции</Button>
           </Container>
@@ -148,8 +120,8 @@ export default function Home(props) {
         <Container className='d-flex flex-wrap justify-content-start'>
           <b className='pt-4 pb-4'><h1>Популярные товары</h1></b>
           <Container className='d-flex mt-2 '>
-            {ItemPopular.map((obj) => (
-              <ItemModelPopular key={obj.id} item={obj} onAdd={(item)=>onAdd(item)}  onRemove={(item)=>onRemove(item)}></ItemModelPopular>
+            {ItemPopular.map((ItemPopular) => (
+              <ItemModelPopular key={ItemPopular.id} ItemPopular={ItemPopular} onAdd={()=>onAdd(ItemPopular)}  onRemove={()=>onRemove(ItemPopular.id)}></ItemModelPopular>
             ))}
           </Container>
         </Container>
@@ -162,8 +134,8 @@ export default function Home(props) {
         <Container className='d-flex flex-wrap justify-content-start'>
           <b className='pt-5 pb-2'><h1>Новинки</h1></b>
           <Container className='d-flex mt-2 '>
-            {ItemNew.map((item) => (
-              <ItemModelNew item={item} key={item.id} onAdd={onAdd} ></ItemModelNew>
+            {ItemNew.map((ItemNew) => (
+              <ItemModelNew  key={ItemNew.id} onAdd={()=>onAdd(ItemNew)}  onRemove={()=>onRemove(ItemNew.id)} ItemNew={ItemNew}></ItemModelNew>
             ))}
           </Container>
         </Container>

@@ -10,7 +10,8 @@ export const Items ={
             price: 2500,
             salePrice: 2100,
             currency: 'MDL',
-            img: sale
+            img: sale,
+            code: 26654782
         },
         {
             id: 2,
@@ -20,7 +21,8 @@ export const Items ={
             price: 2500,
             salePrice: 2100,
             currency: 'MDL',
-            img: sale
+            img: sale,
+            code: 26654782
         },
         {
             id: 3,
@@ -30,7 +32,8 @@ export const Items ={
             price: 2500,
             salePrice: 2100,
             currency: 'MDL',
-            img: sale
+            img: sale,
+            code: 26654782
         },
         {
             id: 4,
@@ -40,7 +43,8 @@ export const Items ={
             price: 2500,
             salePrice: 2100,
             currency: 'MDL',
-            img: sale
+            img: sale,
+            code: 26654782
         },
         {
             id: 5,
@@ -50,7 +54,8 @@ export const Items ={
             price: 2500,
             salePrice: 2100,
             currency: 'MDL',
-            img: sale
+            img: sale,
+            code: 26654782
         },
     ],
     ItemOnSale: [
@@ -62,7 +67,8 @@ export const Items ={
             price: 2500,
             salePrice: 2100,
             currency: 'MDL',
-            img: sale
+            img: sale,
+            code: 26654782
         },
         {
             id: 2,
@@ -72,7 +78,8 @@ export const Items ={
             price: 2500,
             salePrice: 2100,
             currency: 'MDL',
-            img: sale
+            img: sale,
+            code: 26654782
         },
         {
             id: 3,
@@ -82,7 +89,8 @@ export const Items ={
             price: 2500,
             salePrice: 2100,
             currency: 'MDL',
-            img: sale
+            img: sale,
+            code: 26654782
         },
         {
             id: 4,
@@ -92,7 +100,8 @@ export const Items ={
             price: 2500,
             salePrice: 2100,
             currency: 'MDL',
-            img: sale
+            img: sale,
+            code: 26654782
         },
         {
             id: 5,
@@ -102,7 +111,8 @@ export const Items ={
             price: 2500,
             salePrice: 2100,
             currency: 'MDL',
-            img: sale
+            img: sale,
+            code: 26654782
         },
     ],
     ItemPopular: [
@@ -113,7 +123,8 @@ export const Items ={
             name: 'Дрель-шуруповерт Makita DHP484RFE',
             salePrice: 2100,
             currency: 'MDL',
-            img: sale
+            img: sale,
+            code: 26654782
         },
         {
             id: 2,
@@ -122,7 +133,8 @@ export const Items ={
             name: 'Дрель-шуруповерт Makita DHP484RFE',
             salePrice: 2100,
             currency: 'MDL',
-            img: sale
+            img: sale,
+            code: 26654782
         },
         {
             id: 3,
@@ -132,7 +144,8 @@ export const Items ={
             price: 2500,
             salePrice: 2100,
             currency: 'MDL',
-            img: sale
+            img: sale,
+            code: 26654782
         },
         {
             id: 4,
@@ -142,7 +155,8 @@ export const Items ={
             price: 2500,
             salePrice: 2100,
             currency: 'MDL',
-            img: sale
+            img: sale,
+            code: 26654782
         },
         {
             id: 5,
@@ -152,7 +166,8 @@ export const Items ={
             price: 2500,
             salePrice: 2100,
             currency: 'MDL',
-            img: sale
+            img: sale,
+            code: 26654782
         },
     ]
 }
