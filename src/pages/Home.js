@@ -12,28 +12,16 @@ import tick4 from '../assets/tick4.png'
 import { Products } from '../comps/Products'
 import ItemModelOnSale from '../comps/ItemModelOnSale'
 import ItemModelPopular from '../comps/ItemModelPopular'
-import Cart from '../pages/Cart'
 import ItemModelNew from '../comps/ItemModelNew'
 import ProductDisplay from '../comps/ProductDisplay'
 import Marquee from "react-fast-marquee";
 import CardsItem from '../comps/CardsItem'
-import { useState } from 'react'
 import MenuOpenItemDisplay from '../comps/MenuOpenItemDisplay'
 import Countdown from 'react-countdown'
 import PromosDisplay from '../comps/PromosDisplay'
 
 export default function Home(props) {
   const {onAdd, onRemove, ItemNew, ItemOnSale, ItemPopular, cartItems, decreaseQty} = props
-  // const { ItemNew, ItemPopular, ItemOnSale } = Items;
-  // const [cartItems, setCartItems] = useState([]); 
-  // const onAdd = (item) => {
-  //   setCartItems((prev)=> [...prev, item]);
-
-  // };
-  // const onRemove = (id) => {
-  //   setCartItems((prev)=>prev.filter(item => item.id !== id));
-  // };
-  // console.log(cartItems)
   return (
     <>
       <Container className="d-flex">

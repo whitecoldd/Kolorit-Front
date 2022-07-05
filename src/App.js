@@ -13,7 +13,8 @@ import Promotions from './pages/Promotions'
 import Home from './pages/Home'
 import Cart from './pages/Cart'
 import Profile from './pages/Profile';
-import Head from './Head';
+import Navigation from './comps/Navigation';
+import CatalogClass from './pages/CatalogClass';
 function App() {
   const { ItemNew, ItemPopular, ItemOnSale } = Items;
   const [cartItems, setCartItems] = useState([]);
@@ -41,17 +42,18 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <Head cartItems={cartItems} />
+        <Navigation cartItems={cartItems} />
         <Routes>
           <Route exact path="/about" element={<About />}></Route>
           <Route exact path="/contacts"  element={<Contacts />}></Route>
           <Route exact path="/catalog"  element={<Catalog />}></Route>
+          <Route exact path="/catalogclass"  element={<CatalogClass ItemPopular={ItemPopular} ItemOnSale={ItemOnSale} ItemNew={ItemNew} cartItems={cartItems} onAdd={onAdd} onRemove={onRemove} itemsPerPage={5}/>}></Route>
           <Route exact path="/partnership"  element={<Partnership />}></Route>
           <Route exact path="/brands"  element={<Brands />}></Route>
           <Route exact path="/profile"  element={<Profile />}></Route>
           <Route exact path="/promotions"  element={<Promotions />}></Route>
           <Route exact path="/"  element={<Home ItemNew={ItemNew} cartItems={cartItems} ItemPopular={ItemPopular} ItemOnSale={ItemOnSale} onAdd={onAdd} onRemove={onRemove} decreaseQty={decreaseQty} />} ></Route>
-          <Route exact path="/Cart"  element={<Cart cartItems={cartItems} onAdd={onAdd} onRemove={onRemove} decreaseQty={decreaseQty} />} ></Route>
+          <Route exact path="/cart"  element={<Cart cartItems={cartItems} onAdd={onAdd} onRemove={onRemove} decreaseQty={decreaseQty} />} ></Route>
         </Routes>
         <FooterComponent />
       </BrowserRouter>

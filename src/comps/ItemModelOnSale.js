@@ -16,7 +16,7 @@ const ItemModelOnSale = (props) => {
     }
     return (
         <>
-                <Container className='d-flex flex-wrap align-items-start sales-prod p-2'>
+                <Container key={ItemOnSale.id} className='d-flex flex-wrap align-items-start sales-prod p-2 me-4 ms-4 mt-2 mb-2 w-25'>
                     <Badge bg={ItemOnSale.promoType}>{ItemOnSale.promo}</Badge>
                     <Container className='d-flex flex-column align-items-center'>
                         <Image width='100%' height='100%' src={ItemOnSale.img} ></Image>

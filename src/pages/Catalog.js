@@ -2,7 +2,7 @@ import React from 'react'
 import { Container, Col, Image, Breadcrumb } from 'react-bootstrap'
 import { Categories } from '../comps/Categories'
 import PromosDisplay from '../comps/PromosDisplay'
-
+import CatalogClass from './CatalogClass'
 export default function Catalog() {
   return (
     <>
@@ -19,10 +19,10 @@ export default function Catalog() {
 
         {Categories.map(item =>
           <Col className='big-margin mt-2 mb-3' sm={1.5}>
-            <Container className='catalog-card d-flex flex-column align-items-center pt-4 mb-3'>
-              <Image width='80%' height='80%' src={item.img}></Image>
+            <a className='real-no-dec' href='/catalogclass'><Container className='catalog-card d-flex flex-column align-items-center pt-4 mb-3'>
+              <Image  width='80%' height='80%' src={item.img}></Image>
               <h4 className='bold text-uppercase black mt-2'>{item.title}</h4>
-            </Container>
+            </Container></a>
           </Col>
         )}
       </Container>

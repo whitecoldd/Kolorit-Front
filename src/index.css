@@ -22,7 +22,7 @@ code {
   font-family: 'MagistralC';
   font-weight: normal;
   font-size: 18px;
-  color: black;
+  color: black ;
 }
 
 .font-fix {
@@ -32,7 +32,7 @@ code {
 }
 
 .black {
-  color: #444444;
+  color: #444444 !important;
 }
 
 .breadcrumb a,
@@ -72,10 +72,18 @@ b {
 
 #search {
   background-image: url('../src/assets/search.png');
-  background-position: 1%;
+  background-position: 2%;
   background-repeat: no-repeat;
   text-indent: 20px;
   background-color: #C5C5C533;
+}
+
+#flex1{
+  flex: 1 !important;
+}
+
+#flex2{
+  flex: 3 !important ;
 }
 
 #cartsearch {
@@ -122,6 +130,14 @@ b {
   border-radius: 9px;
 }
 
+.catalog-menu{
+  width: 25% !important;
+  background: #FCFCFC;
+  box-shadow: -6px 6px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 9px;
+}
+
+
 .menu-profile {
   flex: 2 !important;
   height: auto !important;
@@ -143,6 +159,14 @@ b {
   height: 35rem !important;
   margin-top: 50px;
 }
+
+.low-nav{
+  background: #FCFCFC;
+  width: 100% !important;
+  border-radius: 15px;
+  box-shadow: -6px 6px 4px rgba(0, 0, 0, 0.25);
+}
+
 
 .pad {
   padding-left: 30px !important;
@@ -825,6 +849,9 @@ center {
   color: #FF820E !important;
 }
 
+.real-no-dec{
+  text-decoration: none!important;
+}
 
 .no-dec {
   text-decoration: none;
@@ -879,4 +906,54 @@ center {
   letter-spacing: 0.16em !important;
   color: #444444 !important;
   padding: 0px 45px 0px 45px !important;
+}
+
+.css-eg0mwd-MuiSlider-thumb{
+  background-color: orange !important;
+}
+.css-14pt78w-MuiSlider-rail{
+  background-color: orange !important;
+}
+.css-1gv0vcd-MuiSlider-track{
+  background-color: orange !important;
+  border: 1px solid orange !important;
+}
+
+.accordion-button:not(.collapsed) {
+  color: #444444 !important;
+  background-color: #FCFCFC !important;
+  box-shadow: none !important;
+}
+
+.accordion-item{
+  border: none !important;
+}
+
+.input-group-text{
+  background-color: #FCFCFC !important;
+  border: none !important;
+}
+
+.accordion-button:focus{
+  border: none  !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.accordion-item:last-of-type .accordion-collapse {
+  background-color: #FCFCFC !important;
+}
+
+.accordion-item{
+  background-color: #FCFCFC !important;
+
+}
+
+.accordion-button{
+  background-color: #FCFCFC !important;
+}
+
+.catalog-menu-bttn{
+  padding: 0px 15px 0px 15px !important;
+  border-radius: 20px !important;
 }
