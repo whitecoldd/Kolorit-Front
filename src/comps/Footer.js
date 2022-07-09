@@ -12,7 +12,7 @@ export class Footer extends Component {
   render() {
     return (
       <>
-        <Container fluid className='footer mt-5'>
+        <Container fluid className='footer '>
           <Container className='d-flex' sticky='bottom'>
             <Container className='d-flex flex-column align-items-start pt-3 pb-5 me-5'>
               <a href='/'><Image src={logo} ></Image></a>

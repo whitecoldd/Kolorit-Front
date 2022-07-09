@@ -21,7 +21,7 @@ import Countdown from 'react-countdown'
 import PromosDisplay from '../comps/PromosDisplay'
 
 export default function Home(props) {
-  const {onAdd, onRemove, ItemNew, ItemOnSale, ItemPopular, cartItems, decreaseQty} = props
+  const {onAdd, onRemoveFromPage, Items, cartItems, decreaseQty} = props
   return (
     <>
       <Container className="d-flex">
@@ -86,9 +86,11 @@ export default function Home(props) {
         <Container className='d-flex flex-wrap justify-content-start'>
           <b className='pt-4 pb-4'><h1><strong>Т</strong>овары со скидкой</h1></b>
           <Container className='d-flex mt-2 '>
-            {ItemOnSale.map((ItemOnSale) => (
-              <ItemModelOnSale ItemOnSale={ItemOnSale} key={ItemOnSale.id} onAdd={()=>onAdd(ItemOnSale)}  onRemove={()=>onRemove(ItemOnSale.id)} ></ItemModelOnSale>
-            ))}
+            {Items.map((Items) => {
+              if(Items.type === 2){
+                return <ItemModelOnSale Items={Items} key={Items.id} onAdd={()=>onAdd(Items)}  onRemoveFromPage={()=>onRemoveFromPage(Items.id)} ></ItemModelOnSale>
+              }
+            })}
           </Container>
         </Container>
         <Container className='d-flex flex-wrap justify-content-center mt-5 mb-3'>
@@ -108,9 +110,13 @@ export default function Home(props) {
         <Container className='d-flex flex-wrap justify-content-start'>
           <b className='pt-4 pb-4'><h1>Популярные товары</h1></b>
           <Container className='d-flex mt-2 '>
-            {ItemPopular.map((ItemPopular) => (
-              <ItemModelPopular key={ItemPopular.id} ItemPopular={ItemPopular} onAdd={()=>onAdd(ItemPopular)}  onRemove={()=>onRemove(ItemPopular.id)}></ItemModelPopular>
-            ))}
+            {Items.map((Items) => 
+              {
+                if(Items.type === 3){
+                  return <ItemModelPopular key={Items.id} Items={Items} onAdd={()=>onAdd(Items)}  onRemoveFromPage={()=>onRemoveFromPage(Items.id)}></ItemModelPopular>
+                }
+              }
+            )}
           </Container>
         </Container>
         <Container className='d-flex flex-wrap justify-content-center mt-5 mb-3'>
@@ -122,9 +128,13 @@ export default function Home(props) {
         <Container className='d-flex flex-wrap justify-content-start'>
           <b className='pt-5 pb-2'><h1>Новинки</h1></b>
           <Container className='d-flex mt-2 '>
-            {ItemNew.map((ItemNew) => (
-              <ItemModelNew  key={ItemNew.id} onAdd={()=>onAdd(ItemNew)}  onRemove={()=>onRemove(ItemNew.id)} ItemNew={ItemNew}></ItemModelNew>
-            ))}
+            {Items.map((Items) => 
+              {
+                if(Items.type === 1){
+                  return <ItemModelNew  key={Items.id} onAdd={()=>onAdd(Items)}  onRemoveFromPage={()=>onRemoveFromPage(Items.id)} Items={Items}></ItemModelNew>
+                }
+              }
+            )}
           </Container>
         </Container>
         <Container className='d-flex flex-wrap justify-content-center mt-5 mb-3'>

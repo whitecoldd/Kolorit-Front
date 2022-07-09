@@ -8,7 +8,7 @@ import { ProfileMenu } from '../comps/ProfileMenu'
 const Profile = () => {
   return (
     <>
-      <Container className='profile d-flex'>
+      <Container className='profile d-flex mb-3'>
         <Tab.Container defaultActiveKey='1'>
           <Container className='menu-profile pt-3'>
             <Nav className='d-flex flex-column'>

@@ -1,9 +1,10 @@
 import sale from '../assets/salesprod.png'
+import flag from '../assets/flag.png'
 
-export const Items ={
-    ItemNew: [
+export const Items =[
         {
             id: 1,
+            type: 1,
             promo: 'Новое',
             promoType: 'warning',
             name: 'Дрель-шуруповерт Makita DHP484RFE',
@@ -11,10 +12,27 @@ export const Items ={
             salePrice: 2100,
             currency: 'MDL',
             img: sale,
-            code: 26654782
+            code: 26654782,
+            category: 'Дрели',
+            availability: 'В наличии',
+            torque: '29 нм',
+            voltage: '18 В',
+            battery_type: 'Li-ion',
+            drill_diameter_wood: '20 мм',
+            drill_diameter_steel: '6 мм',
+            description: 'Аккумуляторная дрель-шуруповерт PATRIOT THE ONE BR 181Li 180201425 предназначена для сверления отверстий и закручивания шурупов.\n Через вентиляционные отверстия поступает достаточно воздуха, что охлаждает двигатель и предохраняет его от перегрева.\n Для простоты транспортировки и хранения инструмента в комплект поставки входит кейс.\n Аккумуляторная дрель-шуруповерт PATRIOT THE ONE BR 181Li 180201425 предназначена для сверления отверстий и закручивания шурупов.\n Через вентиляционные отверстия поступает достаточно воздуха, что охлаждает двигатель и предохраняет его от перегрева. Для простоты транспортировки и хранения инструмента в комплект поставки входит кейс.',
+            producer: 'Россия',
+            producer_flag: flag,
+            complect: 'Аккумуляторная дрель-шуруповерт',
+            product_single: 'Штука',
+            weight: 2.51,
+            length: 302,
+            width: 261,
+            height: 101,
         },
         {
             id: 2,
+            type: 1,
             promo: 'Новое',
             promoType: 'warning',
             name: 'Дрель-шуруповерт Makita DHP484RFE',
@@ -26,6 +44,7 @@ export const Items ={
         },
         {
             id: 3,
+            type: 1,
             promo: 'Новое',
             promoType: 'warning',
             name: 'Дрель-шуруповерт Makita DHP484RFE',
@@ -37,6 +56,7 @@ export const Items ={
         },
         {
             id: 4,
+            type: 1,
             promo: 'Новое',
             promoType: 'warning',
             name: 'Дрель-шуруповерт Makita DHP484RFE',
@@ -48,6 +68,7 @@ export const Items ={
         },
         {
             id: 5,
+            type: 1,
             promo: 'Новое',
             promoType: 'warning',
             name: 'Дрель-шуруповерт Makita DHP484RFE',
@@ -57,10 +78,37 @@ export const Items ={
             img: sale,
             code: 26654782
         },
-    ],
-    ItemOnSale: [
         {
-            id: 1,
+            id: 6,
+            type: 2,
+            promo: 'Скидка',
+            promoType: 'danger',
+            name: 'Дрель-шуруповерт Makita DHP484RFE',
+            price: 2500,
+            salePrice: 2100,
+            currency: 'MDL',
+            img: sale,
+            code: 26654782,
+            category: 'Дрели',
+            availability: 'В наличии',
+            torque: '29 нм',
+            voltage: '18 В',
+            battery_type: 'Li-ion',
+            drill_diameter_wood: '20 мм',
+            drill_diameter_steel: '6 мм',
+            description: 'Аккумуляторная дрель-шуруповерт PATRIOT THE ONE BR 181Li 180201425 предназначена для сверления отверстий и закручивания шурупов.\n Через вентиляционные отверстия поступает достаточно воздуха, что охлаждает двигатель и предохраняет его от перегрева.\n Для простоты транспортировки и хранения инструмента в комплект поставки входит кейс.\n Аккумуляторная дрель-шуруповерт PATRIOT THE ONE BR 181Li 180201425 предназначена для сверления отверстий и закручивания шурупов.\n Через вентиляционные отверстия поступает достаточно воздуха, что охлаждает двигатель и предохраняет его от перегрева. Для простоты транспортировки и хранения инструмента в комплект поставки входит кейс.',
+            producer: 'Нероссия',
+            producer_flag: flag,
+            complect: 'Аккумуляторная дрель-шуруповерт',
+            product_single: 'Штука',
+            weight: 2.51,
+            length: 302,
+            width: 261,
+            height: 101,
+        },
+        {
+            id: 7,
+            type: 2,
             promo: 'Скидка',
             promoType: 'danger',
             name: 'Дрель-шуруповерт Makita DHP484RFE',
@@ -71,7 +119,8 @@ export const Items ={
             code: 26654782
         },
         {
-            id: 2,
+            id: 8,
+            type: 2,
             promo: 'Скидка',
             promoType: 'danger',
             name: 'Дрель-шуруповерт Makita DHP484RFE',
@@ -82,7 +131,8 @@ export const Items ={
             code: 26654782
         },
         {
-            id: 3,
+            id: 9,
+            type: 2,
             promo: 'Скидка',
             promoType: 'danger',
             name: 'Дрель-шуруповерт Makita DHP484RFE',
@@ -93,7 +143,8 @@ export const Items ={
             code: 26654782
         },
         {
-            id: 4,
+            id: 10,
+            type: 2,
             promo: 'Скидка',
             promoType: 'danger',
             name: 'Дрель-шуруповерт Makita DHP484RFE',
@@ -104,20 +155,8 @@ export const Items ={
             code: 26654782
         },
         {
-            id: 5,
-            promo: 'Скидка',
-            promoType: 'danger',
-            name: 'Дрель-шуруповерт Makita DHP484RFE',
-            price: 2500,
-            salePrice: 2100,
-            currency: 'MDL',
-            img: sale,
-            code: 26654782
-        },
-    ],
-    ItemPopular: [
-        {
-            id: 1,
+            id: 11,
+            type: 3,
             promo: ' ',
             promoType: 'transparent',
             name: 'Дрель-шуруповерт Makita DHP484RFE',
@@ -127,7 +166,8 @@ export const Items ={
             code: 26654782
         },
         {
-            id: 2,
+            id: 12,
+            type: 3,
             promo: ' ',
             promoType: 'transparent',
             name: 'Дрель-шуруповерт Makita DHP484RFE',
@@ -137,7 +177,8 @@ export const Items ={
             code: 26654782
         },
         {
-            id: 3,
+            id: 13,
+            type: 3,
             promo: 'Скидка',
             promoType: 'danger',
             name: 'Дрель-шуруповерт Makita DHP484RFE',
@@ -148,7 +189,8 @@ export const Items ={
             code: 26654782
         },
         {
-            id: 4,
+            id: 14,
+            type: 3,
             promo: 'Скидка',
             promoType: 'danger',
             name: 'Дрель-шуруповерт Makita DHP484RFE',
@@ -159,7 +201,8 @@ export const Items ={
             code: 26654782
         },
         {
-            id: 5,
+            id: 15,
+            type: 3,
             promo: 'Новое',
             promoType: 'warning',
             name: 'Дрель-шуруповерт Makita DHP484RFE',
@@ -169,5 +212,4 @@ export const Items ={
             img: sale,
             code: 26654782
         },
-    ]
-}
+]

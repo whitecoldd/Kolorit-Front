@@ -19,7 +19,7 @@ export default function Catalog() {
 
         {Categories.map(item =>
           <Col className='big-margin mt-2 mb-3' sm={1.5}>
-            <a className='real-no-dec' href='/catalogclass'><Container className='catalog-card d-flex flex-column align-items-center pt-4 mb-3'>
+            <a className='real-no-dec' href='/catalog/catalogclass'><Container className='catalog-card d-flex flex-column align-items-center pt-4 mb-3'>
               <Image  width='80%' height='80%' src={item.img}></Image>
               <h4 className='bold text-uppercase black mt-2'>{item.title}</h4>
             </Container></a>

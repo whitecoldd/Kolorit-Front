@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Container, Nav, Navbar, Form } from 'react-bootstrap'
+import {Link} from 'react-router-dom'
 import qIcon from '../assets/question.png'
 import flagR from '../assets/flag.png'
 import logo from '../assets/nav-logo.png'
@@ -13,34 +14,34 @@ import Badge from '@mui/material/Badge'
 export default function Navigation({ cartItems }) {
   return (
     <>
-      <Navbar className='d-flex flex-column align-items-stretch main-nav sticky-top'>
-        <Navbar collapseOnSelect expand="lg" bg="dark" className='nav-fix1 sticky-top'>
+      <Navbar expand='lg' collapseOnSelect className='d-flex flex-column align-items-stretch main-nav sticky-top'>
+        <Navbar collapseOnSelect expand="lg" bg="dark" variant='dark' className='nav-fix1 sticky-top'>
           <Container className='nav-fix' >
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className='me-auto' >
-                <Nav.Link className='white' href='/about'>О Компании</Nav.Link>
-                <Nav.Link className='white' href='/contacts'>Контакты</Nav.Link>
-                <Nav.Link className='gold' href='/sales'>Скидки</Nav.Link>
-                <Nav.Link className='white' href='/partnership'>Партнерство</Nav.Link>
-                <Nav.Link className='white' href='/brands'>Бренды</Nav.Link>
-                <Nav.Link className='gold' href='/promotions'>Акции</Nav.Link>
+                <Link className='nav-link white' to='/about'>О Компании</Link>
+                <Link className='nav-link white' to='/contacts'>Контакты</Link>
+                <Link className='nav-link gold' to='/sales'>Скидки</Link>
+                <Link className='nav-link white' to='/partnership'>Партнерство</Link>
+                <Link className='nav-link white' to='/brands'>Бренды</Link>
+                <Link className='nav-link gold' to='/promotions'>Акции</Link>
               </Nav>
 
               <Nav className='me-2 d-flex align-items-center'>
-                <Nav.Link><img src={qIcon} /></Nav.Link>
-                <Nav.Link className='font-fix'><span>Г</span>рафик работы</Nav.Link>
-                <Nav.Link className='font-fix'><img src={flagR} /> Ru</Nav.Link>
+                <Link to='/' className='nav-link'><img src={qIcon} /></Link>
+                <Link to='/' className='font-fix nav-link'><span>Г</span>рафик работы</Link>
+                <Link to='/' className='font-fix nav-link'><img src={flagR} /> Ru</Link>
               </Nav>
             </Navbar.Collapse>
           </Container>
         </Navbar>
-        <Navbar expand="md" className='nav-fix sticky-top head' >
+        <Navbar collapseOnSelect expand="lg" className='nav-fix sticky-top head' >
           <Container>
-            <Navbar.Brand href='/'>
-              <img
+            <Navbar.Brand>
+              <Link to='/'><img
                 src={logo}
-              />
+              /></Link>
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
@@ -53,9 +54,9 @@ export default function Navigation({ cartItems }) {
                 aria-label="Search"
               />
               <Nav>
-                <Nav.Link className="d-flex justify-content-center flex-wrap"><img src={com} />Сравнить</Nav.Link>
-                <Nav.Link href='/cart' className="d-flex justify-content-center flex-wrap"> {cartItems.length !== 0 ? (<Badge badgeContent={cartItems.length} color="warning"><img src={cart} /></Badge>) : (<img src={cart} />)} Корзина</Nav.Link>
-                <Nav.Link href='/profile' className="d-flex justify-content-center flex-wrap"><img src={prof} />Войти</Nav.Link>
+                <Link to='/' className="d-flex justify-content-center flex-wrap nav-link"><img src={com} />Сравнить</Link>
+                <Link to='/cart' className="d-flex justify-content-center flex-wrap nav-link"> {cartItems.length !== 0 ? (<Badge badgeContent={cartItems.length} color="warning"><img src={cart} /></Badge>) : (<img src={cart} />)} Корзина</Link>
+                <Link to='/profile' className="d-flex justify-content-center flex-wrap nav-link"><img src={prof} />Войти</Link>
               </Nav>
             </Navbar.Collapse>
           </Container>
