@@ -1,12 +1,11 @@
 import React from 'react'
-import { Items } from '../comps/Items'
 
 const dataService = {
-    getData: ({ from, to }) => {
+    getData: ({ from, to, item }) => {
         return new Promise((resolve, reject) => {
-            const data = Items.slice(from, to)
+            const data = item.slice(from, to)
             resolve({
-                count: Items.length,
+                count: item.length,
                 data: data
             })
         }

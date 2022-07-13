@@ -4,19 +4,15 @@ import { Box, Slider, Typography } from '@mui/material'
 function valuetext(value) {
     return `${value}`;
 }
-const CatalogMenu = () => {
-    const [value, setValue] = React.useState([0, 100]);
+const CatalogMenu = ({setQuery, value, setValue, handleChange, handleInput, handleFilter})  => {
 
-    const handleChange = (event, newValue) => {
-        setValue(newValue);
-    };
   return (
     <>
         <Container id='flex1' className='catalog-menu m-0'>
                     <Accordion className='catalog-acc'>
                         <Accordion.Item>
                             <Accordion.Header>Наличие в магазинах</Accordion.Header>
-                            <Accordion.Body>
+                            <Accordion.Body name='availability' onChange={handleFilter}>
                                 <InputGroup>
                                     <InputGroup.Checkbox></InputGroup.Checkbox>
                                     <InputGroup.Text>В наличии</InputGroup.Text>
@@ -41,15 +37,15 @@ const CatalogMenu = () => {
                             <Accordion.Header>Цена</Accordion.Header>
                             <Accordion.Body>
                                 <Box sx={{ width: 300 }}>
-                                    <Typography className='black' id="non-linear-slider" gutterBottom>
-                                        {(valuetext(value))}
-                                    </Typography>
                                     <Slider
                                         sx={{ width: 200, backgroundColor: 'warning' }}
                                         getAriaLabel={() => 'Price range'}
                                         value={value}
                                         onChange={handleChange}
+                                        onInput={handleInput}
                                         valueLabelDisplay="auto"
+                                        min={100}
+                                        max={40000}
                                         getAriaValueText={valuetext}
                                     />
                                 </Box>
@@ -69,6 +65,7 @@ const CatalogMenu = () => {
                                         placeholder="Поиск..."
                                         id='search'
                                         aria-label="Search"
+                                        onChange={(e)=>setQuery(e.target.value)}
                                     />
                                 </InputGroup>
                                 <InputGroup>

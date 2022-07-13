@@ -16,6 +16,7 @@ import Profile from './pages/Profile';
 import Navigation from './comps/Navigation';
 import CatalogClass from './pages/CatalogClass';
 import SingleProduct from './pages/SingleProduct';
+import Compare from './pages/Compare';
 function App() {
   const [cartItems, setCartItems] = useState([]);
   const onAdd = (product) => {
@@ -43,24 +44,38 @@ function App() {
     }
   }
 
+  const [selectedItems, setSelectedItems] = useState([]);
+
+  const addToCompare = (item) => {
+    setSelectedItems((selectedItems) => [...selectedItems, item]);
+    console.log(selectedItems)
+  };
+
+  const removeFromCompare = (item) => {
+    const filteredItems = selectedItems.filter(
+      (product) => product.id !== item.id
+    );
+    setSelectedItems((selectedItems) => filteredItems);
+  };
   
   
 
   return (
     <>
       <BrowserRouter>
-        <Navigation cartItems={cartItems} />
+        <Navigation cartItems={cartItems} selectedItems={selectedItems} />
         <Routes>
-          <Route exact path={`/catalog/catalogclass/:id`} element={<SingleProduct Items={Items} onAdd={onAdd} decreaseQty={decreaseQty} onRemoveFromPage={onRemoveFromPage}  />}></Route>
+          <Route exact path={`/catalog/category/:id`} element={<SingleProduct Items={Items} onAdd={onAdd} decreaseQty={decreaseQty} onRemoveFromPage={onRemoveFromPage}  />}></Route>
           <Route exact path="/about" element={<About />}></Route>
           <Route exact path="/contacts"  element={<Contacts />}></Route>
           <Route exact path="/catalog"  element={<Catalog />}></Route>
-          <Route exact path="/catalog/catalogclass"  element={<CatalogClass  Items={Items} cartItems={cartItems} onAdd={onAdd} onRemoveFromPage={onRemoveFromPage}/>}></Route>
+          <Route exact path={`/catalog/:title`}  element={<CatalogClass addToCompare={addToCompare} removeFromCompare={removeFromCompare} selectedItems={selectedItems} Items={Items} cartItems={cartItems} onAdd={onAdd} onRemoveFromPage={onRemoveFromPage}/>}></Route>
           <Route exact path="/partnership"  element={<Partnership />}></Route>
           <Route exact path="/brands"  element={<Brands />}></Route>
           <Route exact path="/profile"  element={<Profile />}></Route>
           <Route exact path="/promotions"  element={<Promotions />}></Route>
-          <Route exact path="/"  element={<Home Items={Items} cartItems={cartItems}  onAdd={onAdd} onRemoveFromPage={onRemoveFromPage} decreaseQty={decreaseQty} />} ></Route>
+          <Route exact path="/compare"  element={<Compare addToCompare={addToCompare} removeFromCompare={removeFromCompare} selectedItems={selectedItems} Items={Items} cartItems={cartItems}  onAdd={onAdd} onRemoveFromPage={onRemoveFromPage} decreaseQty={decreaseQty} />} ></Route>
+          <Route exact path="/"  element={<Home addToCompare={addToCompare} removeFromCompare={removeFromCompare} selectedItems={selectedItems} Items={Items} cartItems={cartItems}  onAdd={onAdd} onRemoveFromPage={onRemoveFromPage} decreaseQty={decreaseQty} />} ></Route>
           <Route exact path="/cart"  element={<Cart cartItems={cartItems} onAdd={onAdd} onRemove={onRemove} decreaseQty={decreaseQty} />} ></Route>
         </Routes>
         <FooterComponent />

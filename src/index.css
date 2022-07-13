@@ -340,6 +340,9 @@ h4 small {
 .sales-prod-carousel {
   background-color: #EBEBEB;
 }
+.sales-prod-carousel-lg {
+  background-color: transparent;
+}
 
 .sales-prod-carousel b {
   font-size: 16px !important;
@@ -1002,4 +1005,37 @@ center {
 
 .bg-gray{
   background-color: #EBEBEB !important;
+}
+
+
+
+.img-hover{
+  position: absolute;
+  top: 30px;
+  left: 160px;
+}
+.img-hover1{
+  position: absolute;
+  top: 60px;
+  left: 160px;
+}
+
+.img-on-hover{
+  position: relative;
+}
+
+.nobr-bttn{
+  border: none !important;
+}
+
+
+.w-23{
+  width: 23% !important;
+}
+
+.w-21{
+  width: 21% !important;
+}
+.h-50p{
+  height: 220px !important; 
 }

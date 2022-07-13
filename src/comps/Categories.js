@@ -8,7 +8,7 @@ export const Categories =
         },
         {
             id: 2,
-            title: "Дрели",
+            title: "Ручные инструменты",
             img: drill,
         },
         {

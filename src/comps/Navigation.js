@@ -11,7 +11,7 @@ import cart from '../assets/cart.png'
 import Badge from '@mui/material/Badge'
 
 
-export default function Navigation({ cartItems }) {
+export default function Navigation({ cartItems, selectedItems }) {
   return (
     <>
       <Navbar expand='lg' collapseOnSelect className='d-flex flex-column align-items-stretch main-nav sticky-top'>
@@ -54,7 +54,7 @@ export default function Navigation({ cartItems }) {
                 aria-label="Search"
               />
               <Nav>
-                <Link to='/' className="d-flex justify-content-center flex-wrap nav-link"><img src={com} />Сравнить</Link>
+                <Link to='/compare' className="d-flex justify-content-center flex-wrap nav-link">{selectedItems.length !== 0 ? (<Badge badgeContent={selectedItems.length} color="warning"><img src={com} /></Badge>) : (<img src={com} />)}Сравнить</Link>
                 <Link to='/cart' className="d-flex justify-content-center flex-wrap nav-link"> {cartItems.length !== 0 ? (<Badge badgeContent={cartItems.length} color="warning"><img src={cart} /></Badge>) : (<img src={cart} />)} Корзина</Link>
                 <Link to='/profile' className="d-flex justify-content-center flex-wrap nav-link"><img src={prof} />Войти</Link>
               </Nav>

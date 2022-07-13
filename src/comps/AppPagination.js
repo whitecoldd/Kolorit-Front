@@ -2,9 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Pagination from '@mui/material/Pagination'
 import dataService  from '../services/dataService'
 
-
-const pageSize = 10
-const AppPagination = ({setItems}) => {
+const AppPagination = ({setItems, Items, pageSize}) => {
 
     const [page, setPage] = useState(
         {count: 0,
@@ -14,7 +12,7 @@ const AppPagination = ({setItems}) => {
     )
 
     useEffect(() => {
-      dataService.getData({from: page.from, to: page.to}).then(response => {
+      dataService.getData({from: page.from, to: page.to, item: Items.id}).then(response => {
         setPage({...page, count: response.count})
         setItems(response.data)
     })

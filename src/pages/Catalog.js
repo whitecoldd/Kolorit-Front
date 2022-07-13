@@ -2,11 +2,11 @@ import React from 'react'
 import { Container, Col, Image, Breadcrumb } from 'react-bootstrap'
 import { Categories } from '../comps/Categories'
 import PromosDisplay from '../comps/PromosDisplay'
+import { Link } from 'react-router-dom'
 import CatalogClass from './CatalogClass'
 export default function Catalog() {
   return (
     <>
-
       <Container>
         <Breadcrumb className='mt-3'>
           <Breadcrumb.Item href="/"><strong>Г</strong>лавная</Breadcrumb.Item>
@@ -18,11 +18,11 @@ export default function Catalog() {
       <Container className='d-flex flex-wrap justify-content-center no-pad mb-5'>
 
         {Categories.map(item =>
-          <Col className='big-margin mt-2 mb-3' sm={1.5}>
-            <a className='real-no-dec' href='/catalog/catalogclass'><Container className='catalog-card d-flex flex-column align-items-center pt-4 mb-3'>
+          <Col className='big-margin mt-2 mb-3 w-21 ' sm={1.5}>
+            <Link className='real-no-dec ' to={`/catalog/${item.title}`}><Container className=' h-50p catalog-card d-flex flex-column align-items-center pt-4 mb-3'>
               <Image  width='80%' height='80%' src={item.img}></Image>
-              <h4 className='bold text-uppercase black mt-2'>{item.title}</h4>
-            </Container></a>
+              <h6 className='bold text-uppercase black mt-2'>{item.title}</h6>
+            </Container></Link>
           </Col>
         )}
       </Container>

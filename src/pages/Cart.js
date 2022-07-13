@@ -27,7 +27,7 @@ export default function Cart(props) {
                     <Container className=' me-2'>
                       <Container className='d-flex p-4' key={item.id}>
                         <div className='img'>
-                          <img src={item.img} alt='' />
+                          <img width={100} height={100} src={item.img} alt='' />
                         </div>
                         <Container className='d-flex flex-column justify-content-between'>
                           <div className='cart-details'>
