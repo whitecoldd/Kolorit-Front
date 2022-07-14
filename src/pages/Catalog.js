@@ -1,10 +1,22 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import { Container, Col, Image, Breadcrumb } from 'react-bootstrap'
 import { Categories } from '../comps/Categories'
 import PromosDisplay from '../comps/PromosDisplay'
 import { Link } from 'react-router-dom'
 import CatalogClass from './CatalogClass'
+import { publicRequest } from '../requests/request'
+
 export default function Catalog() {
+  const [Items, setItems] = useState([])
+  useEffect(() => {
+    const getItems = async () => {
+      try {
+        const res = await publicRequest.get("/items/find");
+        setItems(res.data);
+      } catch { }
+    };
+    getItems();
+  }, []);
   return (
     <>
       <Container>
@@ -17,11 +29,11 @@ export default function Catalog() {
       </Container>
       <Container className='d-flex flex-wrap justify-content-center no-pad mb-5'>
 
-        {Categories.map(item =>
+        {Items?.map(item =>
           <Col className='big-margin mt-2 mb-3 w-21 ' sm={1.5}>
-            <Link className='real-no-dec ' to={`/catalog/${item.title}`}><Container className=' h-50p catalog-card d-flex flex-column align-items-center pt-4 mb-3'>
+            <Link className='real-no-dec ' to={`/catalog/${item.category[0]}`}><Container className=' h-50p catalog-card d-flex flex-column align-items-center pt-4 mb-3'>
               <Image  width='80%' height='80%' src={item.img}></Image>
-              <h6 className='bold text-uppercase black mt-2'>{item.title}</h6>
+              <h6 className='bold text-uppercase black mt-2'>{item.category[0]}</h6>
             </Container></Link>
           </Col>
         )}

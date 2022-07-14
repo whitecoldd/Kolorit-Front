@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react'
 import Pagination from '@mui/material/Pagination'
 import dataService  from '../services/dataService'
 
-const AppPagination = ({setItems, Items, pageSize}) => {
+
+const pageSize = 5
+const AppPagination = ({setItems, Items}) => {
 
     const [page, setPage] = useState(
         {count: 0,
@@ -12,7 +14,7 @@ const AppPagination = ({setItems, Items, pageSize}) => {
     )
 
     useEffect(() => {
-      dataService.getData({from: page.from, to: page.to, item: Items.id}).then(response => {
+      dataService.getData({from: page.from, to: page.to, item: Items}).then(response => {
         setPage({...page, count: response.count})
         setItems(response.data)
     })
@@ -30,7 +32,7 @@ const AppPagination = ({setItems, Items, pageSize}) => {
         <>
             <Pagination className='d-flex justify-content-center'
                 color = 'warning'
-                count={Math.ceil(page.count / pageSize)}
+                count = {Math.ceil(page.count / pageSize)}
                 onChange={handlePage}
             />
 

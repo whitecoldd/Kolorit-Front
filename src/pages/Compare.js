@@ -1,9 +1,20 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import {Container} from 'react-bootstrap'
 import { Header, Grid, Item, Table, Label } from "semantic-ui-react"
 import ItemModel from '../comps/ItemModel'
+import { publicRequest } from '../requests/request'
 
-const Compare = ({selectedItems, Items, addToCompare, removeFromCompare, onAdd, onRemoveFromPage}) => {
+const Compare = ({selectedItems, addToCompare, removeFromCompare, onAdd, onRemoveFromPage}) => {
+    const [Items, setItems] = useState([])
+    useEffect(() => {
+        const getItems = async () => {
+          try {
+            const res = await publicRequest.get("/items/find");
+            setItems(res.data);
+          } catch { }
+        };
+        getItems();
+      }, []);
     return (
         <Container>
             <div>

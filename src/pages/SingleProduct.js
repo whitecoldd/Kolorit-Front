@@ -6,22 +6,32 @@ import minus from '../assets/minus.png'
 import plus from '../assets/plus.png'
 import ItemModel from '../comps/ItemModel'
 import { publicRequest } from '../requests/request';
-const SingleProduct = ({ decreaseQty, onAdd, onRemoveFromPage, Items }) => {
+const SingleProduct = ({ decreaseQty, onAdd, onRemoveFromPage }) => {
     
     const location = useLocation()
     const id = location.pathname.split('/')[3]
-    const [items, setItems] = useState({})
+    const [items, setitems] = useState({})
+    const [Items, setItems] = useState([])
     useEffect(() => {
         const getItems = async () => {
             try {
                 const res = await publicRequest.get('/items/find/' + id)
-                setItems(res.data)
+                setitems(res.data)
             } catch {
 
             }
         }
         getItems()
     }, [id])
+    useEffect(() => {
+        const getItems = async () => {
+          try {
+            const res = await publicRequest.get("/items/find");
+            setItems(res.data);
+          } catch { }
+        };
+        getItems();
+      }, []);
     return (
         <>
             <Container>
@@ -144,10 +154,8 @@ const SingleProduct = ({ decreaseQty, onAdd, onRemoveFromPage, Items }) => {
                 <Container>
                     <b className='pt-4 pb-4 mt-2'><h1 className='bold pt-4'>С этим покупают</h1></b>
                     <Container className='d-flex mt-2 '>
-                        {Items.map((Items) => {
-                            if (Items.type === 3) {
+                        {Items?.slice(0,5).map((Items) => {
                                 return <ItemModel key={Items.id} Items={Items} onAdd={() => onAdd(Items)} onRemoveFromPage={() => onRemoveFromPage(Items.id)}></ItemModel>
-                            }
                         })}
                     </Container>
                 </Container>

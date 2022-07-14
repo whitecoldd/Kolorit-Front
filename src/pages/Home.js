@@ -11,6 +11,7 @@ import tick2 from '../assets/tick2.png'
 import tick3 from '../assets/tick3.png'
 import tick4 from '../assets/tick4.png'
 import { Products } from '../comps/Products'
+import { Categories } from '../comps/Categories'
 import ItemModel from '../comps/ItemModel'
 import ProductDisplay from '../comps/ProductDisplay'
 import Marquee from "react-fast-marquee";
@@ -25,24 +26,37 @@ export default function Home(props) {
   const { onAdd, onRemoveFromPage, addToCompare, removeFromCompare, selectedItems } = props
   const location = useLocation()
   const [Items, setItems] = useState([])
+  // const [prods, setProds] = useState([])
   console.log(location)
 
   useEffect(() => {
-    const getItems = async () => {
+    const getItems = async ()=>{
       try {
-        const res = await publicRequest.get("/items/find");
-        setItems(res.data);
-      } catch { }
-    };
-    getItems();
-  }, []);
+        const res = await publicRequest.get(`/items/find?new=new`)
+        setItems(res.data)
+      } catch (e) {
+        console.log(e)
+      }
+    } 
+    getItems()
+  }, [])
 
+  // useEffect(() => {
+  //   const getItems = async () => {
+  //     try {
+  //       const res = await publicRequest.get("/items/find");
+  //       setProds(res.data);
+  //     } catch { }
+  //   };
+  //   getItems();
+  // }, []);
+  // console.log(Items)
   return (
     <>
       <Container className="d-flex">
         <Tab.Container>
           <Container className='menu mt-3'>
-            <Nav className='d-flex flex-column p-2'>
+            <Nav  className='d-flex flex-column p-2'>
               {MenuItems.map((item) => (
                 <MenuItemsDisplay item={item} key={item.id} ></MenuItemsDisplay>
               ))}
@@ -100,16 +114,15 @@ export default function Home(props) {
       <Container fluid className='d-flex flex-nowrap flex-column sales-prod-carousel'>
         <Container className='d-flex flex-wrap justify-content-start'>
           <b className='pt-4 pb-4'><h1><strong>Т</strong>овары со скидкой</h1></b>
-          <Container className='d-flex mt-2 '>
-            {Items.slice(0,5).map((Items) => {
-
-              return <ItemModel addToCompare={addToCompare} removeFromCompare={removeFromCompare} selectedItems={selectedItems} Items={Items} key={Items.id} onAdd={() => onAdd(Items)} onRemoveFromPage={() => onRemoveFromPage(Items.id)} ></ItemModel>
-
+          <Container className='d-flex mt-2 justify-content-center items-list-handle'>
+            {Items?.map((Items) => {
+              if(Items.promo === "Скидка"){
+                return <ItemModel addToCompare={addToCompare} removeFromCompare={removeFromCompare} selectedItems={selectedItems} Items={Items} key={Items._id} onAdd={() => onAdd(Items)} onRemoveFromPage={() => onRemoveFromPage(Items.id)} ></ItemModel>
+              }     
             })}
-            
           </Container>
           <Container className='d-flex justify-content-center'>
-              <AppPagination Items={Items} setItems={(item) => setItems(item)} pageSize={3} ></AppPagination>
+              <AppPagination Items={Items} setItems={(item) => setItems(item)} ></AppPagination>
             </Container>
         </Container>
         <Container className='d-flex flex-wrap justify-content-center mt-5 mb-3'>
@@ -128,16 +141,14 @@ export default function Home(props) {
       <Container fluid className='d-flex flex-nowrap flex-column sales-prod-carousel'>
         <Container className='d-flex flex-wrap justify-content-start'>
           <b className='pt-4 pb-4'><h1>Популярные товары</h1></b>
-          <Container className='d-flex mt-2 '>
-            {Items.slice(0,5).map((Items) => {
-
-              return <ItemModel addToCompare={addToCompare} removeFromCompare={removeFromCompare} selectedItems={selectedItems} Items={Items} key={Items.id} onAdd={() => onAdd(Items)} onRemoveFromPage={() => onRemoveFromPage(Items.id)} ></ItemModel>
-
+          <Container className='d-flex mt-2 justify-content-center items-list-handle'>
+            {Items?.slice(0,5).map((Items) => {
+              return <ItemModel addToCompare={addToCompare} removeFromCompare={removeFromCompare} selectedItems={selectedItems} Items={Items} key={Items._id} onAdd={() => onAdd(Items)} onRemoveFromPage={() => onRemoveFromPage(Items.id)} ></ItemModel>
             })}
             
           </Container>
           <Container className='d-flex justify-content-center'>
-              <AppPagination Items={Items} setItems={(item) => setItems(item)} pageSize={3} ></AppPagination>
+              <AppPagination Items={Items} setItems={(item) => setItems(item)}  ></AppPagination>
             </Container>
         </Container>
         <Container className='d-flex flex-wrap justify-content-center mt-5 mb-3'>
@@ -148,16 +159,14 @@ export default function Home(props) {
       <Container fluid className='d-flex flex-nowrap flex-column sales-prod-carousel' style={{backgroundColor: '#FFF'}}>
         <Container className='d-flex flex-wrap justify-content-start'>
           <b className='pt-5 pb-2'><h1>Новинки</h1></b>
-          <Container className='d-flex mt-2 '>
-            {Items.slice(0,5).map((Items) => {
-
-              return <ItemModel addToCompare={addToCompare} removeFromCompare={removeFromCompare} selectedItems={selectedItems} Items={Items} key={Items.id} onAdd={() => onAdd(Items)} onRemoveFromPage={() => onRemoveFromPage(Items.id)} ></ItemModel>
-
+          <Container className='d-flex mt-2 justify-content-center items-list-handle'>
+            {Items?.slice(0,5).map((Items) => {
+              return <ItemModel addToCompare={addToCompare} removeFromCompare={removeFromCompare} selectedItems={selectedItems} Items={Items} key={Items._id} onAdd={() => onAdd(Items)} onRemoveFromPage={() => onRemoveFromPage(Items.id)} ></ItemModel>
             })}
             
           </Container>
           <Container className='d-flex justify-content-center'>
-              <AppPagination Items={Items} setItems={(item) => setItems(item)} pageSize={3} ></AppPagination>
+              <AppPagination Items={Items} setItems={(Items) => setItems(Items)} ></AppPagination>
             </Container>
         </Container>
         <Container className='d-flex flex-wrap justify-content-center mt-5 mb-3'>

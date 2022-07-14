@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Container, Image, Button, Breadcrumb } from 'react-bootstrap'
+import { Container, Image, Button, Breadcrumb, Row, Col } from 'react-bootstrap'
 import conts1 from '../assets/conts1.png'
 import conts2 from '../assets/conts2.png'
 import phone from '../assets/phone.png'
@@ -21,123 +21,127 @@ export default class Contacts extends Component {
         <Container fluid className='tabs-cont pt-3 pb-3 mt-2 mb-5'>
           <h1>Наши Контакты</h1>
         </Container>
-        <Container>
-          <Container className='content-cont d-flex mt-5'>
-            <Image fluid src={conts1}></Image>
-            <Container className='p-4'>
-              <h1 className='p-3'>Магазин “Kolorit”</h1>
-              <Container className='d-flex align-items-start'>
-                <Image width='auto' height='auto' src={phone}></Image>
-                <Container className='d-flex flex-column align-items-start'>
-                  <h3>Телефон</h3>
-                  <p>+373-79-559-338</p>
-                </Container>
-              </Container>
-              <Container className='d-flex align-items-start'>
-                <Image width='auto' height='auto' src={address}></Image>
-                <Container className='d-flex flex-column align-items-start mb-3'>
-                  <h3>Адресс</h3>
-                  <p>г.Комрат, ул.Котовского 12/А</p>
-                  <Button variant='warning'>Как добраться?</Button>
-                </Container>
-              </Container>
-              <Container className='d-flex align-items-start'>
-                <Image width='auto' height='auto' src={clock}></Image>
-                <Container className='d-flex flex-column align-items-start'>
-                  <h3><strong>Г</strong>рафик работы</h3>
+        <Row>
+          <Col sm={12}>
+            <Container>
+              <Container className='content-cont d-flex mt-5'>
+                <Image fluid src={conts1}></Image>
+                <Container className='p-4'>
+                  <h1 className='p-3'>Магазин “Kolorit”</h1>
                   <Container className='d-flex align-items-start'>
-                    <Container className='text-center linevert'>
-                      <p>Пн. - Сб.</p>
-                      <p>08:00 - 18:00 </p>
+                    <Image width='auto' height='auto' src={phone}></Image>
+                    <Container className='d-flex flex-column align-items-start'>
+                      <h3>Телефон</h3>
+                      <p>+373-79-559-338</p>
                     </Container>
-                    <Container className='text-center'>
-                      <p>Вс.</p>
-                      <p>  08:00 - 16:00  </p>
+                  </Container>
+                  <Container className='d-flex align-items-start'>
+                    <Image width='auto' height='auto' src={address}></Image>
+                    <Container className='d-flex flex-column align-items-start mb-3'>
+                      <h3>Адресс</h3>
+                      <p>г.Комрат, ул.Котовского 12/А</p>
+                      <Button variant='warning'>Как добраться?</Button>
+                    </Container>
+                  </Container>
+                  <Container className='d-flex align-items-start'>
+                    <Image width='auto' height='auto' src={clock}></Image>
+                    <Container className='d-flex flex-column align-items-start'>
+                      <h3><span>Г</span>рафик работы</h3>
+                      <Container className='d-flex align-items-start'>
+                        <Container className='text-center linevert'>
+                          <p>Пн. - Сб.</p>
+                          <p>08:00 - 18:00 </p>
+                        </Container>
+                        <Container className='text-center'>
+                          <p>Вс.</p>
+                          <p>  08:00 - 16:00  </p>
+                        </Container>
+                      </Container>
                     </Container>
                   </Container>
                 </Container>
               </Container>
             </Container>
-          </Container>
-        </Container>
-        <Container>
-          <Container className='content-cont d-flex mt-5'>
-            <Image fluid src={conts2}></Image>
-            <Container className='p-4'>
-              <h1 className='p-3'>Магазин “Kolorit”</h1>
-              <Container className='d-flex align-items-start'>
-                <Image width='auto' height='auto' src={phone}></Image>
-                <Container className='d-flex flex-column align-items-start'>
-                  <h3>Телефон</h3>
-                  <p>+373-79-559-338</p>
-                </Container>
-              </Container>
-              <Container className='d-flex align-items-start'>
-                <Image width='auto' height='auto' src={address}></Image>
-                <Container className='d-flex flex-column align-items-start mb-3'>
-                  <h3>Адресс</h3>
-                  <p>г.Комрат, ул.Ленина 12/А</p>
-                  <Button variant='warning'>Как добраться?</Button>
-                </Container>
-              </Container>
-              <Container className='d-flex align-items-start'>
-                <Image width='auto' height='auto' src={clock}></Image>
-                <Container className='d-flex flex-column align-items-start'>
-                  <h3><strong>Г</strong>рафик работы</h3>
+            <Container>
+              <Container className='content-cont d-flex mt-5'>
+                <Image fluid src={conts2}></Image>
+                <Container className='p-4'>
+                  <h1 className='p-3'>Магазин “Kolorit”</h1>
                   <Container className='d-flex align-items-start'>
-                    <Container className='text-center linevert'>
-                      <p>Пн. - Сб.</p>
-                      <p>08:00 - 18:00 </p>
+                    <Image width='auto' height='auto' src={phone}></Image>
+                    <Container className='d-flex flex-column align-items-start'>
+                      <h3>Телефон</h3>
+                      <p>+373-79-559-338</p>
                     </Container>
-                    <Container className='text-center'>
-                      <p>Вс.</p>
-                      <p>  08:00 - 16:00  </p>
+                  </Container>
+                  <Container className='d-flex align-items-start'>
+                    <Image width='auto' height='auto' src={address}></Image>
+                    <Container className='d-flex flex-column align-items-start mb-3'>
+                      <h3>Адресс</h3>
+                      <p>г.Комрат, ул.Ленина 12/А</p>
+                      <Button variant='warning'>Как добраться?</Button>
+                    </Container>
+                  </Container>
+                  <Container className='d-flex align-items-start'>
+                    <Image width='auto' height='auto' src={clock}></Image>
+                    <Container className='d-flex flex-column align-items-start'>
+                      <h3><span>Г</span>рафик работы</h3>
+                      <Container className='d-flex align-items-start'>
+                        <Container className='text-center linevert'>
+                          <p>Пн. - Сб.</p>
+                          <p>08:00 - 18:00 </p>
+                        </Container>
+                        <Container className='text-center'>
+                          <p>Вс.</p>
+                          <p>  08:00 - 16:00  </p>
+                        </Container>
+                      </Container>
                     </Container>
                   </Container>
                 </Container>
               </Container>
             </Container>
-          </Container>
-        </Container>
-        <Container>
-          <Container className='content-cont d-flex mt-5'>
-            <Image fluid src={conts1}></Image>
-            <Container className='p-4'>
-              <h1 className='p-3'>Магазин “Kolorit”</h1>
-              <Container className='d-flex align-items-start'>
-                <Image width='auto' height='auto' src={phone}></Image>
-                <Container className='d-flex flex-column align-items-start'>
-                  <h3>Телефон</h3>
-                  <p>+373-79-559-338</p>
-                </Container>
-              </Container>
-              <Container className='d-flex align-items-start'>
-                <Image width='auto' height='auto' src={address}></Image>
-                <Container className='d-flex flex-column align-items-start mb-3'>
-                  <h3>Адресс</h3>
-                  <p>г.Комрат, ул.Котовского 12/А</p>
-                  <Button variant='warning'>Как добраться?</Button>
-                </Container>
-              </Container>
-              <Container className='d-flex align-items-start'>
-                <Image width='auto' height='auto' src={clock}></Image>
-                <Container className='d-flex flex-column align-items-start'>
-                  <h3><strong>Г</strong>рафик работы</h3>
+            <Container>
+              <Container className='content-cont d-flex mt-5'>
+                <Image fluid src={conts1}></Image>
+                <Container className='p-4'>
+                  <h1 className='p-3'>Магазин “Kolorit”</h1>
                   <Container className='d-flex align-items-start'>
-                    <Container className='text-center linevert'>
-                      <p>Пн. - Сб.</p>
-                      <p>08:00 - 18:00 </p>
+                    <Image width='auto' height='auto' src={phone}></Image>
+                    <Container className='d-flex flex-column align-items-start'>
+                      <h3>Телефон</h3>
+                      <p>+373-79-559-338</p>
                     </Container>
-                    <Container className='text-center'>
-                      <p>Вс.</p>
-                      <p>  08:00 - 16:00  </p>
+                  </Container>
+                  <Container className='d-flex align-items-start'>
+                    <Image width='auto' height='auto' src={address}></Image>
+                    <Container className='d-flex flex-column align-items-start mb-3'>
+                      <h3>Адресс</h3>
+                      <p>г.Комрат, ул.Котовского 12/А</p>
+                      <Button variant='warning'>Как добраться?</Button>
+                    </Container>
+                  </Container>
+                  <Container className='d-flex align-items-start'>
+                    <Image width='auto' height='auto' src={clock}></Image>
+                    <Container className='d-flex flex-column align-items-start'>
+                      <h3><span>Г</span>рафик работы</h3>
+                      <Container className='d-flex align-items-start'>
+                        <Container className='text-center linevert'>
+                          <p>Пн. - Сб.</p>
+                          <p>08:00 - 18:00 </p>
+                        </Container>
+                        <Container className='text-center'>
+                          <p>Вс.</p>
+                          <p>  08:00 - 16:00  </p>
+                        </Container>
+                      </Container>
                     </Container>
                   </Container>
                 </Container>
               </Container>
             </Container>
-          </Container>
-        </Container>
+          </Col>
+        </Row>
         <Container fluid className='map-cont mt-3 d-flex justify-content-center'>
           <MapContainer />
         </Container>
