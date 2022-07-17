@@ -6,6 +6,7 @@ import phone from '../assets/phone.png'
 import address from '../assets/address.png'
 import clock from '../assets/clock.png'
 import MapContainer from '../comps/Map'
+import {Link} from 'react-router-dom'
 
 
 export default class Contacts extends Component {
@@ -40,7 +41,7 @@ export default class Contacts extends Component {
                     <Container className='d-flex flex-column align-items-start mb-3'>
                       <h3>Адресс</h3>
                       <p>г.Комрат, ул.Котовского 12/А</p>
-                      <Button variant='warning'>Как добраться?</Button>
+                      <a href='#map' type='button' className='bttn-map'>Как добраться?</a>
                     </Container>
                   </Container>
                   <Container className='d-flex align-items-start'>
@@ -79,7 +80,7 @@ export default class Contacts extends Component {
                     <Container className='d-flex flex-column align-items-start mb-3'>
                       <h3>Адресс</h3>
                       <p>г.Комрат, ул.Ленина 12/А</p>
-                      <Button variant='warning'>Как добраться?</Button>
+                      <a href='#map' type='button' className='bttn-map'>Как добраться?</a>
                     </Container>
                   </Container>
                   <Container className='d-flex align-items-start'>
@@ -118,7 +119,7 @@ export default class Contacts extends Component {
                     <Container className='d-flex flex-column align-items-start mb-3'>
                       <h3>Адресс</h3>
                       <p>г.Комрат, ул.Котовского 12/А</p>
-                      <Button variant='warning'>Как добраться?</Button>
+                      <a href='#map' type='button' className='bttn-map'>Как добраться?</a>
                     </Container>
                   </Container>
                   <Container className='d-flex align-items-start'>
@@ -142,8 +143,8 @@ export default class Contacts extends Component {
             </Container>
           </Col>
         </Row>
-        <Container fluid className='map-cont mt-3 d-flex justify-content-center'>
-          <MapContainer />
+        <Container id="map" fluid className='map-cont mt-3 d-flex justify-content-center'>
+          <MapContainer  />
         </Container>
 
       </>

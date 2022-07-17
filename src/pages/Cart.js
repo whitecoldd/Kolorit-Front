@@ -26,7 +26,7 @@ export default function Cart(props) {
                     <>
                       <Container className='d-flex '>
                         <Container className='p-0'>
-                          <Container className='d-flex p-0 cart-card' key={item.id}>
+                          <Container className='d-flex ps-0 cart-card pt-3' key={item.id}>
                             <div className='img'>
                               <img width={100} height={100} src={item.img} alt='' />
                             </div>

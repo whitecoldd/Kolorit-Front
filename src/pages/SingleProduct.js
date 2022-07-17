@@ -32,6 +32,7 @@ const SingleProduct = ({ decreaseQty, onAdd, onRemoveFromPage }) => {
         };
         getItems();
       }, []);
+      const [first, setfirst] = useState(0)
     return (
         <>
             <Container>
@@ -40,13 +41,7 @@ const SingleProduct = ({ decreaseQty, onAdd, onRemoveFromPage }) => {
                                 <Container className='d-flex'>
                                     <Container id='flex1' key={items.id} className='single-prod-img m-1 d-flex align-items-center'>
                                         <Row>
-                                            <Col sm={2} className='d-flex flex-column '>
-                                                <Image width={75} src={items.img}></Image>
-                                                <Image width={75} src={items.img}></Image>
-                                                <Image width={75} src={items.img}></Image>
-                                                <Image width={75} src={items.img}></Image>
-                                            </Col>
-                                            <Col className='d-flex align-items-center' sm={10}>
+                                            <Col className='d-flex align-items-center' sm={12}>
                                                 <Image width={300} src={items.img}></Image>
                                             </Col>
                                         </Row>
@@ -56,14 +51,13 @@ const SingleProduct = ({ decreaseQty, onAdd, onRemoveFromPage }) => {
                                             <p>Категория: <span className='orange fatund'>{items.category}</span></p>
                                             <p>{items.availability}</p>
                                             <Container className=''>
-                                                <p className='smth d-flex justify-content-between'>Max крутящий момент : <span className='orange'>{items.torque}</span></p>
-                                                <p className='smth d-flex justify-content-between'>Тип аккумулятора : <span className='orange'>{items.battery_type}</span></p>
-                                                <p className='smth d-flex justify-content-between'>Напряжение аккумулятора : <span className='orange'>{items.voltage}</span></p>
-                                                <p className='smth d-flex justify-content-between'>Max диаметр сверления (металл) : <span className='orange'>{items.drill_diameter_steel}</span></p>
-                                                <p className='smth d-flex justify-content-between'>Мах диаметр сверления (дерево) : <span className='orange'>{items.drill_diameter_wood}</span></p>
+                                                <p className='smth d-flex justify-content-between'>{items.char1}<span className='orange'>{items.char1a}</span></p>
+                                                <p className='smth d-flex justify-content-between'>{items.char2}<span className='orange'>{items.char2a}</span></p>
+                                                <p className='smth d-flex justify-content-between'>{items.char3}<span className='orange'>{items.char3a}</span></p>
+                                                <p className='smth d-flex justify-content-between'>{items.char4}<span className='orange'>{items.char4a}</span></p>
                                             </Container>
                                         </Container>
-                                        <Container height={300} className='buy-box'>
+                                        <Container className='buy-box pb-3'>
                                             <Container className='d-flex flex-column align-items-start pt-4'>
 
                                                 <del className='gray'>{items.price} {items.currency}</del>
@@ -71,15 +65,15 @@ const SingleProduct = ({ decreaseQty, onAdd, onRemoveFromPage }) => {
                                                 <span className='orange position-relative'><span className='big bold orange'>{items.salePrice}</span> {items.currency} <Badge className='new-pos' bg='secondary'>Экономия <span className='orange'>{items.price - items.salePrice} {items.currency}</span></Badge></span>
                                             </Container>
                                             <Container className='d-flex smth p-2 pb-5'>
-                                                <Button variant='outline-warning' onClick={() => onAdd(items)} ><span>Добавить в корзину</span></Button>
+                                                <Button variant='outline-warning' onClick={() => {onAdd(items); setfirst(first+1)}} ><span>Добавить в корзину</span></Button>
                                                 <Container className='d-flex scale'>
-                                                    <button className='desCart me-2' onClick={() => decreaseQty(items)}>
+                                                    <button className='desCart me-2' onClick={() => {decreaseQty(items); setfirst(first-1)}}>
                                                         <Image src={minus} ></Image>
                                                     </button>
                                                     <Container className='qtyCart d-flex me-2'>
-                                                        <h1 className='qtyCartText' >{items.qty}</h1>
+                                                        <h1 className='qtyCartText' >{first}</h1>
                                                     </Container>
-                                                    <button className='incCart' onClick={() => onAdd(items)}>
+                                                    <button className='incCart' onClick={() => {onAdd(items); setfirst(first+1)}}>
                                                         <Image src={plus} ></Image>
                                                     </button>
                                                 </Container>
@@ -95,15 +89,10 @@ const SingleProduct = ({ decreaseQty, onAdd, onRemoveFromPage }) => {
                                     <Container className='single-prod-img p-2 m-1'>
                                         <h2 className='ps-3 bold'>Характеристики</h2>
                                         <Container className='sell-board '>
-                                            <p className='smth d-flex justify-content-between'>Max крутящий момент : <span className='orange'>{items.torque}</span></p>
-                                            <p className='smth d-flex justify-content-between'>Тип аккумулятора : <span className='orange'>{items.battery_type}</span></p>
-                                            <p className='smth d-flex justify-content-between'>Напряжение аккумулятора : <span className='orange'>{items.voltage}</span></p>
-                                            <p className='smth d-flex justify-content-between'>Max диаметр сверления (металл) : <span className='orange'>{items.drill_diameter_steel}</span></p>
-                                            <p className='smth d-flex justify-content-between'>Мах диаметр сверления (дерево) : <span className='orange'>{items.drill_diameter_wood}</span></p>
-                                            <p className='smth d-flex justify-content-between'>Тип аккумулятора : <span className='orange'>{items.battery_type}</span></p>
-                                            <p className='smth d-flex justify-content-between'>Напряжение аккумулятора : <span className='orange'>{items.voltage}</span></p>
-                                            <p className='smth d-flex justify-content-between'>Max диаметр сверления (металл) : <span className='orange'>{items.drill_diameter_steel}</span></p>
-                                            <p className='smth d-flex justify-content-between'>Мах диаметр сверления (дерево) : <span className='orange'>{items.drill_diameter_wood}</span></p>
+                                            <p className='smth d-flex justify-content-between'>{items.char1}<span className='orange'>{items.char1a}</span></p>
+                                            <p className='smth d-flex justify-content-between'>{items.char2}<span className='orange'>{items.char2a}</span></p>
+                                            <p className='smth d-flex justify-content-between'>{items.char3}<span className='orange'>{items.char3a}</span></p>
+                                            <p className='smth d-flex justify-content-between'>{items.char4}<span className='orange'>{items.char4a}</span></p>
                                         </Container>
                                     </Container>
                                     <Container className='single-prod-img p-2 sell-board m-1'>
@@ -117,23 +106,17 @@ const SingleProduct = ({ decreaseQty, onAdd, onRemoveFromPage }) => {
                                         <Container className='d-flex'>
                                             <Container className=''>
                                                 <h6 className='bold'>Производитель: </h6>
-                                                <p><Image src={items.producer_flag}></Image> {items.producer} - родина бренда</p>
-                                                <p><Image src={items.producer_flag}></Image> {items.producer} - страна производитель</p>
+                                                <p> {items.brandCountry} - родина бренда</p>
+                                                <p> {items.originalCountry} - страна производитель</p>
                                             </Container>
                                             <Container className=''>
                                                 <h6 className='bold'>Комплектация: </h6>
-                                                <ul>
-                                                    <li><p>{items.complect}</p></li>
-                                                    <li><p>{items.complect}</p></li>
-                                                    <li><p>{items.complect}</p></li>
-                                                    <li><p>{items.complect}</p></li>
-                                                    <li><p>{items.complect}</p></li>
-                                                </ul>
+                                                <p>{items.complect}</p>
                                             </Container>
                                             <Container >
                                                 <h6 className='bold'>Информация об упаковке : </h6>
                                                 <Container className=''>
-                                                    <p>Единица товара : {items.product_single} </p>
+                                                    <p>Единица товара : {items.singleProd} </p>
                                                     <p>Вес (кг) : {items.weight} </p>
                                                     <p>Длина (мм) : {items.length} </p>
                                                     <p>Ширина (мм) : {items.width} </p>
@@ -155,7 +138,7 @@ const SingleProduct = ({ decreaseQty, onAdd, onRemoveFromPage }) => {
                     <b className='pt-4 pb-4 mt-2'><h1 className='bold pt-4'>С этим покупают</h1></b>
                     <Container className='d-flex mt-2 '>
                         {Items?.slice(0,5).map((Items) => {
-                                return <ItemModel key={Items.id} Items={Items} onAdd={() => onAdd(Items)} onRemoveFromPage={() => onRemoveFromPage(Items.id)}></ItemModel>
+                                return <ItemModel key={Items.id} Items={Items} onAdd={() => onAdd(Items)} onRemoveFromPage={() => onRemoveFromPage(Items._id)}></ItemModel>
                         })}
                     </Container>
                 </Container>

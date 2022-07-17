@@ -11,7 +11,7 @@ import tick2 from '../assets/tick2.png'
 import tick3 from '../assets/tick3.png'
 import tick4 from '../assets/tick4.png'
 import { Products } from '../comps/Products'
-import { Categories } from '../comps/Categories'
+import { Link } from 'react-router-dom'
 import ItemModel from '../comps/ItemModel'
 import ProductDisplay from '../comps/ProductDisplay'
 import Marquee from "react-fast-marquee";
@@ -22,6 +22,7 @@ import PromosDisplay from '../comps/PromosDisplay'
 import axios from "axios"
 import { publicRequest } from '../requests/request'
 import AppPagination from '../comps/AppPagination'
+import Slider from '../comps/Slider'
 export default function Home(props) {
   const { onAdd, onRemoveFromPage, addToCompare, removeFromCompare, selectedItems } = props
   const location = useLocation()
@@ -84,11 +85,8 @@ export default function Home(props) {
             </Tab.Pane>
           </Tab.Content>
         </Tab.Container>
-        <Container className='me-1 mt-3 main-img position-relative'>
-          <Image width='100%' height='95%' src={slider}></Image>
-          <h2 className='pic-text position-absolute'>Строй Материалы</h2>
-          <p className='pic-text-lower position-absolute'>Наш магазин предлагает строительный материал, который Вы собираетесь покупать, не только предложит своему потенциальному покупателю большой выбор всевозможных стройматерилов, но и предоставит бесплатную консультацию по каждому из них.</p>
-          <Button type='submit' href='/catalog' className="bttn position-absolute btn-warning" aria-pressed="false">Перейти к каталогу</Button>
+        <Container className='me-1 mt-3'>
+          <Slider/>
         </Container>
       </Container>
       <Container className='mt-5'>
@@ -115,18 +113,18 @@ export default function Home(props) {
         <Container className='d-flex flex-wrap justify-content-start'>
           <b className='pt-4 pb-4'><h1><strong>Т</strong>овары со скидкой</h1></b>
           <Container className='d-flex mt-2 justify-content-center items-list-handle'>
-            {Items?.map((Items) => {
+            {Items?.slice(0,5).map((Items) => {
               if(Items.promo === "Скидка"){
-                return <ItemModel addToCompare={addToCompare} removeFromCompare={removeFromCompare} selectedItems={selectedItems} Items={Items} key={Items._id} onAdd={() => onAdd(Items)} onRemoveFromPage={() => onRemoveFromPage(Items.id)} ></ItemModel>
+                return <ItemModel addToCompare={addToCompare} removeFromCompare={removeFromCompare} selectedItems={selectedItems} Items={Items} key={Items.id} onAdd={() => onAdd(Items)} onRemoveFromPage={() => onRemoveFromPage(Items._id)} ></ItemModel>
               }     
             })}
           </Container>
-          <Container className='d-flex justify-content-center'>
+          {/* <Container className='d-flex justify-content-center'>
               <AppPagination Items={Items} setItems={(item) => setItems(item)} ></AppPagination>
-            </Container>
+            </Container> */}
         </Container>
         <Container className='d-flex flex-wrap justify-content-center mt-5 mb-3'>
-          <Button variant='outline-warning' className='bttn-low'>Больше товаров</Button>
+        <Link type='button' to='/catalog' className='bttn-more'>Больше товаров</Link>
         </Container>
       </Container>
       <Container>
@@ -143,16 +141,16 @@ export default function Home(props) {
           <b className='pt-4 pb-4'><h1>Популярные товары</h1></b>
           <Container className='d-flex mt-2 justify-content-center items-list-handle'>
             {Items?.slice(0,5).map((Items) => {
-              return <ItemModel addToCompare={addToCompare} removeFromCompare={removeFromCompare} selectedItems={selectedItems} Items={Items} key={Items._id} onAdd={() => onAdd(Items)} onRemoveFromPage={() => onRemoveFromPage(Items.id)} ></ItemModel>
+              return <ItemModel addToCompare={addToCompare} removeFromCompare={removeFromCompare} selectedItems={selectedItems} Items={Items} key={Items.id} onAdd={() => onAdd(Items)} onRemoveFromPage={() => onRemoveFromPage(Items._id)} ></ItemModel>
             })}
             
           </Container>
-          <Container className='d-flex justify-content-center'>
+          {/* <Container className='d-flex justify-content-center'>
               <AppPagination Items={Items} setItems={(item) => setItems(item)}  ></AppPagination>
-            </Container>
+            </Container> */}
         </Container>
         <Container className='d-flex flex-wrap justify-content-center mt-5 mb-3'>
-          <Button variant='outline-warning' className='bttn-low'>Больше товаров</Button>
+        <Link type='button' to='/catalog' className='bttn-more'>Больше товаров</Link>
         </Container>
       </Container>
       <CardsItem></CardsItem>
@@ -161,16 +159,16 @@ export default function Home(props) {
           <b className='pt-5 pb-2'><h1>Новинки</h1></b>
           <Container className='d-flex mt-2 justify-content-center items-list-handle'>
             {Items?.slice(0,5).map((Items) => {
-              return <ItemModel addToCompare={addToCompare} removeFromCompare={removeFromCompare} selectedItems={selectedItems} Items={Items} key={Items._id} onAdd={() => onAdd(Items)} onRemoveFromPage={() => onRemoveFromPage(Items.id)} ></ItemModel>
+              return <ItemModel addToCompare={addToCompare} removeFromCompare={removeFromCompare} selectedItems={selectedItems} Items={Items} key={Items.id} onAdd={() => onAdd(Items)} onRemoveFromPage={() => onRemoveFromPage(Items._id)} ></ItemModel>
             })}
             
           </Container>
-          <Container className='d-flex justify-content-center'>
+          {/* <Container className='d-flex justify-content-center'>
               <AppPagination Items={Items} setItems={(Items) => setItems(Items)} ></AppPagination>
-            </Container>
+            </Container> */}
         </Container>
         <Container className='d-flex flex-wrap justify-content-center mt-5 mb-3'>
-          <Button variant='outline-warning' className='bttn-low'>Больше товаров</Button>
+          <Link type='button' to='/catalog' className='bttn-more'>Больше товаров</Link>
         </Container>
       </Container>
       <Container fluid>

@@ -63,12 +63,12 @@ const ItemModel = (props) => {
 
                     {isShown && <Container><button className='nobr-bttn img-hover' onClick={Compare} ><Image src={com}></Image></button><Image className='img-hover1' src={heart}></Image> </Container>}
                     <b>{Items.name}</b>
-                    <Container className='d-flex flex-nowrap text-float p-0'>
-                        <Container fluid className='d-flex flex-wrap ps-0'>
-                            <del>{Items.price}<small> {Items.currency}</small></del>
+                    <Container className='d-flex flex-nowrap  p-0'>
+                        <Container fluid className='d-flex flex-column text-float ps-0'>
+                            <del style={{fontSize: '15px'}}>{Items.price}<small> {Items.currency}</small></del>
                             <h4>{Items.salePrice} <small> {Items.currency}</small></h4>
                         </Container>
-                        <Button variant='warning' className='bttnbuy' onClick={onClickBuy}><Image width={20} height={20} src={isAdded ? bought : buy}></Image></Button>
+                        <Button variant='warning' className='bttnbuy' onClick={onClickBuy}><Image  src={isAdded ? bought : buy}></Image></Button>
                     </Container>
                 </Container>
             </Container>

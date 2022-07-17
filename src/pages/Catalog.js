@@ -11,7 +11,7 @@ export default function Catalog() {
   useEffect(() => {
     const getItems = async () => {
       try {
-        const res = await publicRequest.get("/items/find");
+        const res = await publicRequest.get("/cat/find");
         setItems(res.data);
       } catch { }
     };
@@ -31,9 +31,9 @@ export default function Catalog() {
 
         {Items?.map(item =>
           <Col className='big-margin mt-2 mb-3 w-21 ' sm={1.5}>
-            <Link className='real-no-dec ' to={`/catalog/${item.category[0]}`}><Container className=' h-50p catalog-card d-flex flex-column align-items-center pt-4 mb-3'>
+            <Link className='real-no-dec ' to={`/catalog/${item.name}`}><Container className=' h-50p catalog-card d-flex flex-column align-items-center pt-4 mb-3'>
               <Image  width='80%' height='80%' src={item.img}></Image>
-              <h6 className='bold text-uppercase black mt-2'>{item.category[0]}</h6>
+              <h6 className='bold text-uppercase black mt-2'>{item.name}</h6>
             </Container></Link>
           </Col>
         )}

@@ -39,7 +39,7 @@ function Brands({ placeholder, data }) {
       <Container className='mt-5 mb-5'>
         <center>Бренды A-Z</center>
       </Container>
-      <Container fluid className='bgalpha d-flex justify-content-center mt-3 pt-4 pb-2'> {alphabet.map((alpha, i) => (<h1 type='button' className='text-uppercase alpha' href='#{alphabet[i]}' >  {alpha}</h1>))}</Container>
+      <Container fluid className='bgalpha d-flex justify-content-center mt-3 pt-4 pb-2'> {alphabet.map((alpha, i) => (<a type='button' className='text-uppercase alpha nodec' href={`#${alphabet[i]}`} >  {alpha}</a>))}</Container>
       <Container className='mt-5 mb-5'>
         <Form.Control
           type='text'
@@ -55,17 +55,17 @@ function Brands({ placeholder, data }) {
           <Container className='d-flex align-items-center mb-5'>
             <h1 id={alphabet[i]}>{alpha}</h1>
             <Container className='d-flex flex-column align-items-center'>
-              {BrandsItem.map((item) => (
+              {BrandsItem.filter(item => item.name.toLowerCase().includes(wordEntered)).map((item) => (
                 <BrandsItemDisplay item={item} key={item.id} ></BrandsItemDisplay>
               ))}
             </Container>
             <Container className='d-flex flex-column align-items-center'>
-              {BrandsItem.map((item) => (
+              {BrandsItem.filter(item => item.name.toLowerCase().includes(wordEntered)).map((item) => (
                 <BrandsItemDisplay item={item} key={item.id} ></BrandsItemDisplay>
               ))}
             </Container>
             <Container className='d-flex flex-column align-items-center'>
-              {BrandsItem.map((item) => (
+              {BrandsItem.filter(item => item.name.toLowerCase().includes(wordEntered)).map((item) => (
                 <BrandsItemDisplay item={item} key={item.id} ></BrandsItemDisplay>
               ))}
             </Container>

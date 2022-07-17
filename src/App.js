@@ -20,27 +20,27 @@ import {BreakpointProvider} from 'react-socks'
 function App() {
   const [cartItems, setCartItems] = useState([]);
   const onAdd = (product) => {
-    const productExit = cartItems.find((item) => item.id === product.id)
+    const productExit = cartItems.find((item) => item._id === product._id)
     if (productExit) {
-      setCartItems(cartItems.map((item) => (item.id === product.id ? { ...productExit, qty: productExit.qty + 1 } : item)))
+      setCartItems(cartItems.map((item) => (item._id === product._id ? { ...productExit, qty: productExit.qty + 1 } : item)))
     } else {
       setCartItems([...cartItems, { ...product, qty: 1 }])
     }
-
+    console.log(cartItems)
   };
   const onRemove = (product) => {
-    setCartItems((prev) => prev.filter(item => item.id !== product.id));
+    setCartItems((prev) => prev.filter(item => item._id !== product._id));
   };
   const onRemoveFromPage = (id) => {
-    setCartItems((prev) => prev.filter(item => item.id !== id));
+    setCartItems((prev) => prev.filter(item => item._id !== id));
   };
 
   const decreaseQty = (product) => {
-    const productExit = cartItems.find((item) => item.id === product.id)
+    const productExit = cartItems.find((item) => item._id === product._id)
     if (productExit.qty === 1) {
-      setCartItems(cartItems.filter((item) => item.id !== product.id))
+      setCartItems(cartItems.filter((item) => item._id !== product._id))
     } else {
-      setCartItems(cartItems.map((item) => (item.id === product.id ? { ...productExit, qty: productExit.qty - 1 } : item)))
+      setCartItems(cartItems.map((item) => (item._id === product._id ? { ...productExit, qty: productExit.qty - 1 } : item)))
     }
   }
 
@@ -53,7 +53,7 @@ function App() {
 
   const removeFromCompare = (item) => {
     const filteredItems = selectedItems.filter(
-      (product) => product.id !== item.id
+      (product) => product._id !== item._id
     );
     setSelectedItems((selectedItems) => filteredItems);
   };

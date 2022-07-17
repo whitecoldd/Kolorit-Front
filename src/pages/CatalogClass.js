@@ -108,7 +108,7 @@ const CatalogClass = ({ onAdd, onRemoveFromPage, removeFromCompare, addToCompare
                             .filter(Items => Items.name.toLowerCase().includes(query))
                             .filter(Items => Items.salePrice > parseInt(value, 10))
                             .map((Items) => (
-                                <ItemModel Items={Items} key={Items.id} addToCompare={addToCompare} removeFromCompare={removeFromCompare} selectedItems={selectedItems} onAdd={() => onAdd(Items)} onRemoveFromPage={() => onRemoveFromPage(Items.id)} ></ItemModel>))
+                                <ItemModel Items={Items} key={Items.id} addToCompare={addToCompare} removeFromCompare={removeFromCompare} selectedItems={selectedItems} onAdd={() => onAdd(Items)} onRemoveFromPage={() => onRemoveFromPage(Items._id)} ></ItemModel>))
                         }
                     </Container>
                     <Container className='d-flex justify-content-center'>
