@@ -14,7 +14,7 @@ export default class MapContainer extends Component {
         <>
         <YMaps>
             <Map defaultState={mapState} width='100%'
-                height='200px'>
+                height='400px'>
             </Map>
         </YMaps>
     </>

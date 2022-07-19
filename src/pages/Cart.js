@@ -3,6 +3,8 @@ import { Container, Breadcrumb, Image, Button, Row, Col } from 'react-bootstrap'
 import minus from '../assets/minus.png'
 import plus from '../assets/plus.png'
 import trash from '../assets/trash.png'
+import { Link } from 'react-router-dom'
+import ProcessOrder from './ProcessOrder'
 export default function Cart(props) {
   const { cartItems, onAdd, onRemove, decreaseQty } = props;
   const totalPrice = cartItems.reduce((salePrice, item) => salePrice + item.qty * item.salePrice, 0)
@@ -84,7 +86,7 @@ export default function Cart(props) {
               <h2 className='total-price'>Итого {totalPrice}</h2>
               <Container className='smth'></Container>
               <Container className='d-flex flex-column p-3'>
-                <Button variant='warning' className='bttn-cart'>Оформить заказ</Button>
+                <Link to='/process' > <Button variant='warning' className='bttn-cart'>Оформить заказ</Button></Link>
                 <input className='mt-4' id='cartsearch' placeholder='Введите промокод'></input>
               </Container>
             </Container>

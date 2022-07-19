@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import logo from '../assets/nav-logo.png'
+import logo from '../assets/nav-logo.svg'
 import fb from '../assets/fb.png'
 import inst from '../assets/inst.png'
 import tg from '../assets/tg.png'
@@ -13,7 +13,7 @@ export class Footer extends Component {
     return (
       <>
         <Container fluid className='footer '>
-          <Container className='d-flex' sticky='bottom'>
+          <Container className='d-flex footer-no' sticky='bottom'>
             <Container className='d-flex flex-column align-items-start pt-3 pb-5 me-5'>
               <a href='/'><Image src={logo} ></Image></a>
               <h4 className='mt-4 '>Оставайтесь на связи</h4>

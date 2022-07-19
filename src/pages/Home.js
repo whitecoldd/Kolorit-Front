@@ -42,71 +42,37 @@ export default function Home(props) {
     getItems()
   }, [])
 
-  // useEffect(() => {
-  //   const getItems = async () => {
-  //     try {
-  //       const res = await publicRequest.get("/items/find");
-  //       setProds(res.data);
-  //     } catch { }
-  //   };
-  //   getItems();
-  // }, []);
-  // console.log(Items)
   return (
     <>
       <Container className="d-flex">
-        <Tab.Container>
-          <Container className='menu mt-3'>
-            <Nav  className='d-flex flex-column p-2'>
-              {MenuItems.map((item) => (
-                <MenuItemsDisplay item={item} key={item.id} ></MenuItemsDisplay>
-              ))}
-            </Nav>
+          <Container className='menu-space mt-3'>
+            <MenuItemsDisplay></MenuItemsDisplay>
           </Container>
-          <Tab.Content>
-            <Tab.Pane eventKey='1' >
-              <Container className='menu-open p-3'>
-                <h1>Спецодежда и СИЗ</h1>
-                <Container className='d-flex pb-3'>
-                  <MenuOpenItemDisplay></MenuOpenItemDisplay>
-                  <MenuOpenItemDisplay></MenuOpenItemDisplay>
-                  <MenuOpenItemDisplay></MenuOpenItemDisplay>
-                  <MenuOpenItemDisplay></MenuOpenItemDisplay>
-                  <MenuOpenItemDisplay></MenuOpenItemDisplay>
-                </Container>
-                <Container className='d-flex pb-3'>
-                  <MenuOpenItemDisplay></MenuOpenItemDisplay>
-                  <MenuOpenItemDisplay></MenuOpenItemDisplay>
-                  <MenuOpenItemDisplay></MenuOpenItemDisplay>
-                  <MenuOpenItemDisplay></MenuOpenItemDisplay>
-                  <MenuOpenItemDisplay></MenuOpenItemDisplay>
-                </Container>
-              </Container>
-            </Tab.Pane>
-          </Tab.Content>
-        </Tab.Container>
         <Container className='me-1 mt-3'>
           <Slider/>
         </Container>
       </Container>
       <Container className='mt-5'>
         <Container className='d-flex flex-wrap justify-content-between prod-cont'>
-          {Products.map((item) => (
-            <ProductDisplay item={item} key={item.id} ></ProductDisplay>
-          ))}
+            <ProductDisplay></ProductDisplay>
         </Container>
         <Container className='d-flex flex-wrap justify-content-center sales-prod p-3'>
-          <h3><b>Т</b>овар дня :</h3>
-          <Image width='100%' height='100%' src={sale} ></Image>
-          <b>Дрель-шуруповерт Makita DHP484RFE</b>
-          <Container className='d-flex align-items-center'>
-            <Container>
-              <del>2500<small> MDL</small></del>
-              <h4>2100 <small> MDL</small></h4>
-            </Container>
-            <Button variant='warning'><Image src={buy}></Image></Button>
-          </Container>
-          <Countdown date={Date.now() + 86399000} />
+        {Items?.slice(0,1).map((Items) => (
+          <>
+                 <h3><b>Т</b>овар дня :</h3>
+                 <Image width='100%' height='100%' src={Items.img} ></Image>
+                 <b>{Items.name}</b>
+                 <Container className='d-flex align-items-center'>
+                   <Container>
+                     <del>{Items.price}<small> {Items.currency}</small></del>
+                     <h4>{Items.salePrice} <small> {Items.currency}</small></h4>
+                   </Container>
+                   <Button variant='warning'><Image src={buy}></Image></Button>
+                 </Container>
+                 <Countdown date={Date.now() + 86399000} />
+                 </>
+            ))}
+          
         </Container>
       </Container>
       <Container fluid className='d-flex flex-nowrap flex-column sales-prod-carousel'>

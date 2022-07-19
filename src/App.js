@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import FooterComponent from "./comps/Footer";
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom'
 import About from './pages/About'
 import Partnership from './pages/Partnership'
 import Catalog from './pages/Catalog'
@@ -16,8 +16,31 @@ import Navigation from './comps/Navigation';
 import CatalogClass from './pages/CatalogClass';
 import SingleProduct from './pages/SingleProduct';
 import Compare from './pages/Compare';
-import {BreakpointProvider} from 'react-socks'
+import Register from './pages/Register';
+import ProfileInfo from './pages/ProfileInfo';
+import Login from './pages/Login';
+import ProcessOrder from './pages/ProcessOrder';
+import Orders from './pages/Orders';
+import Order from './pages/Order';
+import { useSelector } from 'react-redux'
+import { Translator, Translate } from 'react-auto-translate';
+
+const cacheProvider = {
+  get: (language, key) =>
+    ((JSON.parse(localStorage.getItem('translations')) || {})[key] || {})[
+    language
+    ],
+  set: (language, key, value) => {
+    const existing = JSON.parse(localStorage.getItem('translations')) || {
+      [key]: {},
+    };
+    existing[key] = { ...existing[key], [language]: value };
+    localStorage.setItem('translations', JSON.stringify(existing));
+  },
+};
+
 function App() {
+  const [to, setTo] = useState('ro');
   const [cartItems, setCartItems] = useState([]);
   const onAdd = (product) => {
     const productExit = cartItems.find((item) => item._id === product._id)
@@ -57,26 +80,37 @@ function App() {
     );
     setSelectedItems((selectedItems) => filteredItems);
   };
-  
-  
+
+  const admin = useSelector((state) => state.user.currentUser);
+
 
   return (
     <>
       <BrowserRouter>
         <Navigation cartItems={cartItems} selectedItems={selectedItems} />
         <Routes>
-          <Route exact path={`/catalog/category/:id`} element={<SingleProduct onAdd={onAdd} decreaseQty={decreaseQty} onRemoveFromPage={onRemoveFromPage}  />}></Route>
+          <Route exact path={`/catalog/category/:id`} element={<SingleProduct onAdd={onAdd} decreaseQty={decreaseQty} onRemoveFromPage={onRemoveFromPage} />}></Route>
           <Route exact path="/about" element={<About />}></Route>
-          <Route exact path="/contacts"  element={<Contacts />}></Route>
-          <Route exact path="/catalog"  element={<Catalog />}></Route>
-          <Route exact path={`/catalog/:title`}  element={<CatalogClass addToCompare={addToCompare} removeFromCompare={removeFromCompare} selectedItems={selectedItems} cartItems={cartItems} onAdd={onAdd} onRemoveFromPage={onRemoveFromPage}/>}></Route>
-          <Route exact path="/partnership"  element={<Partnership />}></Route>
-          <Route exact path="/brands"  element={<Brands />}></Route>
-          <Route exact path="/profile"  element={<Profile />}></Route>
-          <Route exact path="/promotions"  element={<Promotions />}></Route>
-          <Route exact path="/compare"  element={<Compare addToCompare={addToCompare} removeFromCompare={removeFromCompare} selectedItems={selectedItems}  cartItems={cartItems}  onAdd={onAdd} onRemoveFromPage={onRemoveFromPage} decreaseQty={decreaseQty} />} ></Route>
-          <Route exact path="/"  element={<Home addToCompare={addToCompare} removeFromCompare={removeFromCompare} selectedItems={selectedItems}  cartItems={cartItems}  onAdd={onAdd} onRemoveFromPage={onRemoveFromPage} decreaseQty={decreaseQty} />} ></Route>
-          <Route exact path="/cart"  element={<Cart cartItems={cartItems} onAdd={onAdd} onRemove={onRemove} decreaseQty={decreaseQty} />} ></Route>
+          <Route exact path="/contacts" element={<Contacts />}></Route>
+          <Route exact path="/catalog" element={<Catalog />}></Route>
+          <Route exact path={`/catalog/:title`} element={<CatalogClass addToCompare={addToCompare} removeFromCompare={removeFromCompare} selectedItems={selectedItems} cartItems={cartItems} onAdd={onAdd} onRemoveFromPage={onRemoveFromPage} />}></Route>
+          <Route exact path="/partnership" element={<Partnership />}></Route>
+          <Route exact path="/brands" element={<Brands />}></Route>
+          <Route exact path="/register" element={<Register />}></Route>
+          <Route exact path="/login" {...admin ? <Navigate to="/profile" /> : <Navigate to="/login" />} element={<Login />}></Route>
+          {admin &&
+            <>
+              <Route exact path="/profile" element={<Profile />}></Route>
+              <Route exact path="/profileinfo" element={<ProfileInfo />}></Route>
+              <Route exact path="/orders" element={<Orders />}></Route>
+              <Route exact path="/order/:id" element={<Order />}></Route>
+            </>
+          }
+          <Route exact path="/process" element={<ProcessOrder cartItems={cartItems} />}></Route>
+          <Route exact path="/promotions" element={<Promotions />}></Route>
+          <Route exact path="/compare" element={<Compare addToCompare={addToCompare} removeFromCompare={removeFromCompare} selectedItems={selectedItems} cartItems={cartItems} onAdd={onAdd} onRemoveFromPage={onRemoveFromPage} decreaseQty={decreaseQty} />} ></Route>
+          <Route exact path="/" element={<Home addToCompare={addToCompare} removeFromCompare={removeFromCompare} selectedItems={selectedItems} cartItems={cartItems} onAdd={onAdd} onRemoveFromPage={onRemoveFromPage} decreaseQty={decreaseQty} />} ></Route>
+          <Route exact path="/cart" element={<Cart cartItems={cartItems} onAdd={onAdd} onRemove={onRemove} decreaseQty={decreaseQty} />} ></Route>
         </Routes>
         <FooterComponent />
       </BrowserRouter>

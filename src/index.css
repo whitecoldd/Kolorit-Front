@@ -128,6 +128,9 @@ b {
 .smth {
   border-bottom: 1px #C2C2C2 solid;
 }
+.smthg {
+  border-bottom: 1px green solid;
+}
 
 .white {
   color: #FFFFFF !important;
@@ -138,7 +141,8 @@ b {
 }
 
 .menu {
-  width: 25% !important;
+  width: 100% !important;
+  height: 100% !important;
   float: left !important;
   background: #F5F5F5;
   box-shadow: -6px 6px 4px rgba(0, 0, 0, 0.25);
@@ -150,6 +154,31 @@ b {
   background: #FCFCFC;
   box-shadow: -6px 6px 4px rgba(0, 0, 0, 0.25);
   border-radius: 9px;
+}
+
+.menu-space{
+  width: 25% !important;
+  background: #F5F5F5;
+  box-shadow: -6px 6px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 9px;
+  padding-top: 10px !important;
+}
+
+
+#basic-nav-dropdown{
+  padding: 4px 10px !important;
+  color: #FFF;
+}
+
+.navdrop{
+  background-color: #FF820E !important;
+  border-radius: 5px !important;
+  border: none !important;
+  padding: 0px 10px !important;
+}
+
+.dropdown-menu[data-bs-popper]{
+  margin-top: 1.85rem !important;
 }
 
 .single-prod-img {
@@ -221,6 +250,10 @@ b {
   color: #FF820E;
 }
 
+.dropdown-item:active{
+  background-color: transparent !important;
+}
+
 .menu-open p {
   font-weight: 400 !important;
   font-size: 13px !important;
@@ -241,6 +274,9 @@ b {
   font-weight: 700;
 
 }
+.nav-fix:hover{
+  color: #FFFFFF !important;
+}
 
 .nav-fix span {
   color: #F1F1F1 !important;
@@ -249,6 +285,10 @@ b {
 
 .main-img {
   float: right !important;
+}
+
+.dropdown-item:hover{
+  color: transparent !important;
 }
 
 .pic-text {
@@ -298,15 +338,100 @@ b {
 .menu:hover {
   transition: 0.7s;
   background-color: #444444;
-  color: #EBEBEB !important;
+  /* color: #FFF !important; */
 }
-
-
-
-.menu-item:hover {
+.menu-space:hover{
   transition: 0.7s;
-  color: #EBEBEB !important;
+  background-color: #444444;
 }
+
+.menu span{
+  color: #000 !important;
+  font-size: 18px !important;
+}
+.menu-space span{
+  color: #000 !important;
+  font-size: 18px !important;
+
+}
+
+.dropdown-menu{
+  background-color: transparent !important;
+  border-radius: 20px !important;
+  border: none !important;
+  position: absolute !important;
+  left: -235px !important;
+  top: 22px !important;
+  width: 265px!important;
+
+}
+
+.dropend .dropdown-menu{
+  background-color: #444444 !important;
+  border-radius: 20px !important;
+  position: absolute !important;
+  left: 60px !important;
+  top: -20px !important;
+  width: 950px !important;
+}
+
+.dropend .dropdown-toggle::after{
+  border-left: none !important;
+}
+
+.dropdown-toggle::after{
+  border-left: none !important;
+  border-right: none !important;
+}
+
+.dropdown .dropdown-toggle{
+  width: 100px !important;
+}
+
+.dropdown-toggle {
+  width: 200px !important;
+  background-color: transparent !important;
+  border: none !important;
+  color: #444444 !important;
+  padding: 0px !important;
+
+}
+
+.dropdown-toggle:focus {
+  outline: none !important;
+}
+.btn:focus{
+  box-shadow: none !important;
+}
+.dropdown-item:focus{
+  background-color: transparent !important;
+}
+
+a.nav-fix.nav-link{
+  padding-top: 5px !important;
+  padding-bottom: 0px !important;
+}
+
+.dropdown-item a{
+  text-decoration: none !important;
+  color: #fff !important;
+}
+
+.menu:hover a a span div button {
+  transition: 0.7s;
+  color: #FFF !important;
+}
+.menu-space:hover  a a span div button {
+  transition: 0.7s;
+  color: #FFF !important;
+}
+
+.dropdown-item:hover{
+  background-color: transparent !important;
+}
+/* .menu-item:hover {
+  transition: 0.7s;
+} */
 
 .sales-prod {
   border-radius: 20px !important;
@@ -451,6 +576,13 @@ h1 {
 
 .footer {
   background-color: #282828;
+  width: auto !important;
+}
+
+@media screen and (max-width : 800px) {
+  .footer-no{
+    flex-wrap: wrap;
+  }
 }
 
 .head {
@@ -986,6 +1118,16 @@ center {
   top: 180px;
 }
 
+.w-30{
+  width: 30% !important;
+}
+
+.tablenew{
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: -6px 6px 4px rgba(0, 0, 0, 0.25);
+}
+
 .gray {
   font-weight: 400;
   font-size: 16px;
@@ -1125,13 +1267,13 @@ center {
 
 .img-hover {
   position: absolute;
-  top: 30px;
+  top: 0px;
   right: 1px;
 }
 
 .img-hover1 {
   position: absolute;
-  top: 60px;
+  top: 30px;
   right: 5px;
 }
 
@@ -1155,4 +1297,36 @@ center {
 
 .h-50p {
   height: 220px !important;
+}
+
+.form-label{
+  font-size: 25px!important;
+}
+
+#exampleForm.ControlInput1::placeholder{
+  font-size: 35px !important;
+}
+
+.forming{
+  border: 1px #444 solid;
+  border-radius: 20px;
+  width: 30%;
+  padding: 5px 10px;
+}
+.forming1{
+  border: 1px #444 solid;
+  border-radius: 20px;
+  width: 25%;
+  padding: 5px 10px;
+}
+
+#formprocess .form-control{
+  background-color: #444444 !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: 15px !important;
+}
+
+#formprocess .form-control#placeholder{
+  color: #fff !important;
 }

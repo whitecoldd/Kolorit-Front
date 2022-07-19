@@ -39,12 +39,11 @@ const CatalogMenu = ({setQuery, value, setValue, handleChange, handleInput, hand
                                 <Box sx={{ width: 300 }}>
                                     <Slider
                                         sx={{ width: 200, backgroundColor: 'warning' }}
-                                        getAriaLabel={() => 'Price range'}
+                                        valueLabelDisplay='Price range'
                                         value={value}
                                         onChange={handleChange}
                                         onInput={handleInput}
-                                        valueLabelDisplay="auto"
-                                        min={100}
+                                        min={0}
                                         max={40000}
                                         getAriaValueText={valuetext}
                                     />

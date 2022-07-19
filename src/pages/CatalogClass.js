@@ -10,6 +10,7 @@ import AppPagination from '../comps/AppPagination';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import axios from 'axios'
+import { publicRequest } from '../requests/request'
 const CatalogClass = ({ onAdd, onRemoveFromPage, removeFromCompare, addToCompare, selectedItems }) => {
     const items = [...Array(90).keys()]
     const [Items, setItems] = useState([])
@@ -70,7 +71,7 @@ const CatalogClass = ({ onAdd, onRemoveFromPage, removeFromCompare, addToCompare
     useEffect(() => {
         const getItems = async ()=>{
           try {
-            const res = await axios.get(category ? `http://localhost:1000/api/items/find?category=${category}` : `http://localhost:1000/api/items/find`)
+            const res = await publicRequest.get(category ? `/items/find?category=${category}` : `/items/find`)
             setItems(res.data)
           } catch (e) {
             

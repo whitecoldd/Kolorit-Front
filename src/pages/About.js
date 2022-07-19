@@ -1,11 +1,36 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Nav, Container, Image, Tab, Breadcrumb } from 'react-bootstrap'
 import about from '../assets/about.png'
 import playb from '../assets/playb.png'
 import tab1 from '../assets/tab1.png'
 import CardsItem from '../comps/CardsItem'
-
+import { publicRequest } from '../requests/request'
 export default function About() {
+  const [Items, setItems] = useState([])
+  useEffect(() => {
+    const getItems = async () => {
+      try {
+        const res = await publicRequest.get(`/about/find`)
+        setItems(res.data)
+      } catch (e) {
+        console.log(e)
+      }
+    }
+    getItems()
+  }, [])
+  const [items, setitems] = useState([])
+  useEffect(() => {
+    const getItems = async () => {
+      try {
+        const res = await publicRequest.get(`/about/find?new=new`)
+        setitems(res.data)
+      } catch (e) {
+        console.log(e)
+      }
+    }
+    getItems()
+  }, [])
+
   return (
     <>
       <Container className='mt-3'>
@@ -16,14 +41,18 @@ export default function About() {
       </Container>
       <Container className='d-flex flex-column'>
         <Container className='d-flex'>
-          <Container className='d-flex flex-column about-text'>
-            <h1>О Компании</h1>
-            <h3>It is a long established fact that a reader will be distracted by the readable </h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec placerat feugiat dapibus. Nunc velit orci, rhoncus eu tristique eget, efficitur sed diam. Suspendisse rhoncus finibus lacus, at porta felis venenatis sed. Nulla eget aliquam lacus, et pretium nunc. Morbi hendrerit, nisi mollis lacinia pulvinar, nisi mauris rhoncus risus, eget iaculis orci purus eget diam.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec placerat feugiat dapibus. Morbi hendrerit, nisi mollis lacinia pulvinar, nisi mauris rhoncus risus, eget iaculis orci purus eget diam.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec placerat feugiat dapibus. </p>
-          </Container>
-          <Container>
-            <Image className='about-img' src={about} ></Image>
-          </Container>
+          {Items?.slice(0,1).map((Items => (
+            <>
+              <Container className='d-flex flex-column about-text'>
+                <h1>О Компании</h1>
+                <h3>{Items.header}</h3>
+                <p>{Items.text}</p>
+              </Container>
+              <Container>
+                <Image className='about-img' src={Items.img} ></Image>
+              </Container>
+            </>
+          )))}
         </Container>
         <CardsItem></CardsItem>
         <Container className='video-el'>
@@ -36,7 +65,12 @@ export default function About() {
           <h1 className='story-text'>Наша история</h1>
           <Tab.Container className='tabs' defaultActiveKey='first'>
             <Nav variant="tabs" className="mt-2">
-              <Nav.Item>
+              {items.slice(0,5).map(item=>(
+                 <Nav.Item>
+                 <Nav.Link type="button" eventKey={item._id} >{item.year}</Nav.Link>
+               </Nav.Item>
+              ))}
+              {/* <Nav.Item>
                 <Nav.Link type="button" eventKey="first" >2008</Nav.Link>
               </Nav.Item>
               <Nav.Item>
@@ -50,10 +84,22 @@ export default function About() {
               </Nav.Item>
               <Nav.Item>
                 <Nav.Link type="button" eventKey="fifth" >2022</Nav.Link>
-              </Nav.Item>
+              </Nav.Item> */}
             </Nav>
             <Tab.Content className="mt-3">
-              <Tab.Pane eventKey="first" >
+            {items?.slice(0,5).map(item=>(
+              <Tab.Pane eventKey={item._id} >
+              <Container className='d-flex'>
+                <img height='90%' width='80%' src={item.img} />
+                <Container>
+                  <h1>{item.header}</h1>
+                  <p>{item.text}</p>
+                </Container>
+              </Container>
+            </Tab.Pane>
+            ))}
+             
+            {/*  <Tab.Pane eventKey="first" >
                 <Container className='d-flex'>
                   <img height='90%' width='80%' src={tab1} />
                   <Container>
@@ -97,7 +143,7 @@ export default function About() {
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec placerat feugiat dapibus. Nunc velit orci, rhoncus eu tristique eget, efficitur sed diam. Suspendisse rhoncus finibus lacus, at porta felis venenatis sed. Nulla eget aliquam lacus, et pretium nunc. Morbi hendrerit, nisi mollis lacinia pulvinar, nisi mauris rhoncus risus, eget iaculis orci purus eget diam.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec placerat feugiat dapibus. Morbi hendrerit, nisi mollis lacinia pulvinar, nisi mauris rhoncus risus, eget iaculis orci purus eget diam.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec placerat feugiat dapibus. </p>
                   </Container>
                 </Container>
-              </Tab.Pane>
+              </Tab.Pane> */}
 
             </Tab.Content>
           </Tab.Container>

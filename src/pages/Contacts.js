@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Container, Image, Button, Breadcrumb, Row, Col } from 'react-bootstrap'
 import conts1 from '../assets/conts1.png'
 import conts2 from '../assets/conts2.png'
@@ -7,10 +7,22 @@ import address from '../assets/address.png'
 import clock from '../assets/clock.png'
 import MapContainer from '../comps/Map'
 import {Link} from 'react-router-dom'
+import {publicRequest} from '../requests/request'
 
 
-export default class Contacts extends Component {
-  render() {
+export default function Contacts() {
+  const [Items, setItems] = useState([])
+useEffect(() => {
+  const getItems = async ()=>{
+    try {
+      const res = await publicRequest.get(`/contact/find`)
+      setItems(res.data)
+    } catch (e) {
+      console.log(e)
+    }
+  } 
+  getItems()
+}, [])
     return (
       <>
         <Container className='mt-3'>
@@ -24,46 +36,48 @@ export default class Contacts extends Component {
         </Container>
         <Row>
           <Col sm={12}>
-            <Container>
-              <Container className='content-cont d-flex mt-5'>
-                <Image fluid src={conts1}></Image>
-                <Container className='p-4'>
-                  <h1 className='p-3'>Магазин “Kolorit”</h1>
+          {Items?.map((item) => (
+          <Container>
+          <Container className='content-cont d-flex mt-5'>
+            <Image fluid src={item.img}></Image>
+            <Container className='p-4'>
+              <h1 className='p-3'>{item.name}</h1>
+              <Container className='d-flex align-items-start'>
+                <Image width='auto' height='auto' src={phone}></Image>
+                <Container className='d-flex flex-column align-items-start'>
+                  <h3>Телефон</h3>
+                  <p>{item.phone}</p>
+                </Container>
+              </Container>
+              <Container className='d-flex align-items-start'>
+                <Image width='auto' height='auto' src={address}></Image>
+                <Container className='d-flex flex-column align-items-start mb-3'>
+                  <h3>Адресс</h3>
+                  <p>{item.address}</p>
+                  <a href='#map' type='button' className='bttn-map'>Как добраться?</a>
+                </Container>
+              </Container>
+              <Container className='d-flex align-items-start'>
+                <Image width='auto' height='auto' src={clock}></Image>
+                <Container className='d-flex flex-column align-items-start'>
+                  <h3><span>Г</span>рафик работы</h3>
                   <Container className='d-flex align-items-start'>
-                    <Image width='auto' height='auto' src={phone}></Image>
-                    <Container className='d-flex flex-column align-items-start'>
-                      <h3>Телефон</h3>
-                      <p>+373-79-559-338</p>
+                    <Container className='text-center linevert'>
+                      <p>Пн. - Сб.</p>
+                      <p>{item.workHours} </p>
                     </Container>
-                  </Container>
-                  <Container className='d-flex align-items-start'>
-                    <Image width='auto' height='auto' src={address}></Image>
-                    <Container className='d-flex flex-column align-items-start mb-3'>
-                      <h3>Адресс</h3>
-                      <p>г.Комрат, ул.Котовского 12/А</p>
-                      <a href='#map' type='button' className='bttn-map'>Как добраться?</a>
-                    </Container>
-                  </Container>
-                  <Container className='d-flex align-items-start'>
-                    <Image width='auto' height='auto' src={clock}></Image>
-                    <Container className='d-flex flex-column align-items-start'>
-                      <h3><span>Г</span>рафик работы</h3>
-                      <Container className='d-flex align-items-start'>
-                        <Container className='text-center linevert'>
-                          <p>Пн. - Сб.</p>
-                          <p>08:00 - 18:00 </p>
-                        </Container>
-                        <Container className='text-center'>
-                          <p>Вс.</p>
-                          <p>  08:00 - 16:00  </p>
-                        </Container>
-                      </Container>
+                    <Container className='text-center'>
+                      <p>Вс.</p>
+                      <p>  {item.workHoursH}  </p>
                     </Container>
                   </Container>
                 </Container>
               </Container>
             </Container>
-            <Container>
+          </Container>
+        </Container>
+      ))}
+            {/* <Container>
               <Container className='content-cont d-flex mt-5'>
                 <Image fluid src={conts2}></Image>
                 <Container className='p-4'>
@@ -101,8 +115,8 @@ export default class Contacts extends Component {
                   </Container>
                 </Container>
               </Container>
-            </Container>
-            <Container>
+            </Container> */}
+            {/* <Container>
               <Container className='content-cont d-flex mt-5'>
                 <Image fluid src={conts1}></Image>
                 <Container className='p-4'>
@@ -140,7 +154,7 @@ export default class Contacts extends Component {
                   </Container>
                 </Container>
               </Container>
-            </Container>
+            </Container> */}
           </Col>
         </Row>
         <Container id="map" fluid className='map-cont mt-3 d-flex justify-content-center'>
@@ -150,4 +164,4 @@ export default class Contacts extends Component {
       </>
     )
   }
-}
+

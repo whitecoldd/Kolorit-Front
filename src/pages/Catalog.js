@@ -22,10 +22,9 @@ export default function Catalog() {
       <Container>
         <Breadcrumb className='mt-3'>
           <Breadcrumb.Item href="/"><strong>Г</strong>лавная</Breadcrumb.Item>
-          <Breadcrumb.Item href="/">Каталог</Breadcrumb.Item>
-          <Breadcrumb.Item active><mark>Электроинструменты</mark></Breadcrumb.Item>
+          <Breadcrumb.Item active><mark>Каталог</mark></Breadcrumb.Item>
         </Breadcrumb>
-        <h1 className='bold mb-5'>Электроинструменты</h1>
+        <h1 className='bold mb-5'>Каталог</h1>
       </Container>
       <Container className='d-flex flex-wrap justify-content-center no-pad mb-5'>
 
