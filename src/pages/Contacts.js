@@ -37,11 +37,11 @@ const {t} = useTranslation()
         <Container fluid className='tabs-cont pt-3 pb-3 mt-2 mb-5'>
           <h1>{t('conts')}</h1>
         </Container>
-        <Row>
-          <Col sm={12}>
+        <Container>
+          <Container>
           {Items?.map((item) => (
           <Container>
-          <Container className='content-cont d-flex mt-5'>
+          <Container className='content-cont d-flex mt-5' style={{paddingRight: '0px'}}>
             <Image fluid src={item.img}></Image>
             <Container className='p-4'>
               <h1 className='p-3'>{item.name}</h1>
@@ -158,8 +158,8 @@ const {t} = useTranslation()
                 </Container>
               </Container>
             </Container> */}
-          </Col>
-        </Row>
+          </Container>
+        </Container>
         <Container id="map" fluid className='map-cont mt-3 d-flex justify-content-center'>
           <MapContainer  />
         </Container>

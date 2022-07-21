@@ -4,6 +4,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+@import "react-alice-carousel/lib/alice-carousel.css";
+
 
 @font-face {
   font-family: 'UZ Sans';
@@ -200,7 +202,6 @@ b {
 }
 
 .profile {
-  height: 35rem !important;
   margin-top: 50px;
 }
 
@@ -339,6 +340,247 @@ b {
   background-color: #444444;
 }
 
+@media screen and (max-width: 650px) {
+
+  .profhandle{
+    flex-wrap: wrap !important;
+  }
+
+  .menu-profile-ext{
+    display: flex !important;
+    justify-content: center !important;
+    
+  }
+
+  table thead tr .hid{
+    display: none !important;
+  }
+  table tbody .hid{
+    display: none !important;
+  }
+
+  .sprodhandle{
+    display: flex !important;
+    flex-wrap: wrap !important;
+  }
+  .sprodhandle1{
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .fluke{
+    width: auto !important;
+    margin-top: 20px !important;
+  }
+
+  .cataloghandle b{
+    font-size: small;
+  }
+
+  .catalog-menu{
+    
+    width: auto !important;
+  }
+
+  .orderhandle h1{
+    font-size: medium;
+  }
+
+  .orderhandle{
+    display: flex !important;
+    flex-wrap: wrap !important;
+  }
+
+  .menu-space{
+    width: 0px !important;
+    margin: 0px !important;
+    padding: 0px !important;
+    visibility: hidden !important;
+  }
+  .carousel-mine{
+    display: flex;
+    justify-content: flex-start;
+    width: 100% !important;
+    height: 400px !important;
+  }
+
+  .items{
+    display: flex !important;
+    flex-wrap: wrap !important;
+  }
+
+  .items .sales-prod{
+    width: 47% !important;
+  }
+
+  .carthandle  {
+      flex-wrap: wrap;
+  }
+
+  .carthandle .col-sm-8{
+    width: 100% !important;
+  }
+  .carthandle .col-sm-4{
+    width: 100% !important;
+  }
+
+  .cartimgntext{
+    padding: 0% !important;
+    display: flex !important;
+    
+  }
+
+  .cart-details{
+    display: flex !important;
+    justify-content: flex-end !important;
+  }
+
+  .total-price{
+    display: flex !important;
+    justify-content: center !important;
+    align-items: baseline !important;
+
+  }
+
+  .removeCart{
+    display: flex !important;
+    justify-content: center !important;
+  }
+
+  .br-50{
+    left: 28px !important;
+  }
+
+  .b-left .forming, .w-30{
+    width: 50% !important;
+  }
+
+  .items-list-handle{
+    display: flex !important;
+    flex-wrap: wrap !important;
+  }
+
+  .items-list-handle .w-23{
+    width: 47% !important;
+  }
+
+  .carousel-inner img{
+    height: 400px !important; 
+  }
+  .carousel-inner a{
+    top: 300px;
+    left: 54px;
+    width: 80%;
+    padding: 0px 0px !important;
+  }
+
+  .no-pad .big-margin{
+    width: 45% !important;
+    margin: 10px 10px !important;
+  }
+
+  .about-text{
+    z-index: 100 !important;
+  }
+
+  .about-img{
+    z-index: 0 !important;
+  }
+
+  .content-cont{
+    padding: 0px !important ;
+  }
+
+  #root .row .col-sm-12{
+    padding-right: 0px !important;
+  }
+
+  .bgalpha{
+    flex-wrap: wrap !important;
+  }
+
+  .play-upper{
+    left: 130px !important;
+  }
+  .play-button{
+    left: 220px !important;
+  }
+
+  .tabs-about{
+    flex-wrap: wrap !important;
+    justify-content: center;
+  }
+
+  .carousel-caption h2{
+    top: -310px
+  }
+  .carousel-caption p{
+    top: -250px
+  }
+
+  .catsnsale{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .prod-cont a{
+    width: 47% !important;
+  }
+
+  .img-on-hover .low-item{
+    align-items: center !important;
+  }
+
+  .catsnsale .sales-prod {
+    width: auto !important;
+  }
+  .sales-prod .container{
+    width: 100% !important;
+  }
+
+  .sales-prod-carousel .container .items-list-handle .w-23{
+    width: 47% !important;
+    /* display: flex !important;
+    flex-direction: column !important; */
+  }
+  .sales-prod-carousel .container .items-list-handle{
+    display: flex !important;
+    flex-wrap: wrap !important;
+  }
+
+  .promo-table{
+    display: flex !important;
+    flex-wrap: wrap !important;
+  }
+
+  .promo-table .promos{
+    width: 42% !important;
+    margin-top: 15px !important;
+  }
+
+  .cards-handle{
+    display: flex !important;
+    flex-wrap: wrap !important;
+  }
+  .cards-handle .card{
+    width: 47% !important;
+    margin-top: 15px;
+  }
+
+  .footer{
+    height: 100%;
+  }
+
+  .carousel .slide{
+    height: 400px !important; 
+  }
+
+  .carousel-mine button{
+
+    width: 50% !important;
+  }
+}
+
 .menu span{
   color: #000 !important;
   font-size: 18px !important;
@@ -433,6 +675,12 @@ a.nav-fix.nav-link{
   width: 18% !important;
 }
 
+.sales-prod1 {
+  border-radius: 20px !important;
+  border: 5px solid #FCC15E;
+  width: auto !important;
+}
+
 .sales-prod p,
 h3,
 del,
@@ -443,17 +691,9 @@ small {
 
 @media screen and (max-width: 1200px) {
   .sales-prod h3 b {
-    font-size: 8vw !important;
+    font-size: 25px !important;
   }
 
-  .img-on-hover b {
-    font-size: 1vw !important;
-  }
-  .bttnbuy{
-    padding: 0px !important;
-    width: 25px !important;
-    height: 30px !important;
-  }
   .textfloat{
     align-items: flex-start !important;
   }
@@ -536,14 +776,14 @@ h1 {
   color: black;
 }
 
-.col-sm-3 .container p {
+.promo-table .container p {
   background: linear-gradient(180deg, #4A4A4A 0%, rgba(74, 74, 74, 0) 95.83%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-.col-sm-3 p {
+.promo-table p {
   color: black !important;
 }
 
@@ -576,6 +816,12 @@ h1 {
 @media screen and (max-width : 800px) {
   .footer-no{
     flex-wrap: wrap;
+    height: 100% !important;
+    margin-bottom: 0px !important;
+  }
+  .heh{
+    padding-bottom: 10px;
+    margin-bottom: 0px;
   }
 }
 
@@ -878,7 +1124,7 @@ center {
 
 @media screen and (min-width:500px) {
   .cart-details h3 {
-    font-size: 1.5vw !important;
+    font-size: 28px !important;
   }
 }
 
@@ -893,12 +1139,6 @@ center {
   }
 }
 
-@media screen and (max-width: 1150px) {
-  .items-list-handle {
-    display: flex;
-    flex-wrap: wrap;
-  }
-}
 
 .cart-items .cart-details h4 {
   font-size: 15px;
@@ -1109,8 +1349,6 @@ center {
 .no-dec {
   text-decoration: none;
   color: #444444;
-  position: absolute !important;
-  top: 180px;
 }
 
 .w-30{
@@ -1135,15 +1373,9 @@ center {
   border-radius: 15px;
   padding: 20px !important;
   margin-bottom: 20px;
-  position: relative;
   height: 243px;
 }
 
-.box-pic {
-  position: absolute;
-  top: 120px;
-  left: 280px;
-}
 
 .box h3 {
   font-weight: 700;
@@ -1258,7 +1490,13 @@ center {
   background-color: #EBEBEB !important;
 }
 
+.br-3{
+  border-radius: 20px !important;
+}
 
+.sales-prod b{
+  font-size: 16px !important;
+}
 
 .img-hover {
   position: absolute;

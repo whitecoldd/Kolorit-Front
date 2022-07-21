@@ -59,7 +59,7 @@ export function Footer (props) {
                 <p>{t('foot22')}</p>
                 <p>{t('foot23')}</p>
                 <p>{t('foot24')}</p>
-                <p>{t('foot25')}</p>
+                <p className='heh'>{t('foot25')}</p>
               </Container>
             </Container>
           </Container>

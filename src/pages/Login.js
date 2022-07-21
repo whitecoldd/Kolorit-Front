@@ -20,6 +20,7 @@ const Login = () => {
         }
         catch (e) {
             console.log(e)
+            history('/login')
         }
     };
     return (

@@ -1,4 +1,4 @@
-import { Container, Tab, Nav, Image, Table } from 'react-bootstrap'
+import { Container, Navbar, Nav, Image, Table } from 'react-bootstrap'
 import React, { useState, useEffect } from 'react'
 import orderbox from '../assets/orderbox.png'
 import bigprof from '../assets/bigprof.png'
@@ -24,7 +24,7 @@ const Orders = () => {
     useEffect(() => {
         const getItems = async () => {
             try {
-                const res = await userRequest.get(`/order/find/${firstname}`)
+                const res = await userRequest.get(`/order/find/${username}`)
                 setItems(res.data)
             } catch (e) {
                 console.log(e)
@@ -38,33 +38,39 @@ const Orders = () => {
     return (
         <>
             <Container className='profile d-flex mb-3'>
-                <Tab.Container defaultActiveKey='1'>
-                    <Container className='menu-profile pt-3'>
-                        <Nav className='d-flex flex-column'>
-                            {ProfileMenu.map(item => (
-                                <Nav.Item key={item.id} >
-                                    <Container className='d-flex align-items-center prof-item'>
-                                        <Image src={item.img}></Image>
-                                        <Nav.Link eventKey={item.id} >{item.title}</Nav.Link>
-                                    </Container>
-                                    <Container className='d-flex flex-column prof-item'>
-                                        <Link to='/profileinfo'>     <Nav.Link className='menu-profile-text'>{item.subtitle1 || ''}</Nav.Link></Link>
-                                        <Nav.Link className='menu-profile-text'>{item.subtitle2 || ''}</Nav.Link>
-                                        <Nav.Link className='menu-profile-text'>{item.subtitle3 || ''}</Nav.Link>
-                                        <Nav.Link className='menu-profile-text'>{item.subtitle4 || ''}</Nav.Link>
-                                    </Container>
-                                </Nav.Item>
-                            ))}
-                        </Nav>
+                <Container className='d-flex profhandle'>
+                    <Container className='menu-profile pt-3 mb-3'>
+                        <Navbar collapseOnSelect expand="lg" bg="light" variant='light'>
+
+                            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                            <Navbar.Collapse id="responsive-navbar-nav">
+                                <Nav collapseOnSelect className='d-flex flex-column'>
+                                    {ProfileMenu.map(item => (
+                                        <Nav.Item key={item.id} >
+                                            <Link to='/profile'><Container className='d-flex align-items-center prof-item'>
+                                                <Image src={item.img}></Image>
+                                                <Nav.Link className='black'>{item.title}</Nav.Link>
+                                            </Container></Link>
+                                            <Container className='d-flex flex-column prof-item'>
+                                                <Link to='/profileinfo' className='menu-profile-text'>{item.subtitle1 || ''}</Link>
+                                                <Nav.Link className='menu-profile-text'>{item.subtitle2 || ''}</Nav.Link>
+                                                <Nav.Link className='menu-profile-text'>{item.subtitle3 || ''}</Nav.Link>
+                                                <Nav.Link className='menu-profile-text'>{item.subtitle4 || ''}</Nav.Link>
+                                            </Container>
+                                        </Nav.Item>
+                                    ))}
+                                </Nav>
+                            </Navbar.Collapse>
+                        </Navbar>
                     </Container>
                     <Container>
-                        <Tab.Content>
+                        <Container>
                             <Container className='menu-profile-ext ps-3'>
 
                                 <Table striped hover className='tablenew p-3'>
                                     <thead>
                                         <tr>
-                                            <th>#</th>
+                                            <th className='hid'>#</th>
                                             <th>{t('prod')}</th>
                                             <th>{t('date')}</th>
                                             <th>{t('price')}</th>
@@ -74,29 +80,30 @@ const Orders = () => {
                                     </thead>
 
                                     {Items.map(item => {
-                                        if (item.userFName === firstname) {
+                                        if (item.userName === username) {
                                             return (
                                                 <>
-                                                    <tbody>
-                                                    <th>{item._id}</th>
-                                                    <th>{item.delType}</th>
-                                                    <th>{date}</th>
-                                                    <th>{item?.productId?.reduce((salePrice, item) => salePrice + item.qty * item.salePrice, 0)} MDL</th>
-                                                    <th>{item.status}</th>
-                                                    <Link to={`/order/${item._id}`}>
-                                                        <th>&#8594;</th>
-                                                    </Link>
-                                                </tbody>
+                                                    <tbody> 
+                                                        <th className='hid' >{item._id}</th>
+                                                        <th>{item.delType}</th>
+                                                        <th>{item.createdAt}</th>
+                                                        <th>{item?.productId?.reduce((salePrice, item) => salePrice + item.qty * item.salePrice, 0)} MDL</th>
+                                                        <th>{item.status}</th>
+                                                        <Link to={`/order/${item._id}`}>
+                                                            <th>&#8594;</th>
+                                                        </Link>
+                                                    </tbody>
                                                 </>
-                                )
-                                        }})}
+                                            )
+                                        }
+                                    })}
 
-                            </Table>
+                                </Table>
 
+                            </Container>
+                        </Container>
                     </Container>
-                </Tab.Content>
-            </Container>
-        </Tab.Container>
+                </Container>
             </Container >
         </>
     )

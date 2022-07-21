@@ -1,4 +1,4 @@
-import { Container, Tab, Nav, Image, Form } from 'react-bootstrap'
+import { Container, Navbar, Nav, Image, Form } from 'react-bootstrap'
 import React, { useState, useEffect } from 'react'
 import orderbox from '../assets/orderbox.png'
 import bigprof from '../assets/bigprof.png'
@@ -30,32 +30,38 @@ const Profile = () => {
         }
         getItems()
     }, [id])
-    const {t} = useTranslation()
+    const { t } = useTranslation()
 
     return (
         <>
             <Container className='profile d-flex mb-3'>
-                <Tab.Container defaultActiveKey='1'>
-                    <Container className='menu-profile pt-3'>
-                        <Nav className='d-flex flex-column'>
-                            {ProfileMenu.map(item => (
-                                <Nav.Item key={item.id} >
-                                    <Container className='d-flex align-items-center prof-item'>
-                                        <Image src={item.img}></Image>
-                                        <Nav.Link eventKey={item.id} >{item.title}</Nav.Link>
-                                    </Container>
-                                    <Container className='d-flex flex-column prof-item'>
-                                    <Link to='/profileinfo'><Nav.Link className='menu-profile-text'>{item.subtitle1 || ''}</Nav.Link></Link>
-                                        <Nav.Link className='menu-profile-text'>{item.subtitle2 || ''}</Nav.Link>
-                                        <Nav.Link className='menu-profile-text'>{item.subtitle3 || ''}</Nav.Link>
-                                        <Nav.Link className='menu-profile-text'>{item.subtitle4 || ''}</Nav.Link>
-                                    </Container>
-                                </Nav.Item>
-                            ))}
-                        </Nav>
+                <Container className='d-flex profhandle'>
+                    <Container className='menu-profile pt-3 mb-3'>
+                        <Navbar collapseOnSelect expand="lg" bg="light" variant='light'>
+
+                            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                            <Navbar.Collapse id="responsive-navbar-nav">
+                                <Nav collapseOnSelect className='d-flex flex-column'>
+                                    {ProfileMenu.map(item => (
+                                        <Nav.Item key={item.id} >
+                                            <Container className='d-flex align-items-center prof-item'>
+                                                <Image src={item.img}></Image>
+                                                <Link to='/profile' className='black nav-link'>{item.title}</Link>
+                                            </Container>
+                                            <Container className='d-flex flex-column prof-item'>
+                                                <Link to='/profileinfo' className='menu-profile-text'>{item.subtitle1 || ''}</Link>
+                                                <Nav.Link className='menu-profile-text'>{item.subtitle2 || ''}</Nav.Link>
+                                                <Nav.Link className='menu-profile-text'>{item.subtitle3 || ''}</Nav.Link>
+                                                <Nav.Link className='menu-profile-text'>{item.subtitle4 || ''}</Nav.Link>
+                                            </Container>
+                                        </Nav.Item>
+                                    ))}
+                                </Nav>
+                            </Navbar.Collapse>
+                        </Navbar>
                     </Container>
                     <Container>
-                        <Tab.Content>
+                        <Container>
                             <Container className='menu-profile-ext ps-3'>
                                 <h1 className='ps-3'>{t('selfdata')}</h1>
                                 <Container>
@@ -92,9 +98,9 @@ const Profile = () => {
                                     </Container>
                                 </Container>
                             </Container>
-                        </Tab.Content>
+                        </Container>
                     </Container>
-                </Tab.Container>
+                </Container>
             </Container >
         </>
     )

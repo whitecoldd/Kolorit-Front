@@ -28,6 +28,8 @@ function Brands({ placeholder, data }) {
     setFilteredData([]);
     setWordEntered("");
   };
+
+
   return (
     <>
       <Container className='mt-3'>

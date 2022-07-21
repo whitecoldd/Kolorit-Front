@@ -49,7 +49,7 @@ const ItemOfDay = (props) => {
         <>
 
             <Container onMouseEnter={() => setIsShown(true)} onMouseLeave={() => setIsShown(false)} key={Items.id}  >
-                <h3 className='text-center'>{t('itemofday')} :</h3>
+                <h3 className='text-center'>{t('itemofday')}:</h3>
                 <Badge onMouseEnter={SetPromoType()} bg={Items.promoType}>{Items.promo}</Badge>
                 <Container className='d-flex flex-column align-items-center justify-content-between img-on-hover'>
                     <Container>
@@ -60,7 +60,7 @@ const ItemOfDay = (props) => {
                         {isShown && <Container><button className='nobr-bttn img-hover' onClick={Compare} ><Image src={com}></Image></button><Image className='img-hover1' src={heart}></Image> </Container>}
                     </Container>
                     <b>{Items.name}</b>
-                    <Container className='d-flex flex-nowrap align-items-end  p-0'>
+                    <Container className='d-flex flex-nowrap align-items-end low-item p-0'>
                         <Container fluid className='d-flex flex-column text-float align-items-start ps-0'>
                             <del style={{ fontSize: '15px' }}>{Items.price}<small> {Items.currency}</small></del>
                             <h4>{Items.salePrice} <small> {Items.currency}</small></h4>

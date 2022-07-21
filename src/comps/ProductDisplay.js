@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Image, Nav } from 'react-bootstrap'
+import {Link} from 'react-router-dom'
 import { publicRequest } from '../requests/request'
 
 const ProductDisplay = () => {
@@ -17,10 +18,10 @@ const ProductDisplay = () => {
     <>
       {
         Items?.map(Items =>
-          <Nav.Link className='stuff d-flex flex-wrap justify-content-center mb-4  me-1' type='button' eventKey='1'>
+          <Link to={`/catalog/${Items.name}`} className='stuff d-flex flex-wrap justify-content-center mb-4 nav-link me-1' type='button' eventKey='1'>
             <Image width={120} height={140} src={Items.img}></Image>
             <p className='bulb-text'>{Items.name}</p>
-          </Nav.Link>
+          </Link>
         )
       }
     </>

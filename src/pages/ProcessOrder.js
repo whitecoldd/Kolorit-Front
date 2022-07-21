@@ -19,10 +19,12 @@ const ProcessOrder = ({ cartItems }) => {
 
 
     const admin = useSelector((state) => state.user?.currentUser);
-    const userName = useSelector((state) => state.user?.currentUser?.fname)
+    const userName = useSelector((state) => state.user?.currentUser?.username)
+    const phone = useSelector((state) => state.user?.currentUser?.phone)
+    const email = useSelector((state) => state.user?.currentUser?.email)
     const productId = cartItems
     const quantity = cartItems.length
-    const order = { ...inputs, userFName: userName || null, productId: productId, quantity: quantity }
+    const order = { ...inputs, userName: userName || inputs.userFName, phone: phone || inputs.phone, email: email || inputs.email,  productId: productId, quantity: quantity }
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -147,7 +149,7 @@ const ProcessOrder = ({ cartItems }) => {
                                 <h4 className='forming1 mt-3 mb-4 black bold d-flex flex-nowrap'> {t('isthere')} <Link to='/login' className='orange bold' >{t('enter')}</Link> <ArrowForwardIosIcon /> </h4>
                                 <Container className='d-flex '>
                                     <Form.Group className="mb-3 pe-3 " id="formprocess" controlId="exampleForm.ControlInput1">
-                                        <Form.Control type="text" name='username' placeholder="Имя пользователя" onChange={handleChange} />
+                                        <Form.Control type="text" name='userFName' placeholder="Имя пользователя" onChange={handleChange} />
                                     </Form.Group>
                                     <Form.Group className="mb-3 pe-3 " id="formprocess" controlId="exampleForm.ControlTextarea1">
                                         <Form.Control type="text" name='phone' placeholder='Телефон' onChange={handleChange} />

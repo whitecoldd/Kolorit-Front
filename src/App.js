@@ -71,7 +71,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <Navigation cartItems={cartItems} selectedItems={selectedItems} />
+        <Navigation addToCompare={addToCompare} removeFromCompare={removeFromCompare} selectedItems={selectedItems} cartItems={cartItems} onAdd={onAdd} onRemoveFromPage={onRemoveFromPage} />
         <Routes>
           <Route exact path={`/catalog/category/:id`} element={<SingleProduct onAdd={onAdd} decreaseQty={decreaseQty} onRemoveFromPage={onRemoveFromPage} />}></Route>
           <Route exact path="/about" element={<About />}></Route>

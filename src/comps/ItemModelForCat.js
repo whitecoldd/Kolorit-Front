@@ -50,11 +50,11 @@ const ItemModel = (props) => {
 
     return (
         <>
-            <Container onMouseEnter={() => setIsShown(true)} onMouseLeave={() => setIsShown(false)} key={Items.id} className='d-flex flex-wrap align-content-between mt-2 mb-2 sales-prod1 m-1 p-2'>
+            <Container onMouseEnter={() => setIsShown(true)} onMouseLeave={() => setIsShown(false)} key={Items.id} className='d-flex flex-wrap align-content-between mt-2 mb-2 sales-prod m-1 p-2'>
                 <Badge onMouseEnter={SetPromoType()} bg={Items.promoType}>{Items.promo}</Badge>
                 <Container className='d-flex flex-column align-items-center justify-content-between img-on-hover'>
                     <Container>
-                        <Link to={`/catalog/category/${Items._id}`}><Image width='90%' height={150} src={Items.img} ></Image>
+                        <Link to={`/catalog/category/${Items._id}`}><Image width='90%' height='100%' src={Items.img} ></Image>
 
                         </Link>
 

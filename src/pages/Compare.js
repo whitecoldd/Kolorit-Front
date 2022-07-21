@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Container } from 'react-bootstrap'
 import { Header, Grid, Item, Table, Label } from "semantic-ui-react"
-import ItemModel from '../comps/ItemModel'
+import ItemModelForCat from '../comps/ItemModelForCat'
 import { publicRequest } from '../requests/request'
 import { useTranslation } from 'react-i18next'
 
@@ -114,7 +114,7 @@ const Compare = ({ selectedItems, addToCompare, removeFromCompare, onAdd, onRemo
                 <Grid columns={selectedItems.length} stackable padded divided>
                     <Item.Group className='d-flex flex-wrap'>
                         {Items.map((Items) => (
-                            <ItemModel
+                            <ItemModelForCat
                                 key={Items.id}
                                 Items={Items}
                                 selected={selectedItems}

@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import { Container, Breadcrumb, Image, Button, Row, Col } from 'react-bootstrap'
 import minus from '../assets/minus.png'
 import plus from '../assets/plus.png'
@@ -7,13 +7,16 @@ import { Link } from 'react-router-dom'
 import ProcessOrder from './ProcessOrder'
 import { useTranslation } from 'react-i18next'
 import ItemModel from '../comps/ItemModel'
-import {publicRequest} from '../requests/request'
+import { publicRequest } from '../requests/request'
+import AliceCarousel from 'react-alice-carousel';
+import 'react-alice-carousel/lib/alice-carousel.css';
+import "react-alice-carousel/lib/scss/alice-carousel.scss";
 export default function Cart(props) {
   const [Items, setItems] = useState([])
   const { cartItems, onAdd, onRemove, decreaseQty, addToCompare, removeFromCompare, selectedItems, onRemoveFromPage } = props;
   const totalPrice = cartItems.reduce((salePrice, item) => salePrice + item.qty * item.salePrice, 0)
   const { t } = useTranslation()
-
+  const handleDragStart = (e) => e.preventDefault();
   useEffect(() => {
     const getItems = async () => {
       try {
@@ -28,7 +31,7 @@ export default function Cart(props) {
   return (
     <>
       <Container >
-        <Row className='d-flex'>
+        <Row className='d-flex carthandle'>
           <Col sm={8}>
             <Container>
               <Breadcrumb>
@@ -46,16 +49,18 @@ export default function Cart(props) {
                       <Container className='d-flex '>
                         <Container className='p-0'>
                           <Container className='d-flex ps-0 cart-card pt-3' key={item.id}>
-                            <div className='img'>
-                              <img width={100} height={100} src={item.img} alt='' />
-                            </div>
-                            <Container className='d-flex p-0 flex-column justify-content-between'>
-                              <div className='cart-details'>
-                                <h3>{item.name}</h3>
+                            <Container className='cartimgntext'>
+                              <div className='img'>
+                                <img width={100} height={100} src={item.img} alt='' />
                               </div>
-                              <div>
-                                <h5 className='black'>{t('code')} {item.code}</h5>
-                              </div>
+                              <Container className='d-flex p-0 flex-column justify-content-between'>
+                                <div className='cart-details'>
+                                  <h3>{item.name}</h3>
+                                </div>
+                                <div className='cart-details'>
+                                  <h5 className='black'>{t('code')} {item.code}</h5>
+                                </div>
+                              </Container>
                             </Container>
                             <Container className='d-flex check align-items-baseline'>
                               <Container className='d-flex flex-wrap align-items-center'>
@@ -111,9 +116,19 @@ export default function Cart(props) {
         </Row>
       </Container>
       <Container className='d-flex mt-5 mb-3 justify-content-center items-list-handle'>
-        {Items?.slice(0, 5).map((Items) => {
-          return <ItemModel addToCompare={addToCompare} removeFromCompare={removeFromCompare} selectedItems={selectedItems} Items={Items} key={Items.id} onAdd={() => onAdd(Items)} onRemoveFromPage={() => onRemoveFromPage(Items._id)} ></ItemModel>
-        })}
+      <AliceCarousel responsive={{
+              0: {
+                items: 1
+              },
+              1024: {
+                items: 5,
+              }
+            }} mouseTracking >
+              {Items?.map((Items) => {
+                return <ItemModel addToCompare={addToCompare} removeFromCompare={removeFromCompare} selectedItems={selectedItems} Items={Items} key={Items.id} onAdd={() => onAdd(Items)} onRemoveFromPage={() => onRemoveFromPage(Items._id)} ></ItemModel>
+              })}
+            </AliceCarousel>
+
 
       </Container>
     </>

@@ -14,10 +14,12 @@ import Badge from '@mui/material/Badge'
 import MenuItemsDisplay from './MenuItemsDisplay'
 import { useSelector } from 'react-redux'
 import i18n from '../i18';
+import { publicRequest } from '../requests/request'
 import { useTranslation } from 'react-i18next'
+import SearchComp from './SearchComp'
 
 
-export default function Navigation({ cartItems, selectedItems }) {
+export default function Navigation({ cartItems, selectedItems, onAdd, onRemoveFromPage, removeFromCompare, addToCompare }) {
   const [isVisible, setIsVisible] = useState(true);
   const [height, setHeight] = useState(0)
   const { t, i18n } = useTranslation()
@@ -26,6 +28,7 @@ export default function Navigation({ cartItems, selectedItems }) {
     return () =>
       window.removeEventListener("scroll", listenToScroll);
   }, [])
+  const [query, setQuery] = useState('')
 
 
   const listenToScroll = () => {
@@ -44,7 +47,18 @@ export default function Navigation({ cartItems, selectedItems }) {
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
   }
-  const [select, setSelect] = useState('ru')
+  const [Items, setItems] = useState([])
+  useEffect(() => {
+    const getItems = async () => {
+      try {
+        const res = await publicRequest.get(`/items/find`)
+        setItems(res.data)
+      } catch (e) {
+
+      }
+    }
+    getItems()
+  }, [])
   return (
     <>
       <Navbar expand='lg' collapseOnSelect className='d-flex flex-column align-items-stretch main-nav sticky-top'>
@@ -94,11 +108,31 @@ export default function Navigation({ cartItems, selectedItems }) {
               <Nav>
                 <Nav.Item className='d-flex align-items-center m-2'><img src={phone} /><a className='black real-no-dec' href='tel:+37379559663'>+373&#x2212;79&#x2212;559&#x2212;663</a></Nav.Item>
               </Nav>
-              <Form.Control
-                placeholder="Поиск..."
-                id='search'
-                aria-label="Search"
-              />
+              <Container className='d-flex flex-wrap'>
+                {/* <div class="dropdown1"> */}
+                  <Form.Control
+                    placeholder="Поиск..."
+                    id='search'
+                    aria-label="Search"
+                    onChange={(e) => setQuery(e.target.value)}
+                  />
+                  {/* <div class="dropdown-content1">
+                  
+                      {isVisible &&
+
+                        Items?.filter(Items => Items.name.toLowerCase().includes(query))
+                          .map((Items) => (
+                            
+                              <SearchComp Items={Items} key={Items.id} addToCompare={addToCompare} removeFromCompare={removeFromCompare} selectedItems={selectedItems} onAdd={() => onAdd(Items)} onRemoveFromPage={() => onRemoveFromPage(Items._id)} ></SearchComp>
+                           
+                          ))
+
+                      }
+                   
+                  </div>
+                </div> */}
+
+              </Container>
               <Nav>
                 <Link to='/compare' className="d-flex justify-content-center flex-wrap nav-link text-center">{selectedItems.length !== 0 ? (<Badge badgeContent={selectedItems.length} color="warning"><img src={com} /></Badge>) : (<img src={com} />)}{t('head1')}</Link>
                 <Link to='/cart' className="d-flex justify-content-center flex-wrap nav-link"> {cartItems.length !== 0 ? (<Badge badgeContent={cartItems.length} color="warning"><img src={cart} /></Badge>) : (<img src={cart} />)} {t('head2')}</Link>

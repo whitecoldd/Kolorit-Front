@@ -20,9 +20,9 @@ const PromosDisplay = () => {
 
 
     return (
-        <Row className='d-flex justify-content-center'>
+        <Container className='d-flex justify-content-center promo-table'>
             {items?.map(items => (
-                <Col sm={3} className="promos d-flex flex-wrap align-content-start me-3">
+                <Container className="promos d-flex flex-wrap align-content-start me-3">
 
                     <>
                         <Image fluid src={items.img}></Image>
@@ -32,9 +32,9 @@ const PromosDisplay = () => {
                         </Container>
                     </>
 
-                </Col>
+                </Container>
             ))}
-        </Row>
+        </Container>
     )
 }
 

@@ -5,7 +5,7 @@ import ReactPaginate from 'react-paginate';
 import type1 from '../assets/type1.png'
 import type2 from '../assets/type2.png'
 import CatalogMenu from '../comps/CatalogMenu';
-import ItemModel from '../comps/ItemModel';
+import ItemModelForCat from '../comps/ItemModelForCat';
 import AppPagination from '../comps/AppPagination';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
@@ -85,9 +85,9 @@ const CatalogClass = ({ onAdd, onRemoveFromPage, removeFromCompare, addToCompare
 
     return (
         <>
-            <Container className='d-flex align-items-start mb-3'>
+            <Container className='d-flex align-items-start mb-3 sprodhandle1 justify-content-center'>
                 <CatalogMenu handleFilter={handleFilter} filter={filter} setFilter={setFilter} query={query} setQuery={setQuery} value={value} setValue={setValue} handleChange={handleChange} handleInput={handleInput}></CatalogMenu>
-                <Container id='flex2' className='d-flex flex-wrap'>
+                <Container id='flex2' className='d-flex flex-wrap fluke'>
                     <Container>
                         <Navbar collapseOnSelect expand="lg" bg="light" className='d-flex flex-column align-items-stretch low-nav' variant='dark'>
                             <Container className='nav-fix'>
@@ -107,12 +107,12 @@ const CatalogClass = ({ onAdd, onRemoveFromPage, removeFromCompare, addToCompare
                             </Container>
                         </Navbar>
                     </Container>
-                    <Container className='d-flex flex-wrap justify-content-start'>
+                    <Container className='d-flex flex-wrap justify-content-start items-list-handle cataloghandle'>
                         {Items
                             .filter(Items => Items.name.toLowerCase().includes(query))
                             .filter(Items => Items.salePrice > parseInt(value, 10))
                             .map((Items) => (
-                                <ItemModel Items={Items} key={Items.id} addToCompare={addToCompare} removeFromCompare={removeFromCompare} selectedItems={selectedItems} onAdd={() => onAdd(Items)} onRemoveFromPage={() => onRemoveFromPage(Items._id)} ></ItemModel>))
+                                <ItemModelForCat Items={Items} key={Items.id} addToCompare={addToCompare} removeFromCompare={removeFromCompare} selectedItems={selectedItems} onAdd={() => onAdd(Items)} onRemoveFromPage={() => onRemoveFromPage(Items._id)} ></ItemModelForCat>))
                         }
                     </Container>
                     <Container className='d-flex justify-content-center'>

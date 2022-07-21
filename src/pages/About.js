@@ -91,7 +91,7 @@ export default function About() {
             <Tab.Content className="mt-3">
             {items?.slice(0,5).map(item=>(
               <Tab.Pane eventKey={item._id} >
-              <Container className='d-flex'>
+              <Container className='d-flex tabs-about'>
                 <img height='90%' width='80%' src={item.img} />
                 <Container>
                   <h1>{item.header}</h1>
