@@ -3,6 +3,7 @@ import { Container } from 'react-bootstrap'
 import { Header, Grid, Item, Table, Label } from "semantic-ui-react"
 import ItemModel from '../comps/ItemModel'
 import { publicRequest } from '../requests/request'
+import { useTranslation } from 'react-i18next'
 
 const Compare = ({ selectedItems, addToCompare, removeFromCompare, onAdd, onRemoveFromPage }) => {
     const [Items, setItems] = useState([])
@@ -15,12 +16,13 @@ const Compare = ({ selectedItems, addToCompare, removeFromCompare, onAdd, onRemo
         };
         getItems();
     }, []);
+    const {t} = useTranslation()
     return (
         <Container>
             <div>
                 <Header
                     as="h1"
-                    content="Compare Items"
+                    content={t('comp')}
                     textAlign="center"
                 />
                 {selectedItems.length > 0 && (
@@ -37,7 +39,7 @@ const Compare = ({ selectedItems, addToCompare, removeFromCompare, onAdd, onRemo
                             <Table.Row>
                                 <Table.Cell>
                                     <Label color="orange" ribbon>
-                                        Цена
+                                        {t('price')}
                                     </Label>
                                 </Table.Cell>
                                 {selectedItems.map((Items) => (
@@ -47,7 +49,7 @@ const Compare = ({ selectedItems, addToCompare, removeFromCompare, onAdd, onRemo
                             <Table.Row>
                                 <Table.Cell>
                                     <Label color="teal" ribbon>
-                                        Описание
+                                        {t('desc')}
                                     </Label>
                                 </Table.Cell>
                                 {selectedItems.map((Items) => (

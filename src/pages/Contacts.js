@@ -8,6 +8,7 @@ import clock from '../assets/clock.png'
 import MapContainer from '../comps/Map'
 import {Link} from 'react-router-dom'
 import {publicRequest} from '../requests/request'
+import { useTranslation } from 'react-i18next'
 
 
 export default function Contacts() {
@@ -23,16 +24,18 @@ useEffect(() => {
   } 
   getItems()
 }, [])
+const {t} = useTranslation()
+
     return (
       <>
         <Container className='mt-3'>
           <Breadcrumb>
-            <Breadcrumb.Item href="/"><strong>Г</strong>лавная</Breadcrumb.Item>
-            <Breadcrumb.Item active><mark>Контакты</mark></Breadcrumb.Item>
+            <Breadcrumb.Item href="/">{t('main')}</Breadcrumb.Item>
+            <Breadcrumb.Item active><mark>{t('nav2')}</mark></Breadcrumb.Item>
           </Breadcrumb>
         </Container>
         <Container fluid className='tabs-cont pt-3 pb-3 mt-2 mb-5'>
-          <h1>Наши Контакты</h1>
+          <h1>{t('conts')}</h1>
         </Container>
         <Row>
           <Col sm={12}>
@@ -45,29 +48,29 @@ useEffect(() => {
               <Container className='d-flex align-items-start'>
                 <Image width='auto' height='auto' src={phone}></Image>
                 <Container className='d-flex flex-column align-items-start'>
-                  <h3>Телефон</h3>
+                  <h3>{t('phone')}</h3>
                   <p>{item.phone}</p>
                 </Container>
               </Container>
               <Container className='d-flex align-items-start'>
                 <Image width='auto' height='auto' src={address}></Image>
                 <Container className='d-flex flex-column align-items-start mb-3'>
-                  <h3>Адресс</h3>
+                  <h3>{t('address')}</h3>
                   <p>{item.address}</p>
-                  <a href='#map' type='button' className='bttn-map'>Как добраться?</a>
+                  <a href='#map' type='button' className='bttn-map'>{t('map-btn')}</a>
                 </Container>
               </Container>
               <Container className='d-flex align-items-start'>
                 <Image width='auto' height='auto' src={clock}></Image>
                 <Container className='d-flex flex-column align-items-start'>
-                  <h3><span>Г</span>рафик работы</h3>
+                  <h3>{t('nav7')}</h3>
                   <Container className='d-flex align-items-start'>
                     <Container className='text-center linevert'>
-                      <p>Пн. - Сб.</p>
+                      <p>{t('days')}</p>
                       <p>{item.workHours} </p>
                     </Container>
                     <Container className='text-center'>
-                      <p>Вс.</p>
+                      <p>{t('day')}</p>
                       <p>  {item.workHoursH}  </p>
                     </Container>
                   </Container>

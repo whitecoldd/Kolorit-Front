@@ -1,40 +1,41 @@
 import React from 'react'
 import { Accordion, Container, InputGroup, Form, Button, Nav, Navbar, Image } from 'react-bootstrap'
 import { Box, Slider, Typography } from '@mui/material'
+import { useTranslation } from 'react-i18next'
 function valuetext(value) {
     return `${value}`;
 }
 const CatalogMenu = ({setQuery, value, setValue, handleChange, handleInput, handleFilter})  => {
-
+    const {t} = useTranslation()
   return (
     <>
         <Container id='flex1' className='catalog-menu m-0'>
                     <Accordion className='catalog-acc'>
                         <Accordion.Item>
-                            <Accordion.Header>Наличие в магазинах</Accordion.Header>
+                            <Accordion.Header>{t('avail')}</Accordion.Header>
                             <Accordion.Body name='availability' onChange={handleFilter}>
                                 <InputGroup>
                                     <InputGroup.Checkbox></InputGroup.Checkbox>
-                                    <InputGroup.Text>В наличии</InputGroup.Text>
+                                    <InputGroup.Text>{t('inuse')}</InputGroup.Text>
                                 </InputGroup>
                                 <InputGroup>
                                     <InputGroup.Checkbox></InputGroup.Checkbox>
-                                    <InputGroup.Text>Наличие в магазинах</InputGroup.Text>
+                                    <InputGroup.Text>{t('avail')}</InputGroup.Text>
                                 </InputGroup>
                                 <InputGroup>
                                     <InputGroup.Checkbox></InputGroup.Checkbox>
-                                    <InputGroup.Text>Под заказ : завтра</InputGroup.Text>
+                                    <InputGroup.Text>{t('ordertom')}</InputGroup.Text>
                                 </InputGroup>
                                 <InputGroup>
                                     <InputGroup.Checkbox></InputGroup.Checkbox>
-                                    <InputGroup.Text>Под заказ : позже</InputGroup.Text>
+                                    <InputGroup.Text>{t('later')}</InputGroup.Text>
                                 </InputGroup>
                             </Accordion.Body>
                         </Accordion.Item>
                     </Accordion>
                     <Accordion>
                         <Accordion.Item>
-                            <Accordion.Header>Цена</Accordion.Header>
+                            <Accordion.Header>{t('price')}</Accordion.Header>
                             <Accordion.Body>
                                 <Box sx={{ width: 300 }}>
                                     <Slider
@@ -53,11 +54,11 @@ const CatalogMenu = ({setQuery, value, setValue, handleChange, handleInput, hand
                     </Accordion>
                     <Accordion>
                         <Accordion.Item>
-                            <Accordion.Header>Производители</Accordion.Header>
+                            <Accordion.Header>{t('prods')}</Accordion.Header>
                             <Accordion.Body>
                                 <InputGroup>
                                     <InputGroup.Checkbox></InputGroup.Checkbox>
-                                    <InputGroup.Text>Все производители</InputGroup.Text>
+                                    <InputGroup.Text>{t('allprods')}</InputGroup.Text>
                                 </InputGroup>
                                 <InputGroup>
                                     <Form.Control
@@ -92,27 +93,27 @@ const CatalogMenu = ({setQuery, value, setValue, handleChange, handleInput, hand
                     </Accordion>
                     <Accordion>
                         <Accordion.Item>
-                            <Accordion.Header>Ширина (см)</Accordion.Header>
+                            <Accordion.Header>{t('wdt')}</Accordion.Header>
                         </Accordion.Item>
                     </Accordion>
                     <Accordion>
                         <Accordion.Item>
-                            <Accordion.Header>Модель</Accordion.Header>
+                            <Accordion.Header>{t('model')}</Accordion.Header>
                         </Accordion.Item>
                     </Accordion>
                     <Accordion>
                         <Accordion.Item>
-                            <Accordion.Header>Масса</Accordion.Header>
+                            <Accordion.Header>{t('wt')}</Accordion.Header>
                         </Accordion.Item>
                     </Accordion>
                     <Accordion>
                         <Accordion.Item>
-                            <Accordion.Header>Крутящий момент</Accordion.Header>
+                            <Accordion.Header>{t('el')}</Accordion.Header>
                         </Accordion.Item>
                     </Accordion>
                     <Accordion>
                         <Accordion.Item>
-                            <Accordion.Header>Тип питания</Accordion.Header>
+                            <Accordion.Header>{t('chargetype')}</Accordion.Header>
                         </Accordion.Item>
                     </Accordion>
                     <Container className='d-flex justify-content-center pt-1 pb-3'>

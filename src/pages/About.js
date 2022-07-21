@@ -5,6 +5,7 @@ import playb from '../assets/playb.png'
 import tab1 from '../assets/tab1.png'
 import CardsItem from '../comps/CardsItem'
 import { publicRequest } from '../requests/request'
+import {useTranslation} from 'react-i18next'
 export default function About() {
   const [Items, setItems] = useState([])
   useEffect(() => {
@@ -18,6 +19,7 @@ export default function About() {
     }
     getItems()
   }, [])
+  const {t} = useTranslation()
   const [items, setitems] = useState([])
   useEffect(() => {
     const getItems = async () => {
@@ -35,8 +37,8 @@ export default function About() {
     <>
       <Container className='mt-3'>
         <Breadcrumb>
-          <Breadcrumb.Item href="/"><strong>Г</strong>лавная</Breadcrumb.Item>
-          <Breadcrumb.Item active><mark>О Компании</mark></Breadcrumb.Item>
+          <Breadcrumb.Item href="/">{t('main')}</Breadcrumb.Item>
+          <Breadcrumb.Item active><mark>{t('nav1')}</mark></Breadcrumb.Item>
         </Breadcrumb>
       </Container>
       <Container className='d-flex flex-column'>
@@ -44,7 +46,7 @@ export default function About() {
           {Items?.slice(0,1).map((Items => (
             <>
               <Container className='d-flex flex-column about-text'>
-                <h1>О Компании</h1>
+                <h1>{t('nav1')}</h1>
                 <h3>{Items.header}</h3>
                 <p>{Items.text}</p>
               </Container>
@@ -56,13 +58,13 @@ export default function About() {
         </Container>
         <CardsItem></CardsItem>
         <Container className='video-el'>
-          <button className='play-upper'>Смотреть Видео</button>
+          <button className='play-upper'>{t('watch')}</button>
           <Image className='play-button' src={playb} type='button'></Image>
         </Container>
       </Container>
       <Container fluid className='tabs-cont mt-3 pt-3 pb-5'>
         <Container>
-          <h1 className='story-text'>Наша история</h1>
+          <h1 className='story-text'>{t('story')}</h1>
           <Tab.Container className='tabs' defaultActiveKey='first'>
             <Nav variant="tabs" className="mt-2">
               {items.slice(0,5).map(item=>(

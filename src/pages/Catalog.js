@@ -5,6 +5,7 @@ import PromosDisplay from '../comps/PromosDisplay'
 import { Link } from 'react-router-dom'
 import CatalogClass from './CatalogClass'
 import { publicRequest } from '../requests/request'
+import { useTranslation } from 'react-i18next'
 
 export default function Catalog() {
   const [Items, setItems] = useState([])
@@ -17,14 +18,16 @@ export default function Catalog() {
     };
     getItems();
   }, []);
+  const {t} = useTranslation()
+
   return (
     <>
       <Container>
         <Breadcrumb className='mt-3'>
-          <Breadcrumb.Item href="/"><strong>Г</strong>лавная</Breadcrumb.Item>
-          <Breadcrumb.Item active><mark>Каталог</mark></Breadcrumb.Item>
+          <Breadcrumb.Item href="/">{t('main')}</Breadcrumb.Item>
+          <Breadcrumb.Item active><mark>{t('foot4')}</mark></Breadcrumb.Item>
         </Breadcrumb>
-        <h1 className='bold mb-5'>Каталог</h1>
+        <h1 className='bold mb-5'>{t('foot4')}</h1>
       </Container>
       <Container className='d-flex flex-wrap justify-content-center no-pad mb-5'>
 

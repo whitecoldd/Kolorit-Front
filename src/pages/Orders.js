@@ -9,6 +9,8 @@ import { userRequest } from '../requests/request'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
+import { useTranslation } from 'react-i18next'
+
 const Orders = () => {
     const [Items, setItems] = useState([])
     const user = useSelector((state) => state.user.currentUser)
@@ -18,10 +20,11 @@ const Orders = () => {
     const lastname = useSelector((state) => state.user.currentUser.lname)
     const username = useSelector((state) => state.user.currentUser.username)
     const id = useSelector((state) => state.user.currentUser._id)
+    const { t } = useTranslation()
     useEffect(() => {
         const getItems = async () => {
             try {
-                const res = await userRequest.get(`/order/find/${id}`)
+                const res = await userRequest.get(`/order/find/${firstname}`)
                 setItems(res.data)
             } catch (e) {
                 console.log(e)
@@ -45,7 +48,7 @@ const Orders = () => {
                                         <Nav.Link eventKey={item.id} >{item.title}</Nav.Link>
                                     </Container>
                                     <Container className='d-flex flex-column prof-item'>
-                                    <Link to='/profileinfo'>     <Nav.Link className='menu-profile-text'>{item.subtitle1 || ''}</Nav.Link></Link>
+                                        <Link to='/profileinfo'>     <Nav.Link className='menu-profile-text'>{item.subtitle1 || ''}</Nav.Link></Link>
                                         <Nav.Link className='menu-profile-text'>{item.subtitle2 || ''}</Nav.Link>
                                         <Nav.Link className='menu-profile-text'>{item.subtitle3 || ''}</Nav.Link>
                                         <Nav.Link className='menu-profile-text'>{item.subtitle4 || ''}</Nav.Link>
@@ -57,34 +60,43 @@ const Orders = () => {
                     <Container>
                         <Tab.Content>
                             <Container className='menu-profile-ext ps-3'>
-                                {Items.map(item => (
-                                    <Table striped hover className='tablenew p-3'>
-                                        <thead>
-                                            <tr>
-                                                <th>#</th>
-                                                <th>Товар</th>
-                                                <th>Дата</th>
-                                                <th>Цена</th>
-                                                <th>Статус</th>
-                                                <th>.</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                                <th>{item._id}</th>
-                                                <th>{item.delType}</th>
-                                                <th>{date}</th>
-                                                <th>{item.productId[0].price} {item.productId[0].currency}</th>
-                                                <th>{item.status}</th>
-                                                <Link to={`/order/${item._id}`}>
-                                                    <th>&#8594;</th>
-                                                </Link>
-                                        </tbody>
-                                    </Table>
-                                ))}
-                            </Container>
-                        </Tab.Content>
+
+                                <Table striped hover className='tablenew p-3'>
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>{t('prod')}</th>
+                                            <th>{t('date')}</th>
+                                            <th>{t('price')}</th>
+                                            <th>{t('status')}</th>
+                                            <th>.</th>
+                                        </tr>
+                                    </thead>
+
+                                    {Items.map(item => {
+                                        if (item.userFName === firstname) {
+                                            return (
+                                                <>
+                                                    <tbody>
+                                                    <th>{item._id}</th>
+                                                    <th>{item.delType}</th>
+                                                    <th>{date}</th>
+                                                    <th>{item?.productId?.reduce((salePrice, item) => salePrice + item.qty * item.salePrice, 0)} MDL</th>
+                                                    <th>{item.status}</th>
+                                                    <Link to={`/order/${item._id}`}>
+                                                        <th>&#8594;</th>
+                                                    </Link>
+                                                </tbody>
+                                                </>
+                                )
+                                        }})}
+
+                            </Table>
+
                     </Container>
-                </Tab.Container>
+                </Tab.Content>
+            </Container>
+        </Tab.Container>
             </Container >
         </>
     )

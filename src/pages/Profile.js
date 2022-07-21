@@ -8,6 +8,8 @@ import { ProfileMenu } from '../comps/ProfileMenu'
 import { userRequest } from '../requests/request'
 import { useSelector } from 'react-redux'
 import {Link} from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
+
 const Profile = () => {
   const [Items, setItems] = useState([])
   const user = useSelector((state)=> state.user.currentUser)
@@ -17,6 +19,8 @@ const Profile = () => {
   const lastname = useSelector((state)=> state.user.currentUser.lastname)
   const username = useSelector((state)=> state.user.currentUser.username)
   const id = useSelector((state)=> state.user.currentUser._id)
+  const {t} = useTranslation()
+
   useEffect(() => {
     const getItems = async () => {
       try {
@@ -53,19 +57,19 @@ const Profile = () => {
           <Container>
             <Tab.Content>
               <Container className='menu-profile-ext'>
-                <h1 className='pad'>Личный кабинет</h1>
+                <h1 className='pad'>{t('self')}</h1>
                 <Container className='d-flex'>
 
                   <Container>
 
                     <Container className='box'>
-                      <h3>Активные заказы</h3>
-                      <h5 className='gray'>У вас нет активных заказов</h5>
-                      <Link className='no-dec' to='/orders'>Подробнее &gt; </Link>
+                      <h3>{t('acorder')}</h3>
+                      <h5 className='gray'>{t('noorder')}</h5>
+                      <Link className='no-dec' to='/orders'>{t('more')} &gt; </Link>
                       <Image className='box-pic' src={orderbox}></Image>
                     </Container>
                     <Container className='box'>
-                      <h3>Личные Данные</h3>
+                      <h3>{t('self')}</h3>
                       {/* {user && Items?.map((user) => (
                         <> */}
                           <Container className='no-pad'>
@@ -75,23 +79,23 @@ const Profile = () => {
                           </Container>
                         {/* </>
                       ))} */}
-                      <a className='no-dec' href='/'>Изменить &gt; </a>
+                      <a className='no-dec' href='/'>{t('change')} &gt; </a>
                       <Image className='box-pic' src={bigprof}></Image>
                     </Container>
                   </Container>
                   <Container>
                     <Container className='box'>
-                      <h3>Моя корзина</h3>
-                      <h5 className='gray'>Ваша корзина пуста</h5>
-                      <a className='no-dec' href='/'>Перейти в корзину &gt; </a>
+                      <h3>{t('mycart')}</h3>
+                      <h5 className='gray'>{t('emptycart')}</h5>
+                      <a className='no-dec' href='/'>{t('tocart')} &gt; </a>
                       <Image className='box-pic' src={profcart}></Image>
                     </Container>
                     <Container className='box'>
-                      <h3>Избранные товары</h3>
-                      <h5 className='gray'>В данном разделе нет товаров</h5>
+                      <h3></h3>
+                      <h5 className='gray'>{t('noprod')}</h5>
                       <Container className='no-pad'>
                       </Container>
-                      <a className='no-dec' href='/'>Перейти в избранное &gt; </a>
+                      <a className='no-dec' href='/'>{t('gofav')} &gt; </a>
                       <Image className='box-pic' src={heart}></Image>
                     </Container>
                   </Container>

@@ -2,11 +2,11 @@ import React, { useState } from 'react'
 import { Container, Form, Breadcrumb } from 'react-bootstrap'
 import BrandsItemDisplay from '../comps/BrandsItemDisplay';
 import { BrandsItem } from '../comps/BrandsItem';
-
+import {useTranslation} from 'react-i18next'
 function Brands({ placeholder, data }) {
   const alpha = Array.from(Array(26)).map((e, i) => i + 65);
   const alphabet = alpha.map((x) => String.fromCharCode(x));
-
+  const {t} = useTranslation()
   const [filteredData, setFilteredData] = useState([]);
   const [wordEntered, setWordEntered] = useState("");
 
@@ -32,12 +32,12 @@ function Brands({ placeholder, data }) {
     <>
       <Container className='mt-3'>
         <Breadcrumb>
-          <Breadcrumb.Item href="/"><strong>Г</strong>лавная</Breadcrumb.Item>
-          <Breadcrumb.Item active><mark>Бренды</mark></Breadcrumb.Item>
+          <Breadcrumb.Item href="/">{t('main')}</Breadcrumb.Item>
+          <Breadcrumb.Item active><mark>{t('nav5')}</mark></Breadcrumb.Item>
         </Breadcrumb>
       </Container>
       <Container className='mt-5 mb-5'>
-        <center>Бренды A-Z</center>
+        <center>{t('nav5')} A-Z</center>
       </Container>
       <Container fluid className='bgalpha d-flex justify-content-center mt-3 pt-4 pb-2'> {alphabet.map((alpha, i) => (<a type='button' className='text-uppercase alpha nodec' href={`#${alphabet[i]}`} >  {alpha}</a>))}</Container>
       <Container className='mt-5 mb-5'>

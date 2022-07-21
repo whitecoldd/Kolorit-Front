@@ -23,24 +23,8 @@ import ProcessOrder from './pages/ProcessOrder';
 import Orders from './pages/Orders';
 import Order from './pages/Order';
 import { useSelector } from 'react-redux'
-import { Translator, Translate } from 'react-auto-translate';
-
-const cacheProvider = {
-  get: (language, key) =>
-    ((JSON.parse(localStorage.getItem('translations')) || {})[key] || {})[
-    language
-    ],
-  set: (language, key, value) => {
-    const existing = JSON.parse(localStorage.getItem('translations')) || {
-      [key]: {},
-    };
-    existing[key] = { ...existing[key], [language]: value };
-    localStorage.setItem('translations', JSON.stringify(existing));
-  },
-};
 
 function App() {
-  const [to, setTo] = useState('ro');
   const [cartItems, setCartItems] = useState([]);
   const onAdd = (product) => {
     const productExit = cartItems.find((item) => item._id === product._id)

@@ -23,8 +23,12 @@ import axios from "axios"
 import { publicRequest } from '../requests/request'
 import AppPagination from '../comps/AppPagination'
 import Slider from '../comps/Slider'
+import ItemOfDay from '../comps/ItemOfDay'
+import { useTranslation } from 'react-i18next'
+
 export default function Home(props) {
-  const { onAdd, onRemoveFromPage, addToCompare, removeFromCompare, selectedItems } = props
+  const { t } = useTranslation()
+  const { onAdd, onRemoveFromPage, addToCompare, removeFromCompare, selectedItems, cartItems } = props
   const location = useLocation()
   const [Items, setItems] = useState([])
   // const [prods, setProds] = useState([])
@@ -56,28 +60,16 @@ export default function Home(props) {
         <Container className='d-flex flex-wrap justify-content-between prod-cont'>
             <ProductDisplay></ProductDisplay>
         </Container>
-        <Container className='d-flex flex-wrap justify-content-center sales-prod p-3'>
+        <Container className='d-flex flex-wrap align-content-between justify-content-center sales-prod p-3'>
         {Items?.slice(0,1).map((Items) => (
-          <>
-                 <h3><b>Т</b>овар дня :</h3>
-                 <Image width='100%' height='100%' src={Items.img} ></Image>
-                 <b>{Items.name}</b>
-                 <Container className='d-flex align-items-center'>
-                   <Container>
-                     <del>{Items.price}<small> {Items.currency}</small></del>
-                     <h4>{Items.salePrice} <small> {Items.currency}</small></h4>
-                   </Container>
-                   <Button variant='warning'><Image src={buy}></Image></Button>
-                 </Container>
-                 <Countdown date={Date.now() + 86399000} />
-                 </>
+                <ItemOfDay addToCompare={addToCompare} removeFromCompare={removeFromCompare} selectedItems={selectedItems} Items={Items} key={Items.id} onAdd={() => onAdd(Items)} onRemoveFromPage={() => onRemoveFromPage(Items._id)} ></ItemOfDay>
             ))}
           
         </Container>
       </Container>
       <Container fluid className='d-flex flex-nowrap flex-column sales-prod-carousel'>
         <Container className='d-flex flex-wrap justify-content-start'>
-          <b className='pt-4 pb-4'><h1><strong>Т</strong>овары со скидкой</h1></b>
+          <b className='pt-4 pb-4'><h1>{t('car1')}</h1></b>
           <Container className='d-flex mt-2 justify-content-center items-list-handle'>
             {Items?.slice(0,5).map((Items) => {
               if(Items.promo === "Скидка"){
@@ -90,21 +82,21 @@ export default function Home(props) {
             </Container> */}
         </Container>
         <Container className='d-flex flex-wrap justify-content-center mt-5 mb-3'>
-        <Link type='button' to='/catalog' className='bttn-more'>Больше товаров</Link>
+        <Link type='button' to='/catalog' className='bttn-more'>{t('more1')}</Link>
         </Container>
       </Container>
       <Container>
-        <h1 className='pt-4 pb-4'>Акции и предложения</h1>
+        <h1 className='pt-4 pb-4'>{t('car2')}</h1>
         <Container>
           <PromosDisplay></PromosDisplay>
           <Container className='d-flex flex-wrap justify-content-center mt-5 mb-3'>
-            <Button variant='outline-warning' className='bttn-low'>Все Акции</Button>
+            <Button variant='outline-warning' className='bttn-low'>{t('more2')}</Button>
           </Container>
         </Container>
       </Container>
       <Container fluid className='d-flex flex-nowrap flex-column sales-prod-carousel'>
         <Container className='d-flex flex-wrap justify-content-start'>
-          <b className='pt-4 pb-4'><h1>Популярные товары</h1></b>
+          <b className='pt-4 pb-4'><h1>{t('car3')}</h1></b>
           <Container className='d-flex mt-2 justify-content-center items-list-handle'>
             {Items?.slice(0,5).map((Items) => {
               return <ItemModel addToCompare={addToCompare} removeFromCompare={removeFromCompare} selectedItems={selectedItems} Items={Items} key={Items.id} onAdd={() => onAdd(Items)} onRemoveFromPage={() => onRemoveFromPage(Items._id)} ></ItemModel>
@@ -116,13 +108,13 @@ export default function Home(props) {
             </Container> */}
         </Container>
         <Container className='d-flex flex-wrap justify-content-center mt-5 mb-3'>
-        <Link type='button' to='/catalog' className='bttn-more'>Больше товаров</Link>
+        <Link type='button' to='/catalog' className='bttn-more'>{t('more1')}</Link>
         </Container>
       </Container>
       <CardsItem></CardsItem>
       <Container fluid className='d-flex flex-nowrap flex-column sales-prod-carousel' style={{backgroundColor: '#FFF'}}>
         <Container className='d-flex flex-wrap justify-content-start'>
-          <b className='pt-5 pb-2'><h1>Новинки</h1></b>
+          <b className='pt-5 pb-2'><h1>{t('car4')}</h1></b>
           <Container className='d-flex mt-2 justify-content-center items-list-handle'>
             {Items?.slice(0,5).map((Items) => {
               return <ItemModel addToCompare={addToCompare} removeFromCompare={removeFromCompare} selectedItems={selectedItems} Items={Items} key={Items.id} onAdd={() => onAdd(Items)} onRemoveFromPage={() => onRemoveFromPage(Items._id)} ></ItemModel>
@@ -134,7 +126,7 @@ export default function Home(props) {
             </Container> */}
         </Container>
         <Container className='d-flex flex-wrap justify-content-center mt-5 mb-3'>
-          <Link type='button' to='/catalog' className='bttn-more'>Больше товаров</Link>
+          <Link type='button' to='/catalog' className='bttn-more'>{t('more1')}</Link>
         </Container>
       </Container>
       <Container fluid>

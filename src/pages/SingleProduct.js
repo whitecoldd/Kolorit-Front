@@ -6,6 +6,8 @@ import minus from '../assets/minus.png'
 import plus from '../assets/plus.png'
 import ItemModel from '../comps/ItemModel'
 import { publicRequest } from '../requests/request';
+import { useTranslation } from 'react-i18next'
+
 const SingleProduct = ({ decreaseQty, onAdd, onRemoveFromPage }) => {
     
     const location = useLocation()
@@ -33,6 +35,8 @@ const SingleProduct = ({ decreaseQty, onAdd, onRemoveFromPage }) => {
         getItems();
       }, []);
       const [first, setfirst] = useState(0)
+      const {t} = useTranslation()
+
     return (
         <>
             <Container>
@@ -48,7 +52,7 @@ const SingleProduct = ({ decreaseQty, onAdd, onRemoveFromPage }) => {
                                     </Container>
                                     <Container id='flex3' className='sell-board single-prod-img d-flex m-1 pb-5 pt-5'>
                                         <Container>
-                                            <p>Категория: <span className='orange fatund'>{items.category}</span></p>
+                                            <p>{t('cat')} <span className='orange fatund'>{items.category}</span></p>
                                             <p>{items.availability}</p>
                                             <Container className=''>
                                                 <p className='smth d-flex justify-content-between'>{items.char1}<span className='orange'>{items.char1a}</span></p>
@@ -65,7 +69,7 @@ const SingleProduct = ({ decreaseQty, onAdd, onRemoveFromPage }) => {
                                                 <span className='orange position-relative'><span className='big bold orange'>{items.salePrice}</span> {items.currency} <Badge className='new-pos' bg='secondary'>Экономия <span className='orange'>{items.price - items.salePrice} {items.currency}</span></Badge></span>
                                             </Container>
                                             <Container className='d-flex smth p-2 pb-5'>
-                                                <Button variant='outline-warning' onClick={() => {onAdd(items); setfirst(first+1)}} ><span>Добавить в корзину</span></Button>
+                                                <Button variant='outline-warning' onClick={() => {onAdd(items); setfirst(first+1)}} ><span>{t('addtocart')}</span></Button>
                                                 <Container className='d-flex scale'>
                                                     <button className='desCart me-2' onClick={() => {decreaseQty(items); setfirst(first-1)}}>
                                                         <Image src={minus} ></Image>
@@ -79,15 +83,15 @@ const SingleProduct = ({ decreaseQty, onAdd, onRemoveFromPage }) => {
                                                 </Container>
                                             </Container>
                                             <Container className='d-flex align-items-center justify-content-around pt-5 '>
-                                                <span className='small pe-3'>от {items.salePrice / 10} {items.currency} / в месяц</span>
-                                                <Button className='p-2 ps-3 pe-3' variant='secondary'>Купить в кредит</Button>
+                                                <span className='small pe-3'> {items.salePrice / 10} {items.currency} / {t('amonth')}</span>
+                                                <Button className='p-2 ps-3 pe-3' variant='secondary'>{t('buycred')}</Button>
                                             </Container>
                                         </Container>
                                     </Container>
                                 </Container>
                                 <Container className='d-flex'>
                                     <Container className='single-prod-img p-2 m-1'>
-                                        <h2 className='ps-3 bold'>Характеристики</h2>
+                                        <h2 className='ps-3 bold'>{t('chars')}</h2>
                                         <Container className='sell-board '>
                                             <p className='smth d-flex justify-content-between'>{items.char1}<span className='orange'>{items.char1a}</span></p>
                                             <p className='smth d-flex justify-content-between'>{items.char2}<span className='orange'>{items.char2a}</span></p>
@@ -96,31 +100,31 @@ const SingleProduct = ({ decreaseQty, onAdd, onRemoveFromPage }) => {
                                         </Container>
                                     </Container>
                                     <Container className='single-prod-img p-2 sell-board m-1'>
-                                        <h2 className='ps-4 bold'>Описание</h2>
+                                        <h2 className='ps-4 bold'>{t('desc')}</h2>
                                         <p className='p-4'>{items.description}</p>
                                     </Container>
                                 </Container>
                                 <Container >
                                     <Container className='single-prod-img p-2 sell-board mt-3'>
-                                        <h2 className='ps-4 bold' >Дополнительная информация</h2>
+                                        <h2 className='ps-4 bold' >{t('additinfo')}</h2>
                                         <Container className='d-flex'>
                                             <Container className=''>
-                                                <h6 className='bold'>Производитель: </h6>
-                                                <p> {items.brandCountry} - родина бренда</p>
-                                                <p> {items.originalCountry} - страна производитель</p>
+                                                <h6 className='bold'>{t('producer')} </h6>
+                                                <p> {items.brandCountry} - {t('brand')}</p>
+                                                <p> {items.originalCountry} - {t('prodcount')}</p>
                                             </Container>
                                             <Container className=''>
-                                                <h6 className='bold'>Комплектация: </h6>
+                                                <h6 className='bold'>{t('complect')} </h6>
                                                 <p>{items.complect}</p>
                                             </Container>
                                             <Container >
-                                                <h6 className='bold'>Информация об упаковке : </h6>
+                                                <h6 className='bold'>{t('info')} </h6>
                                                 <Container className=''>
-                                                    <p>Единица товара : {items.singleProd} </p>
-                                                    <p>Вес (кг) : {items.weight} </p>
-                                                    <p>Длина (мм) : {items.length} </p>
-                                                    <p>Ширина (мм) : {items.width} </p>
-                                                    <p>Высота (мм) : {items.height} </p>
+                                                    <p>{t('piece')} {items.singleProd} </p>
+                                                    <p>{t('wt')} : {items.weight} </p>
+                                                    <p>{t('lt')} : {items.length} </p>
+                                                    <p>{t('wdt')} : {items.width} </p>
+                                                    <p>{t('ht')} : {items.height} </p>
                                                 </Container>
                                             </Container>
                                         </Container>

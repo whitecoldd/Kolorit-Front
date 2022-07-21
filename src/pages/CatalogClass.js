@@ -11,6 +11,8 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import axios from 'axios'
 import { publicRequest } from '../requests/request'
+import { useTranslation } from 'react-i18next'
+
 const CatalogClass = ({ onAdd, onRemoveFromPage, removeFromCompare, addToCompare, selectedItems }) => {
     const items = [...Array(90).keys()]
     const [Items, setItems] = useState([])
@@ -20,6 +22,7 @@ const CatalogClass = ({ onAdd, onRemoveFromPage, removeFromCompare, addToCompare
     const [sortingP, setPSorting] = useState()
     const [state, setState] = useState("ASC")
     const [sale, setSale] = useState("w")
+    const {t} = useTranslation()
 
     const handleSort = () => {
         setSorting(!sorting)
@@ -91,10 +94,10 @@ const CatalogClass = ({ onAdd, onRemoveFromPage, removeFromCompare, addToCompare
                                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                                 <Navbar.Collapse id="responsive-navbar-nav" className='d-flex justify-content-between'>
                                     <Nav className=''>
-                                        <Nav.Link className='black'>Сортировать по: </Nav.Link>
-                                        <Nav.Link onClick={handleSort} className='black'>Цена {sorting ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />} </Nav.Link>
-                                        <Nav.Link onClick={handlePop} className='black'>Популярность {sortingP ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />} </Nav.Link>
-                                        <Nav.Link onClick={handleSale} className='black'>Скидка {sortingS ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />} </Nav.Link>
+                                        <Nav.Link className='black'>{t('sort')} </Nav.Link>
+                                        <Nav.Link onClick={handleSort} className='black'>{t('price')} {sorting ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />} </Nav.Link>
+                                        <Nav.Link onClick={handlePop} className='black'>{t('pop')} {sortingP ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />} </Nav.Link>
+                                        <Nav.Link onClick={handleSale} className='black'>{t('sale')} {sortingS ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />} </Nav.Link>
                                     </Nav>
                                     <Nav className=''>
                                         <Nav.Link> <Image src={type1}></Image></Nav.Link>

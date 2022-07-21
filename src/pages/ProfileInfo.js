@@ -8,6 +8,7 @@ import { ProfileMenu } from '../comps/ProfileMenu'
 import { userRequest } from '../requests/request'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 const Profile = () => {
     const [Items, setItems] = useState([])
@@ -29,6 +30,8 @@ const Profile = () => {
         }
         getItems()
     }, [id])
+    const {t} = useTranslation()
+
     return (
         <>
             <Container className='profile d-flex mb-3'>
@@ -54,9 +57,9 @@ const Profile = () => {
                     <Container>
                         <Tab.Content>
                             <Container className='menu-profile-ext ps-3'>
-                                <h1 className='ps-3'>Личные Данные</h1>
+                                <h1 className='ps-3'>{t('selfdata')}</h1>
                                 <Container>
-                                    <p className='gray'>ФИО</p>
+                                    <p className='gray'>{t('init')}</p>
                                     <h5 className='black'>{firstname} {lastname}</h5>
                                 </Container>
                                 <Container>
@@ -64,12 +67,12 @@ const Profile = () => {
                                     <h5 className='black'>{email}</h5>
                                 </Container>
                                 <Container>
-                                    <p className='gray'><span className=''>Т</span>елефон</p>
+                                    <p className='gray'>{t('phone')}</p>
                                     <h5 className='black'>{phone}</h5>
                                 </Container>
                                 <Container>
                                     <Form>
-                                        <p className='gray'>Изменить пароль</p>
+                                        <p className='gray'>{t('changepw')}</p>
                                         <Container className='d-flex'>
                                             <Form.Group>
 
@@ -85,7 +88,7 @@ const Profile = () => {
                                         </Container>
                                     </Form>
                                     <Container className='mt-5'>
-                                        <h4 className='gray'>&#10060; Удалить аккаунт</h4>
+                                        <h4 className='gray'>&#10060; {t('delacc')}</h4>
                                     </Container>
                                 </Container>
                             </Container>

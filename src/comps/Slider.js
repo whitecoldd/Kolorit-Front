@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { Carousel, Button } from 'react-bootstrap'
 import { publicRequest } from '../requests/request';
+import { useTranslation } from 'react-i18next'
+
 const Slider = () => {
     const [index, setIndex] = useState(0);
+    const {t} = useTranslation()
 
     const handleSelect = (selectedIndex, e) => {
         setIndex(selectedIndex);
@@ -29,7 +32,7 @@ const Slider = () => {
                     src={items.img}
                     alt="First slide"
                 />
-                <Button type='submit' href='/catalog' className="bttn position-absolute btn-warning" aria-pressed="false">Перейти к каталогу</Button>
+                <Button type='submit' href='/catalog' className="bttn position-absolute btn-warning" aria-pressed="false">{t('gotocat')}</Button>
                 <Carousel.Caption>
                     <h2 className='pic-text position-absolute white'>{items.header}</h2>
                     <p className='pic-text-lower position-absolute'>{items.text}</p>    

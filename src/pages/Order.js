@@ -9,8 +9,9 @@ import { userRequest } from '../requests/request'
 import { useSelector } from 'react-redux'
 import { Link, useLocation } from 'react-router-dom'
 import ItemModel from '../comps/ItemModel'
+import { useTranslation } from 'react-i18next'
 
-const Orders = () => {
+const Order = () => {
     const [Items, setItems] = useState({})
     const user = useSelector((state) => state.user.currentUser)
     const email = useSelector((state) => state.user.currentUser.email)
@@ -21,6 +22,7 @@ const Orders = () => {
     const id = useSelector((state) => state.user.currentUser._id)
     const location = useLocation()
     const _id = location.pathname.split('/')[2]
+    const {t} = useTranslation()
 
     useEffect(() => {
         const getItems = async () => {
@@ -35,11 +37,11 @@ const Orders = () => {
     }, [id])
     let today = new Date();
 
-    let date = today.getDate() + "-" + parseInt(today.getMonth() + 1) + "-" + today.getFullYear();
+    const date = today.getDate() + "-" + parseInt(today.getMonth() + 1) + "-" + today.getFullYear();
     return (
         <>
-            <Container className='profile d-flex mb-3'>
-                <Tab.Container defaultActiveKey='1'>
+            <Container className='profile d-flex mb-5'>
+                <Tab.Container defaultActiveKey='1' >
                     <Container className='menu-profile pt-3'>
                         <Nav className='d-flex flex-column'>
                             {ProfileMenu.map(item => (
@@ -60,12 +62,12 @@ const Orders = () => {
                     </Container>
                     <Container>
                         <Tab.Content>
-                            <Container className='menu-profile-ext ps-3'>
-                                <Link to='/orders'><h1 className='ps-3'> &#60; Заказ №{Items._id}</h1></Link>
+                            <Container className='menu-profile-ext ps-3 '>
+                                <Link to='/orders'><h1 className='ps-3'> &#60; {t('ord')} №{Items._id}</h1></Link>
                                 <Container className='d-flex justify-content-around'>
-                                    <p className='smthg black'>Заказ принят</p>
-                                    <p className='smthg black'>Заказ в обработке</p>
-                                    <p className='smthg black'>Заказ доставлен</p>
+                                    <p className='smthg black'>{t('ordtaken')}</p>
+                                    <p className='smthg black'>{t('ordpend')}</p>
+                                    <p className='smthg black'>{t('ordgot')}</p>
                                 </Container>
 
                                 <Container className='smth'>
@@ -83,18 +85,18 @@ const Orders = () => {
                                 </Container>
                                 <Container className='d-flex'>
                                     <Container className='mt-3'>
-                                        <p className='black'>Стоимость товаров {Items?.productId?.reduce((salePrice, item) => salePrice + item.qty * item.salePrice, 0)}</p>
-                                        <p className='black'>Количество товаров {Items.quantity}</p>
-                                        <p className='black'>Скидка 0</p>
-                                        <p className='black'>Доставка 0</p>
-                                        <h4 className='orange'>Итого {Items?.productId?.reduce((salePrice, item) => salePrice + item.qty * item.salePrice, 0)}</h4>
+                                        <p className='black'>{t('priceall')} {Items?.productId?.reduce((salePrice, item) => salePrice + item.qty * item.salePrice, 0)}</p>
+                                        <p className='black'>{t('qtyall')} {Items.quantity}</p>
+                                        <p className='black'>{t('sale')} 0</p>
+                                        <p className='black'>{t('del')} 0</p>
+                                        <h4 className='orange'>{t('all')} {Items?.productId?.reduce((salePrice, item) => salePrice + item.qty * item.salePrice, 0)}</h4>
                                     </Container>
-                                    <Container className='tablenew d-flex flex-column align-items-baseline mt-4'>
-                                        <h3 className='black'>Детали заказа: </h3>
-                                        <h4 className='black d-flex flex-column'>Адрес доставки <p className='black'>{Items.address}</p></h4>
-                                        <h4 className='black d-flex flex-column'>Способ оплаты <p className='black'>{Items.payment}</p> </h4>
-                                        <h4 className='black d-flex flex-column'>Контактная информация<p className='black'>{firstname} {lastname}</p>  {phone} {email}</h4>
-                                        <Button variant='outline-warning'>Оплатить онлайн</Button>
+                                    <Container className='tablenew d-flex flex-column align-items-baseline mt-4 p-3'>
+                                        <h3 className='black'>{t('orderdet')} </h3>
+                                        <h4 className='black d-flex flex-column'>{t('addressdel')} <p className='black'>{Items.address}</p></h4>
+                                        <h4 className='black d-flex flex-column'>{t('paytype')} <p className='black'>{Items.payment}</p> </h4>
+                                        <h4 className='black d-flex flex-column'>{t('continfo')}<p className='black'>{firstname} {lastname}</p>  {phone} {email}</h4>
+                                        <Button variant='outline-warning'>{t('payonline')}</Button>
                                     </Container>
                                 </Container>
 
@@ -109,4 +111,4 @@ const Orders = () => {
     )
 }
 
-export default Orders
+export default Order
