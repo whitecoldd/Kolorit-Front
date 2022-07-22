@@ -64,7 +64,7 @@ const ItemModel = (props) => {
                     <Container className='d-flex flex-nowrap align-items-end low-item p-0'>
                         <Container fluid className='d-flex flex-column text-float align-items-start ps-0'>
                             <del style={{ fontSize: '15px' }}>{Items.price}<small> {Items.currency}</small></del>
-                            <h4>{Items.salePrice} <small> {Items.currency}</small></h4>
+                            <h4 className='orange'>{Items.salePrice} <small> {Items.currency}</small></h4>
                         </Container>
                         <Button variant='warning' className='bttnbuy' onClick={onClickBuy}><Image src={isAdded ? bought : buy}></Image></Button>
                     </Container>

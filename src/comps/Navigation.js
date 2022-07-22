@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Container, Nav, Navbar, Form, NavDropdown } from 'react-bootstrap'
+import SearchIcon from '@mui/icons-material/Search';
+import CloseIcon from "@mui/icons-material/Close";
 import { Link } from 'react-router-dom'
 import qIcon from '../assets/question.png'
 import flagR from '../assets/flag.png'
@@ -20,6 +22,18 @@ import SearchComp from './SearchComp'
 
 
 export default function Navigation({ cartItems, selectedItems, onAdd, onRemoveFromPage, removeFromCompare, addToCompare }) {
+  const [Items, setItems] = useState([])
+  useEffect(() => {
+    const getItems = async () => {
+      try {
+        const res = await publicRequest.get(`/items/find`)
+        setItems(res.data)
+      } catch (e) {
+
+      }
+    }
+    getItems()
+  }, [])
   const [isVisible, setIsVisible] = useState(true);
   const [height, setHeight] = useState(0)
   const { t, i18n } = useTranslation()
@@ -47,18 +61,30 @@ export default function Navigation({ cartItems, selectedItems, onAdd, onRemoveFr
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
   }
-  const [Items, setItems] = useState([])
-  useEffect(() => {
-    const getItems = async () => {
-      try {
-        const res = await publicRequest.get(`/items/find`)
-        setItems(res.data)
-      } catch (e) {
 
-      }
+  const [filteredData, setFilteredData] = useState([]);
+  const [wordEntered, setWordEntered] = useState("");
+
+  const handleFilter = (event) => {
+    const searchWord = event.target.value;
+    setWordEntered(searchWord);
+    const newFilter = Items.filter((value) => {
+      return value.name.toLowerCase().includes(searchWord.toLowerCase());
+    });
+
+    if (searchWord === "") {
+      setFilteredData([]);
+    } else {
+      setFilteredData(newFilter);
     }
-    getItems()
-  }, [])
+  };
+
+  const clearInput = () => {
+    setFilteredData([]);
+    setWordEntered("");
+  };
+
+
   return (
     <>
       <Navbar expand='lg' collapseOnSelect className='d-flex flex-column align-items-stretch main-nav sticky-top'>
@@ -89,7 +115,7 @@ export default function Navigation({ cartItems, selectedItems, onAdd, onRemoveFr
             </Navbar.Collapse>
           </Container>
         </Navbar>
-        <Navbar collapseOnSelect expand="lg" className='nav-fix sticky-top head position-relative ' >
+        <Navbar collapseOnSelect expand="lg" className='nav-fix sticky-top head position-relative' height={72}>
           <Container>
             <Navbar.Brand>
               <Link to='/'><img
@@ -108,29 +134,37 @@ export default function Navigation({ cartItems, selectedItems, onAdd, onRemoveFr
               <Nav>
                 <Nav.Item className='d-flex align-items-center m-2'><img src={phone} /><a className='black real-no-dec' href='tel:+37379559663'>+373&#x2212;79&#x2212;559&#x2212;663</a></Nav.Item>
               </Nav>
-              <Container className='d-flex flex-wrap'>
+              <Container className='d-flex flex-wrap '>
                 {/* <div class="dropdown1"> */}
-                  <Form.Control
-                    placeholder="Поиск..."
-                    id='search'
-                    aria-label="Search"
-                    onChange={(e) => setQuery(e.target.value)}
-                  />
-                  {/* <div class="dropdown-content1">
-                  
-                      {isVisible &&
-
-                        Items?.filter(Items => Items.name.toLowerCase().includes(query))
-                          .map((Items) => (
-                            
-                              <SearchComp Items={Items} key={Items.id} addToCompare={addToCompare} removeFromCompare={removeFromCompare} selectedItems={selectedItems} onAdd={() => onAdd(Items)} onRemoveFromPage={() => onRemoveFromPage(Items._id)} ></SearchComp>
-                           
-                          ))
-
-                      }
-                   
-                  </div>
+                <Form.Control
+                  placeholder="Поиск..."
+                  id='search'
+                  aria-label="Search"
+                  className='dropdown-search'
+                  value={wordEntered}
+                  onChange={handleFilter}
+                />
+                {/* <div className="searchIcon">
+                  {filteredData.length === 0 ? (
+                    <SearchIcon />
+                  ) : (
+                    <CloseIcon id="clearBtn" onClick={clearInput} />
+                  )}
                 </div> */}
+
+                {filteredData.length !== 0 && (
+                  <div className="dropdown-search-content">
+                    {filteredData.slice(0,5).map((Items) => (
+
+                      <SearchComp
+                        Items={Items} key={Items._id} addToCompare={addToCompare} removeFromCompare={removeFromCompare} selectedItems={selectedItems} onAdd={() => onAdd(Items)} onRemoveFromPage={() => onRemoveFromPage(Items._id)} ></SearchComp>
+
+                    ))}
+                  </div>
+                )}
+
+
+
 
               </Container>
               <Nav>

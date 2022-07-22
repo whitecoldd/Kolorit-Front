@@ -1,9 +1,5 @@
-import { Container, Navbar, Nav, Image, Form } from 'react-bootstrap'
+import { Container, Navbar, Nav, Image, Form, Button } from 'react-bootstrap'
 import React, { useState, useEffect } from 'react'
-import orderbox from '../assets/orderbox.png'
-import bigprof from '../assets/bigprof.png'
-import heart from '../assets/heart.png'
-import profcart from '../assets/profcart.png'
 import { ProfileMenu } from '../comps/ProfileMenu'
 import { userRequest } from '../requests/request'
 import { useSelector } from 'react-redux'
@@ -24,6 +20,17 @@ const Profile = () => {
             try {
                 const res = await userRequest.get(`/user/find/${id}`)
                 setItems(res.data)
+            } catch (e) {
+                console.log(e)
+            }
+        }
+        getItems()
+    }, [id])
+
+    useEffect(() => {
+        const getItems = async () => {
+            try {
+                const res = await userRequest.delete(`/user/find/${id}`)
             } catch (e) {
                 console.log(e)
             }
@@ -94,7 +101,7 @@ const Profile = () => {
                                         </Container>
                                     </Form>
                                     <Container className='mt-5'>
-                                        <h4 className='gray'>&#10060; {t('delacc')}</h4>
+                                        <Button variant='transparent' className='gray'>&#10060; {t('delacc')}</Button>
                                     </Container>
                                 </Container>
                             </Container>

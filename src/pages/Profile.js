@@ -108,7 +108,7 @@ const Profile = () => {
                       {/* </>
                       ))} */}
                       <Container className='d-flex justify-content-between align-items-baseline'>
-                        <a className='no-dec' href='/'>{t('change')} &gt; </a>
+                        <Link className='no-dec' to='/profileinfo'>{t('change')} &gt; </Link>
                         <Image className='box-pic' src={bigprof}></Image>
                       </Container>
                     </Container>

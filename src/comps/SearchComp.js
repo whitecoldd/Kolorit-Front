@@ -28,7 +28,7 @@ const ItemModel = (props) => {
 
     return (
         <>
-            <Container key={Items.id} className='d-flex align-items-center justify-content-start '>
+            <Container key={Items.id} className='d-flex align-items-center justify-content-start list-group-item list-group-item-action search-items'>
                 <Container className='d-flex justify-content-start'>
                     <Link to={`/catalog/category/${Items._id}`}><Image width='90%' height='100%' src={Items.img} ></Image></Link>
                 </Container>

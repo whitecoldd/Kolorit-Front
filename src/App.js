@@ -24,6 +24,9 @@ import Orders from './pages/Orders';
 import Order from './pages/Order';
 import { useSelector } from 'react-redux'
 
+
+
+
 function App() {
   const [cartItems, setCartItems] = useState([]);
   const onAdd = (product) => {
@@ -65,13 +68,14 @@ function App() {
     setSelectedItems((selectedItems) => filteredItems);
   };
 
+
   const admin = useSelector((state) => state.user.currentUser);
 
 
   return (
     <>
       <BrowserRouter>
-        <Navigation addToCompare={addToCompare} removeFromCompare={removeFromCompare} selectedItems={selectedItems} cartItems={cartItems} onAdd={onAdd} onRemoveFromPage={onRemoveFromPage} />
+        <Navigation  addToCompare={addToCompare} removeFromCompare={removeFromCompare} selectedItems={selectedItems} cartItems={cartItems} onAdd={onAdd} onRemoveFromPage={onRemoveFromPage} />
         <Routes>
           <Route exact path={`/catalog/category/:id`} element={<SingleProduct onAdd={onAdd} decreaseQty={decreaseQty} onRemoveFromPage={onRemoveFromPage} />}></Route>
           <Route exact path="/about" element={<About />}></Route>

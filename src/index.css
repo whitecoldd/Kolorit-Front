@@ -342,15 +342,23 @@ b {
 
 @media screen and (max-width: 650px) {
 
+  .dropdown-search-content {
+    top: 186px !important;
+    left: 80px;
+    width: 450px !important;
+    z-index: 1000 !important;
+  }
+
   .profhandle{
+    display: flex !important;
     flex-wrap: wrap !important;
   }
 
-  .menu-profile-ext{
+  /* .menu-profile-ext{
     display: flex !important;
     justify-content: center !important;
     
-  }
+  } */
 
   table thead tr .hid{
     display: none !important;
@@ -1581,7 +1589,25 @@ center {
   z-index: 100 !important;
   border: none !important;
 }
+.dropdown-search {
+  position: relative;
+  display: inline-block;
+  z-index: 100 !important;
+  border: none !important;
+}
 
+.dropdown-search-content {
+  position: absolute;
+  background-color: transparent !important;
+  border: none !important;
+  top: 92px;
+  width: 450px !important;
+  min-width: 160px;
+  z-index: 100 !important;
+}
+.dropdown-search-content:last-child {
+  border-radius: 0px 0px 50px 50px ;
+}
 .dropdown-content1 {
   display: none;
   position: absolute;
