@@ -31,7 +31,7 @@ const Orders = () => {
             }
         }
         getItems()
-    }, [id])
+    }, [username])
     let today = new Date();
 
     let date = today.getDate() + "-" + parseInt(today.getMonth() + 1) + "-" + today.getFullYear();

@@ -20,7 +20,7 @@ import MenuOpenItemDisplay from '../comps/MenuOpenItemDisplay'
 import Countdown from 'react-countdown'
 import PromosDisplay from '../comps/PromosDisplay'
 import axios from "axios"
-import { publicRequest } from '../requests/request'
+import { publicRequest, userRequest } from '../requests/request'
 import AppPagination from '../comps/AppPagination'
 import Slider from '../comps/Slider'
 import ItemOfDay from '../comps/ItemOfDay'
@@ -47,6 +47,19 @@ export default function Home(props) {
     }
     getItems()
   }, [])
+  // const [Product, setProduct] = useState([])
+  // useEffect(() => {
+  //   const getItems = async () => {
+  //     try {
+  //       const res = await publicRequest.get(`/order/`)
+  //       setProduct(res.data)
+  //       console.log(res.data)
+  //     } catch (e) {
+  //       console.log(e)
+  //     }
+  //   }
+  //   getItems()
+  // }, [])
 
   const handleDragStart = (e) => e.preventDefault();
 
@@ -122,9 +135,9 @@ export default function Home(props) {
                 items: 5,
               }
             }} mouseTracking >
-              {Items?.map((Items) => {
-                return <ItemModel addToCompare={addToCompare} removeFromCompare={removeFromCompare} selectedItems={selectedItems} Items={Items} key={Items.id} onAdd={() => onAdd(Items)} onRemoveFromPage={() => onRemoveFromPage(Items._id)} ></ItemModel>
-              })}
+              {Items.map(Items => 
+                 <ItemModel addToCompare={addToCompare} removeFromCompare={removeFromCompare} selectedItems={selectedItems} Items={Items} key={Items.id} onAdd={() => onAdd(Items)} onRemoveFromPage={() => onRemoveFromPage(Items._id)} ></ItemModel>
+              )}
             </AliceCarousel>
 
           </Container>

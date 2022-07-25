@@ -10,6 +10,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import { logout } from '../redux/apiCalls'
 
 const Profile = () => {
   const [Items, setItems] = useState([])
@@ -120,7 +121,7 @@ const Profile = () => {
                         <h5 className='gray'>{t('emptycart')}</h5>
                       </Container>
                       <Container className='d-flex justify-content-between align-items-baseline'>
-                        <a className='no-dec' href='/'>{t('tocart')} &gt; </a>
+                        <Link className='no-dec' to='/cart'>{t('tocart')} &gt; </Link>
                         <Image className='box-pic' src={profcart}></Image>
                       </Container>
                     </Container>

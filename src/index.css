@@ -689,6 +689,17 @@ a.nav-fix.nav-link{
   width: auto !important;
 }
 
+.img-on-hover .container a{
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+.img-on-hover .container a img{
+  height: auto !important; 
+  width: auto !important;
+}
+
 .sales-prod p,
 h3,
 del,
@@ -1631,7 +1642,7 @@ center {
 
 .br-50{
   border-radius: 50% !important;
-  left: 180px;
+  left: 165px;
 }
 @media screen and (max-width: 1000px) {
   .br-50{

@@ -16,7 +16,7 @@ const Compare = ({ selectedItems, addToCompare, removeFromCompare, onAdd, onRemo
         };
         getItems();
     }, []);
-    const {t} = useTranslation()
+    const { t } = useTranslation()
     return (
         <Container>
             <div>
@@ -56,58 +56,60 @@ const Compare = ({ selectedItems, addToCompare, removeFromCompare, onAdd, onRemo
                                     <Table.Cell key={Items.id}>{Items.description}</Table.Cell>
                                 ))}
                             </Table.Row>
-                            {selectedItems.map((Items) => (
-                                <Table.Row>
 
-                                    <Table.Cell>
+                            <Table.Row>
+
+                                <Table.Cell>
+                                    {selectedItems.slice(0,1).map((Items) => (
                                         <Label color="pink" ribbon>
                                             {Items.char1}
                                         </Label>
-                                    </Table.Cell>
-
+                                    ))}
+                                </Table.Cell>
+                                {selectedItems.map((Items) => (
                                     <Table.Cell key={Items.id}>{Items.char1a}</Table.Cell>
+                                ))}
+                            </Table.Row>
 
-                                </Table.Row>
-                            ))}
-                            {selectedItems.map((Items) => (
-                                <Table.Row>
+                            <Table.Row>
 
-                                    <Table.Cell>
+                                <Table.Cell>
+                                    {selectedItems.slice(0,1).map((Items) => (
                                         <Label color="pink" ribbon>
                                             {Items.char2}
                                         </Label>
-                                    </Table.Cell>
-
+                                    ))}
+                                </Table.Cell>
+                                {selectedItems.map((Items) => (
                                     <Table.Cell key={Items.id}>{Items.char2a}</Table.Cell>
+                                ))}
+                            </Table.Row>
+                            <Table.Row>
 
-                                </Table.Row>
-                            ))}
-                            {selectedItems.map((Items) => (
-                                <Table.Row>
-
-                                    <Table.Cell>
+                                <Table.Cell>
+                                    {selectedItems.slice(0,1).map((Items) => (
                                         <Label color="pink" ribbon>
                                             {Items.char3}
                                         </Label>
-                                    </Table.Cell>
-
+                                    ))}
+                                </Table.Cell>
+                                {selectedItems.map((Items) => (
                                     <Table.Cell key={Items.id}>{Items.char3a}</Table.Cell>
+                                ))}
+                            </Table.Row>
+                            <Table.Row>
 
-                                </Table.Row>
-                            ))}
-                            {selectedItems.map((Items) => (
-                                <Table.Row>
-
-                                    <Table.Cell>
+                                <Table.Cell>
+                                    {selectedItems.slice(0,1).map((Items) => (
                                         <Label color="pink" ribbon>
                                             {Items.char4}
                                         </Label>
-                                    </Table.Cell>
-
+                                    ))}
+                                </Table.Cell>
+                                {selectedItems.map((Items) => (
                                     <Table.Cell key={Items.id}>{Items.char4a}</Table.Cell>
-
-                                </Table.Row>
-                            ))}
+                                ))}
+                            </Table.Row>
                         </Table.Body>
                     </Table>
                 )}
