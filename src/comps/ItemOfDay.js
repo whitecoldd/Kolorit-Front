@@ -48,7 +48,7 @@ const ItemOfDay = (props) => {
     return (
         <>
 
-            <Container onMouseEnter={() => setIsShown(true)} onMouseLeave={() => setIsShown(false)} key={Items.id}  >
+            <Container onMouseEnter={() => setIsShown(true)} onMouseLeave={() => setIsShown(false)} key={Items.id} className="w-100" >
                 <h3 className='text-center'>{t('itemofday')}:</h3>
                 <Badge onMouseEnter={SetPromoType()} bg={Items.promoType}>{Items.promo}</Badge>
                 <Container className='d-flex flex-column align-items-center justify-content-between img-on-hover'>
@@ -57,7 +57,7 @@ const ItemOfDay = (props) => {
 
                         </Link>
 
-                        {isShown && <Container><button className='nobr-bttn img-hover' onClick={Compare} ><Image src={com}></Image></button><Image className='img-hover1' src={heart}></Image> </Container>}
+                        {isShown && <Container><button className='nobr-bttn img-hover2' onClick={Compare} ><Image src={com}></Image></button><Image className='img-hover3' src={heart}></Image> </Container>}
                     </Container>
                     <b>{Items.name}</b>
                     <Container className='d-flex flex-nowrap align-items-end low-item p-0'>

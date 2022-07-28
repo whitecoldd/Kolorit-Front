@@ -78,7 +78,7 @@ export default function Home(props) {
         <Container className='d-flex flex-wrap justify-content-between prod-cont'>
           <ProductDisplay></ProductDisplay>
         </Container>
-        <Container className='d-flex flex-wrap align-content-between justify-content-center sales-prod p-3'>
+        <Container className='d-flex flex-wrap align-content-between justify-content-center sales-prod p-3 w-auto'>
 
           {
             Items?.slice(0, 1).map((Items) => (

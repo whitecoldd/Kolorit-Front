@@ -47,7 +47,7 @@ const SingleProduct = ({ decreaseQty, onAdd, onRemoveFromPage, addToCompare, rem
                     <h1>{items.name}</h1>
                     <Container className='d-flex sprodhandle1'>
                         <Container id='flex1' key={items.id} className='single-prod-img m-1 d-flex align-items-stretch justify-content-center'>
-                            <Image fluid width={300} src={items.img}></Image>
+                            <Image fluid  src={items.img}></Image>
                         </Container>
                         <Container id='flex3' className='sell-board single-prod-img d-flex m-1 pb-5 pt-5 sprodhandle'>
                             <Container>

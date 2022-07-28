@@ -1,7 +1,7 @@
 {
   "name": "kolorit-front",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "dependencies": {
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
@@ -60,5 +60,9 @@
   },
   "devDependencies": {
     "sass": "^1.53.0"
+  },
+  "engines": {
+    "npm": ">=8.15.0",
+    "node": ">=16.16.0"
   }
 }

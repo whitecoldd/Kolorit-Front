@@ -5,6 +5,7 @@ import FooterComponent from "./comps/Footer";
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom'
 import About from './pages/About'
 import Partnership from './pages/Partnership'
+import Addresses from './pages/Addresses'
 import Catalog from './pages/Catalog'
 import Brands from './pages/Brands'
 import Contacts from './pages/Contacts'
@@ -90,6 +91,7 @@ function App() {
             <>
               <Route exact path="/profile" element={<Profile />}></Route>
               <Route exact path="/profileinfo" element={<ProfileInfo />}></Route>
+              <Route exact path="/addresses" element={<Addresses />}></Route>
               <Route exact path="/orders" element={<Orders />}></Route>
               <Route exact path="/order/:id" element={<Order />}></Route>
             </>

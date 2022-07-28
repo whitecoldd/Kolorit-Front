@@ -103,9 +103,9 @@ export default function Navigation({ cartItems, selectedItems, onAdd, onRemoveFr
 
               <Nav className='me-2 d-flex align-items-center position relative'>
                 <Link to='/' className='font-fix nav-link d-flex align-items-center justify-content-between'><img className='me-2' src={qIcon} /> {t('nav7')}</Link>
-                <div class="dropdown1">
-                  <button class="dropbtn1">{t('lang')}</button>
-                  <div class="dropdown-content1">
+                <div className="dropdown1">
+                  <button className="dropbtn1">{t('lang')}</button>
+                  <div className="dropdown-content1">
                     <button onClick={() => changeLanguage('ru')} ><img width={12} height={12} src={flagR} />Ru</button>
                     <button onClick={() => changeLanguage('ro')} ><img width={12} height={12} src={flagRo} />Ro</button>
                     <button onClick={() => changeLanguage('en')} ><img width={12} height={12} src={flagEn} />En</button>

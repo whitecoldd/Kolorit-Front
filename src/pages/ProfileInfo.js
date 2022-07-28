@@ -9,7 +9,7 @@ import redact from "../assets/redact.svg";
 import { deleteUser, updateUser } from "../redux/apiCalls";
 
 const Profile = () => {
-  const [Items, setItems] = useState([]);
+  const [Items, setItems] = useState({});
   const user = useSelector((state) => state.user.currentUser);
   const email = useSelector((state) => state.user.currentUser.email);
   const phone = useSelector((state) => state.user.currentUser.phone);
@@ -52,17 +52,6 @@ const Profile = () => {
     e.preventDefault();
     const product = { ...inputs };
     updateUser(id, product, dispatch);
-    // useEffect(() => {
-    //     const getItems = async () => {
-    //         try {
-    //             const res = await userRequest.put(`/user/find/${id}`, product)
-    //             setInputs(res.data)
-    //         } catch (e) {
-    //             console.log(e)
-    //         }
-    //     }
-    //     getItems()
-    // }, [id])
   };
 
   const handleChange = (e) => {
@@ -109,9 +98,9 @@ const Profile = () => {
                         <Link to="/profileinfo" className="menu-profile-text">
                           {item.subtitle1 || ""}
                         </Link>
-                        <Nav.Link className="menu-profile-text">
+                        <Link to="/addresses" className="menu-profile-text">
                           {item.subtitle2 || ""}
-                        </Nav.Link>
+                        </Link>
                         <Nav.Link className="menu-profile-text">
                           {item.subtitle3 || ""}
                         </Nav.Link>
@@ -136,8 +125,9 @@ const Profile = () => {
                     {show ? (
                       <Container className="d-flex justify-content-start align-items-baseline p-0">
                         <h5 className="black">
-                          {firstname} {lastname}
+                          {Items.fname} {Items.lname}
                         </h5>
+
                         <button className="removeCart" onClick={ShowClick}>
                           <img src={redact}></img>
                         </button>
@@ -148,7 +138,7 @@ const Profile = () => {
                           type="text"
                           className="form-control w-auto"
                           name="fname"
-                          value={inputs.firstname}
+                          value={inputs.fname}
                           onChange={handleChange}
                           placeholder="Имя"
                         />
@@ -156,7 +146,7 @@ const Profile = () => {
                           type="text"
                           className="form-control w-auto"
                           name="lname"
-                          value={inputs.lastname}
+                          value={inputs.lname}
                           onChange={handleChange}
                           placeholder="Фамилия"
                         />
@@ -170,7 +160,7 @@ const Profile = () => {
                     <p className="gray">E-mail</p>
                     {showE ? (
                       <Container className="d-flex align-items-baseline p-0 me-0">
-                        <h5 className="black">{email}</h5>
+                        <h5 className="black">{Items.email}</h5>
                         <button className="removeCart" onClick={ShowClickE}>
                           <img src={redact}></img>
                         </button>
@@ -195,7 +185,7 @@ const Profile = () => {
                     <p className="gray">{t("phone")}</p>
                     {showP ? (
                       <Container className="d-flex align-items-baseline p-0 me-0">
-                        <h5 className="black">{phone}</h5>
+                        <h5 className="black">{Items.phone}</h5>
                         <button className="removeCart" onClick={ShowClickP}>
                           <img src={redact}></img>
                         </button>
@@ -248,6 +238,7 @@ const Profile = () => {
                         </Form.Group>
                       </Container>
                     </Form>
+
                     <Container className="mt-5">
                       <Button
                         variant="transparent"

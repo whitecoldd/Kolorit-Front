@@ -50,7 +50,7 @@ const ItemModel = (props) => {
 
     return (
         <>
-            <Container onMouseEnter={() => setIsShown(true)} onMouseLeave={() => setIsShown(false)} key={Items.id} className='d-flex flex-wrap align-content-between mt-2 mb-2 sales-prod m-1 p-2'>
+            <Container onMouseEnter={() => setIsShown(true)} onMouseLeave={() => setIsShown(false)} key={Items.id} className='d-flex flex-wrap align-content-between mt-2 mb-2 sales-prod w-23 m-1 p-2'>
                 <Badge onMouseEnter={SetPromoType()} bg={Items.promoType}>{Items.promo}</Badge>
                 <Container className='d-flex flex-column align-items-center justify-content-between img-on-hover'>
                     <Container>
